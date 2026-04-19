@@ -1,0 +1,203 @@
+[gd_scene format=3 uid="uid://dhih5bkgcs30i"]
+
+[ext_resource type="Script" uid="uid://cdjivtx1nlocw" path="res://scripts/firepit.gd" id="1_vq5cy"]
+[ext_resource type="Texture2D" uid="uid://dgpg5r1esivy2" path="res://art/Droplet.png" id="2_5htji"]
+[ext_resource type="Texture2D" uid="uid://bvrd2kru7optw" path="res://art/romanfirepit.png" id="2_vq5cy"]
+[ext_resource type="PackedScene" uid="uid://ck7sfn0cy8uxd" path="res://scenes/lightwall.tscn" id="3_p3mg1"]
+[ext_resource type="Texture2D" uid="uid://1ly8rh133os7" path="res://art/Buttons Pack/PS4/SQUARE.png" id="5_p3mg1"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_5htji"]
+light_mode = 1
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p3mg1"]
+atlas = ExtResource("2_5htji")
+region = Rect2(0, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mu2pl"]
+atlas = ExtResource("2_5htji")
+region = Rect2(16, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d3o6k"]
+atlas = ExtResource("2_5htji")
+region = Rect2(32, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ssyo3"]
+atlas = ExtResource("2_5htji")
+region = Rect2(48, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jaq1a"]
+atlas = ExtResource("2_5htji")
+region = Rect2(64, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6ert2"]
+atlas = ExtResource("2_5htji")
+region = Rect2(80, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eex1a"]
+atlas = ExtResource("2_5htji")
+region = Rect2(96, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hu7b1"]
+atlas = ExtResource("2_5htji")
+region = Rect2(112, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tbdt8"]
+atlas = ExtResource("2_5htji")
+region = Rect2(128, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a16hn"]
+atlas = ExtResource("2_5htji")
+region = Rect2(144, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_31m3r"]
+atlas = ExtResource("2_5htji")
+region = Rect2(160, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7gidt"]
+atlas = ExtResource("2_5htji")
+region = Rect2(176, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_60sdx"]
+atlas = ExtResource("2_5htji")
+region = Rect2(192, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y8lde"]
+atlas = ExtResource("2_5htji")
+region = Rect2(208, 0, 16, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_hu7b1"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p3mg1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mu2pl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d3o6k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ssyo3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jaq1a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6ert2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eex1a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hu7b1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tbdt8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a16hn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_31m3r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7gidt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_60sdx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y8lde")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="Gradient" id="Gradient_tbdt8"]
+offsets = PackedFloat32Array(0, 0.7398844)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_a16hn"]
+gradient = SubResource("Gradient_tbdt8")
+width = 96
+height = 96
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_mu2pl"]
+radius = 47.0
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_31m3r"]
+light_mode = 1
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mu2pl"]
+size = Vector2(14, 8)
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_p3mg1"]
+light_mode = 1
+
+[node name="Firepit" type="Node2D" unique_id=363303229]
+script = ExtResource("1_vq5cy")
+
+[node name="Flame" type="AnimatedSprite2D" parent="." unique_id=1581525331]
+visible = false
+light_mask = 513
+material = SubResource("CanvasItemMaterial_5htji")
+position = Vector2(0, -17)
+sprite_frames = SubResource("SpriteFrames_hu7b1")
+autoplay = "default"
+frame_progress = 0.04263332
+
+[node name="PointLight2D" type="PointLight2D" parent="Flame" unique_id=1258723078]
+position = Vector2(0, 17)
+color = Color(0.49019608, 0.8235294, 0.95686275, 0.84313726)
+energy = 12.0
+range_z_min = -1
+range_z_max = 10
+range_item_cull_mask = 513
+texture = SubResource("GradientTexture2D_a16hn")
+
+[node name="Lightwall" parent="Flame" unique_id=926437652 instance=ExtResource("3_p3mg1")]
+position = Vector2(0, 17)
+collision_layer = 0
+collision_mask = 4
+
+[node name="LightCollision" type="CollisionShape2D" parent="Flame/Lightwall" unique_id=581286746]
+unique_name_in_owner = true
+shape = SubResource("CircleShape2D_mu2pl")
+disabled = true
+debug_color = Color(1, 1, 1, 0.41960785)
+
+[node name="Base" type="Sprite2D" parent="." unique_id=610272395]
+material = SubResource("CanvasItemMaterial_31m3r")
+position = Vector2(0, -5)
+texture = ExtResource("2_vq5cy")
+
+[node name="FirepitArea" type="Area2D" parent="." unique_id=1752853011]
+collision_layer = 0
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FirepitArea" unique_id=288710042]
+position = Vector2(0, -4)
+shape = SubResource("RectangleShape2D_mu2pl")
+
+[node name="Interact" type="Sprite2D" parent="." unique_id=1090435906]
+unique_name_in_owner = true
+visible = false
+material = SubResource("CanvasItemMaterial_p3mg1")
+position = Vector2(0, -25)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("5_p3mg1")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=359059055]
+visible = false
+offset_left = -86.0
+offset_top = -118.0
+offset_right = 87.0
+color = Color(0.33660764, 0.3366076, 0.3366076, 1)
+
+[connection signal="area_entered" from="FirepitArea" to="." method="_on_firepit_area_area_entered"]
+[connection signal="body_entered" from="FirepitArea" to="." method="_on_firepit_area_body_entered"]
+[connection signal="body_exited" from="FirepitArea" to="." method="_on_firepit_area_body_exited"]

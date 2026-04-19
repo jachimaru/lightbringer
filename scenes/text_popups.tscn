@@ -1,0 +1,161 @@
+[gd_scene format=3 uid="uid://dnl1cqvr7n8oe"]
+
+[ext_resource type="FontFile" uid="uid://dt4rpek6pj730" path="res://art/BitPotion.ttf" id="1_pkvmv"]
+[ext_resource type="Script" uid="uid://3n0k4173pxb6" path="res://scripts/text_popups.gd" id="1_pmmbg"]
+[ext_resource type="Texture2D" uid="uid://dlafufb010voh" path="res://art/9sliceblue.png" id="4_asitr"]
+[ext_resource type="Theme" uid="uid://bnsqgd1udc3jy" path="res://scenes/font.tres" id="4_nyj0y"]
+[ext_resource type="Texture2D" uid="uid://d12ptmegx4a8f" path="res://art/Buttons Pack/PS4/CIRCLE.png" id="5_asitr"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_cdle5"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_hbot6"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_n5o8m"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_u0hon"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_dk3nq"]
+
+[node name="Text Popups" type="CanvasLayer" unique_id=481894209]
+process_mode = 3
+script = ExtResource("1_pmmbg")
+
+[node name="PopupContainer" type="CenterContainer" parent="." unique_id=680856043]
+unique_name_in_owner = true
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Signs" type="Control" parent="PopupContainer" unique_id=625541200]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+
+[node name="SignLabel" type="Label" parent="PopupContainer/Signs" unique_id=1474215046]
+unique_name_in_owner = true
+process_mode = 3
+z_index = 100
+z_as_relative = false
+custom_minimum_size = Vector2(192, 128)
+layout_mode = 0
+offset_left = 32.0
+offset_top = 32.0
+offset_right = 224.0
+offset_bottom = 160.0
+theme_override_fonts/font = ExtResource("1_pkvmv")
+theme_override_font_sizes/font_size = 32
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="NinePatchRect" type="NinePatchRect" parent="PopupContainer/Signs" unique_id=642277335]
+custom_minimum_size = Vector2(256, 192)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -128.0
+offset_top = -96.0
+offset_right = 128.0
+offset_bottom = 96.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_asitr")
+
+[node name="Button" type="Button" parent="PopupContainer/Signs/NinePatchRect" unique_id=833792757]
+custom_minimum_size = Vector2(0, 64)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -44.0
+offset_top = -64.0
+offset_right = 44.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("4_nyj0y")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxEmpty_cdle5")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_hbot6")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_n5o8m")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_u0hon")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_dk3nq")
+text = "Confirm"
+icon = ExtResource("5_asitr")
+
+[node name="Confirmation" type="Control" parent="PopupContainer" unique_id=1073480668]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+
+[node name="NinePatchRect" type="NinePatchRect" parent="PopupContainer/Confirmation" unique_id=1124042313]
+custom_minimum_size = Vector2(256, 192)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -128.0
+offset_top = -96.0
+offset_right = 128.0
+offset_bottom = 96.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_asitr")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PopupContainer/Confirmation" unique_id=948631268]
+z_index = 100
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -65.0
+offset_top = -28.0
+offset_right = 65.0
+offset_bottom = 28.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="PopupContainer/Confirmation/VBoxContainer" unique_id=1850480594]
+z_index = 100
+layout_mode = 2
+theme = ExtResource("4_nyj0y")
+text = "Are you sure?"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PopupContainer/Confirmation/VBoxContainer" unique_id=1451009215]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Yes" type="Button" parent="PopupContainer/Confirmation/VBoxContainer/HBoxContainer" unique_id=788345337]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(64, 32)
+layout_mode = 2
+theme = ExtResource("4_nyj0y")
+text = "Yes"
+
+[node name="No" type="Button" parent="PopupContainer/Confirmation/VBoxContainer/HBoxContainer" unique_id=1560948551]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(64, 32)
+layout_mode = 2
+theme = ExtResource("4_nyj0y")
+text = "No"
+
+[connection signal="pressed" from="PopupContainer/Confirmation/VBoxContainer/HBoxContainer/Yes" to="." method="_on_yes_pressed"]
+[connection signal="pressed" from="PopupContainer/Confirmation/VBoxContainer/HBoxContainer/No" to="." method="_on_no_pressed"]

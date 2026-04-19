@@ -1,0 +1,215 @@
+[gd_scene format=3 uid="uid://d304xkdanmqga"]
+
+[ext_resource type="Script" uid="uid://dw1bqttkttjm8" path="res://scripts/start_screen.gd" id="1_h61rw"]
+[ext_resource type="FontFile" uid="uid://dt4rpek6pj730" path="res://art/BitPotion.ttf" id="1_thu50"]
+[ext_resource type="Theme" uid="uid://bnsqgd1udc3jy" path="res://scenes/font.tres" id="2_m7x51"]
+[ext_resource type="Texture2D" uid="uid://dgb15ngrv02v" path="res://art/Lantern.png" id="3_m7x51"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_h61rw"]
+light_mode = 1
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fcv5n"]
+atlas = ExtResource("3_m7x51")
+region = Rect2(0, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4v6gu"]
+atlas = ExtResource("3_m7x51")
+region = Rect2(16, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nxjfj"]
+atlas = ExtResource("3_m7x51")
+region = Rect2(32, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u4qax"]
+atlas = ExtResource("3_m7x51")
+region = Rect2(48, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5byqq"]
+atlas = ExtResource("3_m7x51")
+region = Rect2(64, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e58y3"]
+atlas = ExtResource("3_m7x51")
+region = Rect2(80, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_apowk"]
+atlas = ExtResource("3_m7x51")
+region = Rect2(96, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vnuwp"]
+atlas = ExtResource("3_m7x51")
+region = Rect2(112, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_egh8s"]
+atlas = ExtResource("3_m7x51")
+region = Rect2(128, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b1kog"]
+atlas = ExtResource("3_m7x51")
+region = Rect2(144, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ruo1u"]
+atlas = ExtResource("3_m7x51")
+region = Rect2(160, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gqu1h"]
+atlas = ExtResource("3_m7x51")
+region = Rect2(176, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s0oe1"]
+atlas = ExtResource("3_m7x51")
+region = Rect2(192, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_trkcg"]
+atlas = ExtResource("3_m7x51")
+region = Rect2(208, 0, 16, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_fbjtm"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fcv5n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4v6gu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nxjfj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u4qax")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5byqq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e58y3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_apowk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vnuwp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_egh8s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b1kog")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ruo1u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gqu1h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s0oe1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_trkcg")
+}],
+"loop": true,
+"name": &"default",
+"speed": 15.0
+}]
+
+[sub_resource type="Gradient" id="Gradient_hntex"]
+offsets = PackedFloat32Array(0, 0.5120482)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_mroui"]
+gradient = SubResource("Gradient_hntex")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[node name="StartMenu" type="CenterContainer" unique_id=2028317539]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_h61rw")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=2091880184]
+z_index = -2
+custom_minimum_size = Vector2(1152, 648)
+layout_mode = 2
+color = Color(0, 0, 0, 1)
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="." unique_id=1819056319]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer2" unique_id=907364152]
+custom_minimum_size = Vector2(0, 128)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_thu50")
+theme_override_font_sizes/font_size = 64
+text = "Game Name"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer2" unique_id=1744195657]
+layout_mode = 2
+
+[node name="StartGame" type="Button" parent="VBoxContainer2/VBoxContainer" unique_id=1239662076]
+unique_name_in_owner = true
+material = SubResource("CanvasItemMaterial_h61rw")
+layout_mode = 2
+theme = ExtResource("2_m7x51")
+text = "Start Game"
+
+[node name="Quit" type="Button" parent="VBoxContainer2/VBoxContainer" unique_id=1044009460]
+unique_name_in_owner = true
+material = SubResource("CanvasItemMaterial_h61rw")
+layout_mode = 2
+theme = ExtResource("2_m7x51")
+text = "Quit Game"
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=18930606]
+z_index = -1
+position = Vector2(480, 321)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_fbjtm")
+autoplay = "default"
+frame_progress = 0.21409597
+
+[node name="PointLight2D" type="PointLight2D" parent="AnimatedSprite2D" unique_id=509230701]
+position = Vector2(0, 11)
+scale = Vector2(2, 2)
+color = Color(0.2845274, 0.44576412, 0.5778278, 1)
+energy = 6.96
+texture = SubResource("GradientTexture2D_mroui")
+
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="." unique_id=158835970]
+z_index = -1
+position = Vector2(672, 321)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_fbjtm")
+autoplay = "default"
+frame_progress = 0.18628849
+
+[node name="PointLight2D" type="PointLight2D" parent="AnimatedSprite2D2" unique_id=772006122]
+position = Vector2(0, 11)
+scale = Vector2(2, 2)
+color = Color(0.2845274, 0.44576412, 0.5778278, 1)
+energy = 6.96
+texture = SubResource("GradientTexture2D_mroui")
+
+[node name="AnimatedSprite2D3" type="AnimatedSprite2D" parent="." unique_id=148367999]
+position = Vector2(570, 178)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_fbjtm")
+autoplay = "default"
+frame_progress = 0.09816881
+
+[node name="PointLight2D" type="PointLight2D" parent="AnimatedSprite2D3" unique_id=1630391053]
+position = Vector2(0, 11)
+scale = Vector2(2, 2)
+color = Color(0.2845274, 0.44576412, 0.5778278, 1)
+energy = 6.96
+texture = SubResource("GradientTexture2D_mroui")
+
+[node name="DirectionalLight2D" type="DirectionalLight2D" parent="." unique_id=322762358]
+blend_mode = 1
+
+[connection signal="pressed" from="VBoxContainer2/VBoxContainer/StartGame" to="." method="_on_start_game_pressed"]
+[connection signal="pressed" from="VBoxContainer2/VBoxContainer/Quit" to="." method="_on_quit_pressed"]

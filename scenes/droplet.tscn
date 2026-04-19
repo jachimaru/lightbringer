@@ -1,0 +1,157 @@
+[gd_scene format=3 uid="uid://dwfujlouad5os"]
+
+[ext_resource type="Script" uid="uid://bf6vl12kdh6jg" path="res://scripts/droplet.gd" id="1_q86u3"]
+[ext_resource type="Texture2D" uid="uid://dgpg5r1esivy2" path="res://art/Droplet.png" id="2_347ng"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1d122"]
+radius = 4.1231055
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_347ng"]
+light_mode = 1
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_auaps"]
+atlas = ExtResource("2_347ng")
+region = Rect2(0, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rt7xr"]
+atlas = ExtResource("2_347ng")
+region = Rect2(16, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jicqr"]
+atlas = ExtResource("2_347ng")
+region = Rect2(32, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_04suh"]
+atlas = ExtResource("2_347ng")
+region = Rect2(48, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yohsn"]
+atlas = ExtResource("2_347ng")
+region = Rect2(64, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w3hu2"]
+atlas = ExtResource("2_347ng")
+region = Rect2(80, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1ia0g"]
+atlas = ExtResource("2_347ng")
+region = Rect2(96, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2l76b"]
+atlas = ExtResource("2_347ng")
+region = Rect2(112, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3ijs4"]
+atlas = ExtResource("2_347ng")
+region = Rect2(128, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jd73y"]
+atlas = ExtResource("2_347ng")
+region = Rect2(144, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fed3j"]
+atlas = ExtResource("2_347ng")
+region = Rect2(160, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_188iy"]
+atlas = ExtResource("2_347ng")
+region = Rect2(176, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kr71k"]
+atlas = ExtResource("2_347ng")
+region = Rect2(192, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xxxfo"]
+atlas = ExtResource("2_347ng")
+region = Rect2(208, 0, 16, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_hdifn"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_auaps")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rt7xr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jicqr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_04suh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yohsn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w3hu2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1ia0g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2l76b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3ijs4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jd73y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fed3j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_188iy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kr71k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xxxfo")
+}],
+"loop": true,
+"name": &"default",
+"speed": 15.0
+}]
+
+[sub_resource type="Gradient" id="Gradient_1d122"]
+offsets = PackedFloat32Array(0, 0.67469877)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_q86u3"]
+gradient = SubResource("Gradient_1d122")
+width = 96
+height = 96
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(1, 0.004347826)
+
+[node name="Droplet" type="Area2D" unique_id=229405861]
+collision_layer = 0
+collision_mask = 3
+script = ExtResource("1_q86u3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2135520106]
+shape = SubResource("CircleShape2D_1d122")
+
+[node name="Sprite2D" type="AnimatedSprite2D" parent="." unique_id=436323462]
+light_mask = 513
+z_index = 11
+z_as_relative = false
+material = SubResource("CanvasItemMaterial_347ng")
+position = Vector2(0, -4)
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_hdifn")
+autoplay = "default"
+frame_progress = 0.66093904
+
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=1136981411]
+light_mask = 513
+scale = Vector2(0.25, 0.25)
+color = Color(0, 0.96026117, 0.8496763, 1)
+energy = 8.0
+range_item_cull_mask = 513
+texture = SubResource("GradientTexture2D_q86u3")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

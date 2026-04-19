@@ -1,0 +1,59 @@
+[gd_scene format=3 uid="uid://c00f52f2g0ata"]
+
+[ext_resource type="Texture2D" uid="uid://tj0yx1n4bhkl" path="res://art/Crow_animations.png" id="1_nh2m4"]
+[ext_resource type="Script" uid="uid://elxq1f0etl8" path="res://scripts/npc.gd" id="2_abqhh"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_abqhh"]
+atlas = ExtResource("1_nh2m4")
+region = Rect2(0, 192, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rv78h"]
+atlas = ExtResource("1_nh2m4")
+region = Rect2(64, 192, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7n8xq"]
+atlas = ExtResource("1_nh2m4")
+region = Rect2(128, 192, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4wlns"]
+atlas = ExtResource("1_nh2m4")
+region = Rect2(192, 192, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_tl2vt"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_abqhh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rv78h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7n8xq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4wlns")
+}],
+"loop": true,
+"name": &"default",
+"speed": 3.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hwkja"]
+size = Vector2(12, 29)
+
+[node name="NPC" type="AnimatedSprite2D" unique_id=9460826]
+light_mask = 513
+sprite_frames = SubResource("SpriteFrames_tl2vt")
+autoplay = "default"
+frame_progress = 0.24521992
+flip_h = true
+script = ExtResource("2_abqhh")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=559257259]
+collision_layer = 8
+collision_mask = 9
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1780807223]
+position = Vector2(0, 1.5)
+shape = SubResource("RectangleShape2D_hwkja")

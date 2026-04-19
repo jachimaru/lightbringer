@@ -1,0 +1,117 @@
+[gd_scene format=3 uid="uid://dm2122xkv8tia"]
+
+[ext_resource type="Theme" uid="uid://bnsqgd1udc3jy" path="res://scenes/font.tres" id="1_kukqi"]
+[ext_resource type="Texture2D" uid="uid://dlafufb010voh" path="res://art/9sliceblue.png" id="2_5d2l8"]
+[ext_resource type="Script" uid="uid://dajow552d6a5l" path="res://scripts/pause_menu.gd" id="2_7l7mv"]
+[ext_resource type="FontFile" uid="uid://dt4rpek6pj730" path="res://art/BitPotion.ttf" id="3_7l7mv"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_5d2l8"]
+light_mode = 1
+
+[node name="PauseMenu" type="CenterContainer" unique_id=1725859150]
+process_mode = 3
+z_index = 100
+material = SubResource("CanvasItemMaterial_5d2l8")
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -96.0
+offset_top = -132.0
+offset_right = 96.0
+offset_bottom = 124.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_kukqi")
+script = ExtResource("2_7l7mv")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=2095750817]
+
+[node name="Menu" type="NinePatchRect" parent="CanvasLayer" unique_id=1821390699]
+unique_name_in_owner = true
+visible = false
+z_index = 100
+material = SubResource("CanvasItemMaterial_5d2l8")
+custom_minimum_size = Vector2(256, 482)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -128.0
+offset_top = -241.0
+offset_right = 128.0
+offset_bottom = 241.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_5d2l8")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Menu" unique_id=776244361]
+z_index = 100
+material = SubResource("CanvasItemMaterial_5d2l8")
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -112.0
+offset_top = -196.0
+offset_right = 112.0
+offset_bottom = 212.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/Menu/VBoxContainer" unique_id=848465374]
+z_index = 100
+material = SubResource("CanvasItemMaterial_5d2l8")
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("3_7l7mv")
+theme_override_font_sizes/font_size = 32
+text = "Game Paused"
+horizontal_alignment = 1
+
+[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer/Menu/VBoxContainer" unique_id=1854296720]
+z_index = 100
+material = SubResource("CanvasItemMaterial_5d2l8")
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Menu/VBoxContainer/CenterContainer" unique_id=1104464136]
+z_index = 100
+material = SubResource("CanvasItemMaterial_5d2l8")
+layout_mode = 2
+
+[node name="SettingsButton" type="Button" parent="CanvasLayer/Menu/VBoxContainer/CenterContainer/VBoxContainer" unique_id=656992410]
+unique_name_in_owner = true
+z_index = 100
+material = SubResource("CanvasItemMaterial_5d2l8")
+custom_minimum_size = Vector2(128, 32)
+layout_mode = 2
+theme = ExtResource("1_kukqi")
+text = "Settings"
+
+[node name="CloseButton" type="Button" parent="CanvasLayer/Menu/VBoxContainer/CenterContainer/VBoxContainer" unique_id=448713661]
+unique_name_in_owner = true
+z_index = 100
+material = SubResource("CanvasItemMaterial_5d2l8")
+custom_minimum_size = Vector2(128, 32)
+layout_mode = 2
+theme = ExtResource("1_kukqi")
+text = "Close Menu"
+
+[node name="ExitButton" type="Button" parent="CanvasLayer/Menu/VBoxContainer/CenterContainer/VBoxContainer" unique_id=2086299640]
+unique_name_in_owner = true
+z_index = 100
+material = SubResource("CanvasItemMaterial_5d2l8")
+custom_minimum_size = Vector2(128, 32)
+layout_mode = 2
+theme = ExtResource("1_kukqi")
+text = "Exit Game"
+
+[connection signal="pressed" from="CanvasLayer/Menu/VBoxContainer/CenterContainer/VBoxContainer/SettingsButton" to="." method="_on_settings_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/Menu/VBoxContainer/CenterContainer/VBoxContainer/CloseButton" to="." method="_on_close_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/Menu/VBoxContainer/CenterContainer/VBoxContainer/ExitButton" to="." method="_on_exit_button_pressed"]

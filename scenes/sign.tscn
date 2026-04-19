@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://d2ru6ixuvl4es"]
+
+[ext_resource type="Script" uid="uid://cvx48smee4ve3" path="res://scripts/signs.gd" id="1_2yevr"]
+[ext_resource type="Texture2D" uid="uid://disbfkpxyobnr" path="res://art/Sign and messages1.png" id="2_d7w2u"]
+[ext_resource type="Texture2D" uid="uid://d12ptmegx4a8f" path="res://art/Buttons Pack/PS4/CIRCLE.png" id="4_7c2ba"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wvbob"]
+size = Vector2(20, 18.5)
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_8yyji"]
+light_mode = 1
+
+[node name="Sign" type="Area2D" unique_id=1667753068]
+process_mode = 3
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_2yevr")
+
+[node name="SignSprite" type="Sprite2D" parent="." unique_id=304336397]
+position = Vector2(0, -8)
+texture = ExtResource("2_d7w2u")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=705897985]
+position = Vector2(0, -9.75)
+shape = SubResource("RectangleShape2D_wvbob")
+
+[node name="Interact" type="Sprite2D" parent="." unique_id=90198134]
+visible = false
+material = SubResource("CanvasItemMaterial_8yyji")
+position = Vector2(0, -25)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("4_7c2ba")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

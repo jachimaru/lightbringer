@@ -1,0 +1,66 @@
+[gd_scene format=3 uid="uid://nrteh73o8f6x"]
+
+[ext_resource type="Texture2D" uid="uid://bgb2ytk7dmyth" path="res://art/Light_Symbol.png" id="1_5ysmq"]
+[ext_resource type="Script" uid="uid://decxcjn7ql2jm" path="res://scripts/hud.gd" id="1_6fi6k"]
+[ext_resource type="FontFile" uid="uid://dt4rpek6pj730" path="res://art/BitPotion.ttf" id="2_6fi6k"]
+[ext_resource type="Texture2D" uid="uid://kbm0podkh673" path="res://art/Health.png" id="3_uo2fv"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_6fi6k"]
+font = ExtResource("2_6fi6k")
+font_size = 32
+
+[node name="HUD" type="CanvasLayer" unique_id=1844353309]
+script = ExtResource("1_6fi6k")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=215274685]
+anchors_preset = -1
+anchor_left = 0.028
+anchor_top = 0.049000002
+anchor_right = 0.97200006
+anchor_bottom = 0.123
+offset_left = -0.25600052
+offset_top = 0.24799919
+offset_right = -362.41064
+offset_bottom = -15.704002
+grow_horizontal = 2
+scale = Vector2(1.5, 1.5)
+
+[node name="FlameCountContainer" type="HBoxContainer" parent="HBoxContainer" unique_id=521258698]
+layout_mode = 2
+
+[node name="FlameCount" type="TextureRect" parent="HBoxContainer/FlameCountContainer" unique_id=1057876148]
+layout_mode = 2
+texture = ExtResource("1_5ysmq")
+stretch_mode = 2
+
+[node name="FlameCountLabel" type="Label" parent="HBoxContainer/FlameCountContainer" unique_id=922046139]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_6fi6k")
+theme_override_font_sizes/font_size = 32
+text = "?"
+label_settings = SubResource("LabelSettings_6fi6k")
+horizontal_alignment = 1
+
+[node name="Life Container" type="HBoxContainer" parent="HBoxContainer" unique_id=2119776690]
+layout_mode = 2
+size_flags_horizontal = 10
+alignment = 2
+
+[node name="Health0" type="TextureRect" parent="HBoxContainer/Life Container" unique_id=2081329873]
+unique_name_in_owner = true
+layout_mode = 2
+texture = ExtResource("3_uo2fv")
+expand_mode = 3
+
+[node name="Health1" type="TextureRect" parent="HBoxContainer/Life Container" unique_id=1997427383]
+unique_name_in_owner = true
+layout_mode = 2
+texture = ExtResource("3_uo2fv")
+expand_mode = 3
+
+[node name="Health2" type="TextureRect" parent="HBoxContainer/Life Container" unique_id=653427448]
+unique_name_in_owner = true
+layout_mode = 2
+texture = ExtResource("3_uo2fv")
+expand_mode = 3
