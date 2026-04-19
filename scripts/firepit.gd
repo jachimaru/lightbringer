@@ -6,6 +6,7 @@ extends Node2D
 
 
 var lit = false
+var player_inside = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -16,7 +17,7 @@ func _process(delta: float) -> void:
 	pass
 
 func light_up():
-	if not lit:
+	if not lit and player_inside:
 		print("lighting")
 		flame.visible = true
 		lit = true
@@ -28,8 +29,10 @@ func _on_firepit_area_body_entered(body: CharacterBody2D) -> void:
 	if not lit: 
 		interact.visible = true
 		GameManager.in_firepit = true
+		player_inside = true
 
 func _on_firepit_area_body_exited(body: CharacterBody2D) -> void:
 	if not lit: 
 		interact.visible = false
 		GameManager.in_firepit = false
+		player_inside = false
