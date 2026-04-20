@@ -15,6 +15,7 @@ func _process(delta: float) -> void:
 
 func show_menu():
 	menu.visible = true
+	TextPopups.confirmation.visible = false
 	get_tree().paused = true
 	settings_button.grab_focus()
 
@@ -27,4 +28,6 @@ func _on_close_button_pressed() -> void:
 
 func _on_exit_button_pressed() -> void:
 	GameManager.quit_game = true
-	GameManager.confirm.emit()
+	TextPopups.confirmation.visible = true
+	TextPopups.yes.grab_focus()
+	#GameManager.confirm.emit()

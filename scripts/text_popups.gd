@@ -13,7 +13,7 @@ var showing_popup = false
 func _ready() -> void:
 	GameManager.show_popup.connect(_show_popup)
 	GameManager.hide_popup.connect(_hide_popup)
-	GameManager.confirm.connect(show_confirm)
+	#GameManager.confirm.connect(show_confirm)
 
 func _show_popup():
 	signs.visible = true
@@ -29,11 +29,12 @@ func _hide_popup():
 func _input(event):
 	if event.is_action_pressed("interact"): # Or any custom input action
 		GameManager.waiting_input.emit()
+		confirmation.visible = false
 		get_tree().paused = false
 
-func show_confirm():
-	confirmation.visible = true
-	yes.grab_focus()
+#func show_confirm():
+	#confirmation.visible = true
+	#yes.grab_focus()
 
 func _on_yes_pressed() -> void:
 	if GameManager.quit_game:
@@ -41,5 +42,5 @@ func _on_yes_pressed() -> void:
 
 func _on_no_pressed() -> void:
 	if GameManager.quit_game:
-		confirmation.visible = false
+		GameManager.quit_game = false
 		GameManager.pause_game.emit()

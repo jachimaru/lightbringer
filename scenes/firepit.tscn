@@ -193,10 +193,10 @@ texture = ExtResource("5_p3mg1")
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=359059055]
 visible = false
-offset_left = -86.0
-offset_top = -118.0
-offset_right = 87.0
-color = Color(0.33660764, 0.3366076, 0.3366076, 1)
+offset_left = -47.0
+offset_right = 47.0
+offset_bottom = 48.0
+color = Color(0, 0, 0, 1)
 
 [connection signal="area_entered" from="FirepitArea" to="." method="_on_firepit_area_area_entered"]
 [connection signal="body_entered" from="FirepitArea" to="." method="_on_firepit_area_body_entered"]

@@ -75,6 +75,7 @@ texture = ExtResource("1_vxdht")
 0:1/0/terrains_peering_bit/top_side = 0
 0:1/0/terrains_peering_bit/top_right_corner = 0
 1:1/0 = 0
+1:1/0/z_index = 11
 1:1/0/terrain_set = 0
 1:1/0/terrain = 0
 1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
