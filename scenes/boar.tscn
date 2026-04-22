@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://c4omijvoolk8k"]
 
+[ext_resource type="Script" uid="uid://pj5ajr5geeix" path="res://scripts/boar.gd" id="1_mn0bm"]
 [ext_resource type="Texture2D" uid="uid://bvfqa2qulp7cf" path="res://art/Boar.png" id="1_tgiih"]
 [ext_resource type="Script" uid="uid://gcb3p7yqf0mt" path="res://scripts/hit_area.gd" id="2_f7758"]
 
@@ -175,9 +176,9 @@ radius = 11.0
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1lypk"]
 size = Vector2(8, 9)
 
-[node name="Boar" type="StaticBody2D" unique_id=704932205]
-collision_layer = 0
+[node name="Boar" type="CharacterBody2D" unique_id=1493142929]
 collision_mask = 3
+script = ExtResource("1_mn0bm")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=33633503]
 sprite_frames = SubResource("SpriteFrames_tiuwc")

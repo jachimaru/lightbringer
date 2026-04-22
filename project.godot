@@ -20,6 +20,12 @@ config/icon="res://icon.svg"
 GameManager="*uid://drrrqv5empojy"
 TextPopups="*uid://dnl1cqvr7n8oe"
 
+[global_group]
+
+enemy=""
+light_area=""
+player=""
+
 [input]
 
 ui_accept={

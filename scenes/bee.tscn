@@ -1,6 +1,8 @@
 [gd_scene format=3 uid="uid://6060oqx3dks3"]
 
 [ext_resource type="Texture2D" uid="uid://bmf6lfi86yrlc" path="res://art/Bee.png" id="1_1q2x0"]
+[ext_resource type="Script" uid="uid://cgjpxdhxcbhlv" path="res://scripts/bee.gd" id="1_ogg2i"]
+[ext_resource type="Script" uid="uid://gcb3p7yqf0mt" path="res://scripts/hit_area.gd" id="3_qf6nb"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vie5o"]
 atlas = ExtResource("1_1q2x0")
@@ -105,20 +107,34 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_gnnah"]
-radius = 8.062258
+radius = 6.0
 
-[node name="Bee" type="StaticBody2D" unique_id=1870665686]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_oynbf"]
+size = Vector2(4, 4)
+
+[node name="Bee" type="CharacterBody2D" unique_id=267528339 groups=["enemy"]]
 collision_mask = 49
+script = ExtResource("1_ogg2i")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=20338560]
 sprite_frames = SubResource("SpriteFrames_vq5cx")
 animation = &"idle"
 autoplay = "idle"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1692441650]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1692441650 groups=["enemy"]]
 position = Vector2(-3, -2)
 shape = SubResource("CircleShape2D_gnnah")
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="." unique_id=1092434851]
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="." unique_id=1092434851 groups=["enemy"]]
 position = Vector2(2, 3)
 shape = SubResource("CircleShape2D_gnnah")
+
+[node name="HitArea2D" type="Area2D" parent="." unique_id=69374694]
+script = ExtResource("3_qf6nb")
+metadata/_custom_type_script = "uid://gcb3p7yqf0mt"
+
+[node name="StingerCollision" type="CollisionShape2D" parent="HitArea2D" unique_id=2055975532]
+position = Vector2(-8, 11)
+shape = SubResource("RectangleShape2D_oynbf")
+disabled = true
+debug_color = Color(0.99083215, 0, 0.27920282, 0.41960785)

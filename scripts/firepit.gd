@@ -26,13 +26,13 @@ func light_up():
 	else: return
 
 func _on_firepit_area_body_entered(body: CharacterBody2D) -> void:
-	if not lit: 
+	if not lit && body.has_method("control_lantern"): 
 		interact.visible = true
 		GameManager.in_firepit = true
 		player_inside = true
 
 func _on_firepit_area_body_exited(body: CharacterBody2D) -> void:
-	if not lit: 
+	if not lit && body.has_method("control_lantern"): 
 		interact.visible = false
 		GameManager.in_firepit = false
 		player_inside = false
