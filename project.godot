@@ -25,6 +25,7 @@ TextPopups="*uid://dnl1cqvr7n8oe"
 enemy=""
 light_area=""
 player=""
+cone_area=""
 
 [input]
 
@@ -117,6 +118,7 @@ pause={
 2d_physics/layer_6="Hurtbox_Player"
 2d_physics/layer_7="Hitbox_Enemy"
 2d_physics/layer_8="Hurtbox_Enemy"
+2d_physics/layer_9="light_area"
 
 [physics]
 

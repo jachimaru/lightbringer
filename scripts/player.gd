@@ -7,6 +7,8 @@ extends CharacterBody2D
 @onready var spell_collision: CollisionShape2D = $HitArea2D/SpellCollision
 @onready var player_collision: CollisionShape2D = $PlayerCollision
 @onready var starting_position = global_position
+@onready var radius_collider: CollisionShape2D = %RadiusCollider
+@onready var cone_collider: CollisionShape2D = %ConeCollider
 
 const SPEED = 100.0
 const JUMP_VELOCITY = -200.0
@@ -124,7 +126,7 @@ func _remove_light():
 		tween.tween_property(cone_light, "scale", sub_cone_scale, 0.5)
 		print(GameManager.light)
 		GameManager.lantern_full = false
-	if GameManager.light > 1:
+	elif GameManager.light > 1:
 		var tween = create_tween()
 		tween.tween_property(lantern_light, "scale", sub_light_scale, 0.5)
 		tween.tween_property(cone_light, "scale", sub_cone_scale, 0.5)
@@ -137,12 +139,16 @@ func _toggle_lantern():
 	if light_mode != true:
 		light_mode = true
 		lantern_light.visible = false
+		radius_collider.disabled = true
 		cone_light.visible = true
+		cone_collider.disabled = false
 		print("change to cone")
 	else:
 		light_mode = false
 		lantern_light.visible = true
+		radius_collider.disabled = false
 		cone_light.visible = false
+		cone_collider.disabled = true
 		print("change to radius")
 
 func handle_interact():

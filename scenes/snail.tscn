@@ -355,20 +355,20 @@ radius = 9.219544
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_u7n5f"]
 size = Vector2(10, 22)
 
-[node name="Snail" type="CharacterBody2D" unique_id=807384392]
+[node name="Snail" type="CharacterBody2D" unique_id=807384392 groups=["enemy"]]
 z_index = 1
 collision_mask = 3
 script = ExtResource("1_5b1ba")
 
 [node name="SnailSprite" type="AnimatedSprite2D" parent="." unique_id=964033473]
 sprite_frames = SubResource("SpriteFrames_2kx4o")
-animation = &"walking"
+animation = &"idle"
 
-[node name="OutShellCollision" type="CollisionShape2D" parent="." unique_id=145265913]
+[node name="OutShellCollision" type="CollisionShape2D" parent="." unique_id=145265913 groups=["enemy"]]
 position = Vector2(5, 6)
 shape = SubResource("CircleShape2D_ii48x")
 
-[node name="InShellCollision" type="CollisionShape2D" parent="." unique_id=1352472320]
+[node name="InShellCollision" type="CollisionShape2D" parent="." unique_id=1352472320 groups=["enemy"]]
 position = Vector2(1, 7)
 shape = SubResource("CircleShape2D_rkaen")
 disabled = true
@@ -392,3 +392,10 @@ target_position = Vector2(-23, 0)
 unique_name_in_owner = true
 position = Vector2(0, 13)
 target_position = Vector2(24, 0)
+
+[node name="LightDetector" type="RayCast2D" parent="." unique_id=796293786]
+unique_name_in_owner = true
+target_position = Vector2(-47, 0)
+collision_mask = 256
+collide_with_areas = true
+collide_with_bodies = false

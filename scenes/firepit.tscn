@@ -161,10 +161,10 @@ texture = SubResource("GradientTexture2D_a16hn")
 
 [node name="Lightwall" parent="Flame" unique_id=926437652 instance=ExtResource("3_p3mg1")]
 position = Vector2(0, 17)
-collision_layer = 0
-collision_mask = 4
+collision_layer = 256
+collision_mask = 256
 
-[node name="LightCollision" type="CollisionShape2D" parent="Flame/Lightwall" unique_id=581286746]
+[node name="LightCollision" type="CollisionShape2D" parent="Flame/Lightwall" unique_id=581286746 groups=["light_area"]]
 unique_name_in_owner = true
 shape = SubResource("CircleShape2D_mu2pl")
 disabled = true
