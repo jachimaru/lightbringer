@@ -157,7 +157,9 @@ debug_color = Color(0.99083215, 0, 0.27920282, 0.41960785)
 unique_name_in_owner = true
 shape = SubResource("ConvexPolygonShape2D_ogg2i")
 target_position = Vector2(0, 0)
-collision_mask = 2
+collision_mask = 32
+collide_with_areas = true
+collide_with_bodies = false
 
 [node name="LightDetector" type="ShapeCast2D" parent="." unique_id=72345323]
 shape = SubResource("CircleShape2D_ogg2i")

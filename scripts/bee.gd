@@ -41,6 +41,7 @@ func _physics_process(delta: float) -> void:
 	if attacking:
 		sprite.play("attack")
 	detect_light(delta)
+	get_target(delta)
 	set_move_route(delta)
 
 func set_move_route(delta: float) -> void:
@@ -69,17 +70,16 @@ func set_move_route(delta: float) -> void:
 		attack_ray_cast.shape.points = detection_array
 
 func detect_light(delta):
-	var collider = light_detector.get_collider(delta)
 	if light_detector.is_colliding():
+		var collider = light_detector.get_collider(delta)
 		if collider.is_in_group("light_area"):
 			set_physics_process(false)
 			stinger_collision.disabled = true
 			await get_tree().create_timer(2.0).timeout
 			set_physics_process(true)
-			return_to_position(delta)
+			return_to_position()
 		if collider.is_in_group("cone_area"):
 			take_damage()
-
 
 func handle_attack():
 	var attacking_position: Vector2
@@ -87,12 +87,17 @@ func handle_attack():
 	attacking_position = position
 	 #move toward target_position, move back to attacking_position
 
-func get_target():
-	pass #if attack_ray_cast is colliding and collider is in group "player", set target_position to Player's hurtarea2d hitbox.
+func get_target(delta):
+	if attack_ray_cast.is_colliding():
+		var collider = attack_ray_cast.get_collider(delta)
+		if collider.is_in_group("player"):
+			var hurtbox = collider.global_position
+			target_position = hurtbox
+			print(target_position)
 
 func take_damage():
 	pass #stun and disable hit and hurt box collisions for 2 seconds.
 
-func return_to_position(delta):
+func return_to_position():
 	var tween = create_tween()
 	tween.tween_property(bee, "position", start_position, 1.0)

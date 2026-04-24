@@ -396,13 +396,12 @@ size = Vector2(16, 14)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tuyoq"]
 size = Vector2(9.5, 15)
 
-[node name="Player" type="CharacterBody2D" unique_id=1181670398 groups=["player"]]
+[node name="Player" type="CharacterBody2D" unique_id=1181670398]
 z_index = 1
 collision_layer = 2
-collision_mask = 65
 script = ExtResource("1_g2els")
 
-[node name="PlayerCollision" type="CollisionShape2D" parent="." unique_id=460079136 groups=["player"]]
+[node name="PlayerCollision" type="CollisionShape2D" parent="." unique_id=460079136]
 position = Vector2(2, -7.5)
 shape = SubResource("RectangleShape2D_fjrip")
 
@@ -477,6 +476,8 @@ shape = SubResource("RectangleShape2D_smehm")
 disabled = true
 
 [node name="HitArea2D" type="Area2D" parent="." unique_id=450867845]
+collision_layer = 16
+collision_mask = 128
 monitoring = false
 script = ExtResource("4_dqkch")
 metadata/_custom_type_script = "uid://gcb3p7yqf0mt"
@@ -487,12 +488,12 @@ shape = SubResource("RectangleShape2D_dqkch")
 disabled = true
 
 [node name="HurtArea2D" type="Area2D" parent="." unique_id=360137419 groups=["player"]]
-collision_layer = 0
-collision_mask = 32
+collision_layer = 32
+collision_mask = 64
 monitorable = false
 script = ExtResource("5_qlg0r")
 metadata/_custom_type_script = "uid://dnwx5ifjnutta"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtArea2D" unique_id=1064009790 groups=["player"]]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtArea2D" unique_id=1064009790]
 position = Vector2(1, -8)
 shape = SubResource("RectangleShape2D_tuyoq")

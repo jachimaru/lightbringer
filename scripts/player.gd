@@ -9,6 +9,7 @@ extends CharacterBody2D
 @onready var starting_position = global_position
 @onready var radius_collider: CollisionShape2D = %RadiusCollider
 @onready var cone_collider: CollisionShape2D = %ConeCollider
+@onready var hurt_area_2d: HurtArea2D = $HurtArea2D
 
 const SPEED = 100.0
 const JUMP_VELOCITY = -200.0
