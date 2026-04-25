@@ -176,6 +176,15 @@ radius = 11.0
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1lypk"]
 size = Vector2(8, 9)
 
+[sub_resource type="Gradient" id="Gradient_mn0bm"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_4ea8c"]
+gradient = SubResource("Gradient_mn0bm")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.7863248, 0.34188035)
+
 [node name="Boar" type="CharacterBody2D" unique_id=1493142929]
 collision_mask = 3
 script = ExtResource("1_mn0bm")
@@ -184,6 +193,8 @@ script = ExtResource("1_mn0bm")
 sprite_frames = SubResource("SpriteFrames_tiuwc")
 animation = &"idle"
 autoplay = "idle"
+frame = 1
+frame_progress = 0.84972197
 
 [node name="BodyLower" type="CollisionShape2D" parent="." unique_id=226922607]
 position = Vector2(-1, 10.5)
@@ -202,3 +213,13 @@ metadata/_custom_type_script = "uid://gcb3p7yqf0mt"
 position = Vector2(-16, 7.5)
 shape = SubResource("RectangleShape2D_1lypk")
 debug_color = Color(0.99435204, 0, 0.2307297, 0.41960785)
+
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=1411069184]
+light_mask = 513
+z_index = 2
+position = Vector2(-12, 5.0000005)
+scale = Vector2(0.05859375, 0.05859375)
+color = Color(0.99694544, 6.2329323e-06, 1.540184e-06, 1)
+energy = 16.0
+texture = SubResource("GradientTexture2D_4ea8c")
+offset = Vector2(10, -10)

@@ -14,6 +14,7 @@ const JUMP_VELOCITY = -400.0
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var light_detector: ShapeCast2D = $LightDetector
 @onready var bee: CharacterBody2D = $"."
+@onready var timer: Timer = $Timer
 
 
 var detection_array: PackedVector2Array = PackedVector2Array([
@@ -38,8 +39,6 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	if not is_on_floor():
 		sprite.play("idle")
-	if attacking:
-		sprite.play("attack")
 	detect_light(delta)
 	get_target(delta)
 	set_move_route(delta)
@@ -81,10 +80,36 @@ func detect_light(delta):
 		if collider.is_in_group("cone_area"):
 			take_damage()
 
-func handle_attack():
+func handle_attack(delta):
+	set_physics_process(false)
 	var attacking_position: Vector2
 	attacking = true
+	stinger_collision.disabled = false
+	sprite.play("attack")
 	attacking_position = position
+	print("from: ", attacking_position, " to ", target_position)
+	attack_ray_cast.enabled = false
+	light_detector.enabled = false
+	body_collision_1.disabled = true
+	body_collision_2.disabled = true
+	var tween = create_tween()
+	tween.tween_property(bee, "position", target_position, 1.0)
+	print("moving to: ", target_position)
+	timer.start()
+	bee.process_mode = Node.PROCESS_MODE_DISABLED
+	await timer.timeout
+	bee.process_mode = Node.PROCESS_MODE_PAUSABLE
+	tween.tween_property(bee, "position", attacking_position, 1.0)
+	print("moving to: ", attacking_position)
+	await get_tree().create_timer(1.0).timeout
+	body_collision_1.disabled = false
+	body_collision_2.disabled = false
+	stinger_collision.disabled = true
+	await get_tree().create_timer(1.0).timeout
+	attacking = false
+	light_detector.enabled = true
+	attack_ray_cast.enabled = true
+	set_physics_process(true)
 	 #move toward target_position, move back to attacking_position
 
 func get_target(delta):
@@ -93,7 +118,7 @@ func get_target(delta):
 		if collider.is_in_group("player"):
 			var hurtbox = collider.global_position
 			target_position = hurtbox
-			print(target_position)
+			handle_attack(delta)
 
 func take_damage():
 	pass #stun and disable hit and hurt box collisions for 2 seconds.
