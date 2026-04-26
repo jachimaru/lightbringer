@@ -103,23 +103,22 @@ func handle_attack(delta):
 	tween.tween_property(bee, "position", target_position, 1.0)
 	print(is_stunned)
 	if is_stunned:
-		tween.kill()
 		stunned()
+		return
 	print("moving to: ", target_position)
 	timer.start()
 	bee.process_mode = Node.PROCESS_MODE_DISABLED
 	print(is_stunned)
 	if is_stunned:
-		tween.kill()
-		timer.stop()
 		stunned()
+		return
 	await timer.timeout
 	bee.process_mode = Node.PROCESS_MODE_PAUSABLE
 	tween.tween_property(bee, "position", attacking_position, 1.0)
 	print(is_stunned)
 	if is_stunned:
-		tween.kill()
 		stunned()
+		return
 	print("moving to: ", attacking_position)
 	await get_tree().create_timer(1.0).timeout
 	body_collision_1.disabled = false
@@ -157,4 +156,11 @@ func stunned():
 	timer.start()
 	bee.process_mode = Node.PROCESS_MODE_DISABLED
 	await timer.timeout
+	print("stunned")
 	bee.process_mode = Node.PROCESS_MODE_PAUSABLE
+	body_collision_1.disabled = false
+	stinger_collision.disabled = true
+	attacking = false
+	attack_ray_cast.enabled = true
+	hit_area_2d.monitorable = false
+	set_physics_process(true)
