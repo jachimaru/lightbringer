@@ -145,8 +145,6 @@ func _toggle_lantern():
 		cone_collider.disabled = false
 		spell_collision.disabled = false
 		hit_area_2d.monitorable = true
-		print("change to cone")
-		print(hit_area_2d.monitorable)
 		cooldown_timer.start()
 		await cooldown_timer.timeout
 		spell_collision.disabled = true

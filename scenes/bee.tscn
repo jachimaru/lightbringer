@@ -147,6 +147,8 @@ shape = SubResource("CircleShape2D_gnnah")
 [node name="HurtArea2D" type="Area2D" parent="." unique_id=380429779]
 process_mode = 3
 position = Vector2(-3, -2)
+collision_layer = 128
+collision_mask = 16
 monitorable = false
 script = ExtResource("3_oynbf")
 metadata/_custom_type_script = "uid://dnwx5ifjnutta"
@@ -159,6 +161,7 @@ shape = SubResource("CircleShape2D_gnnah")
 collision_layer = 64
 collision_mask = 32
 monitoring = false
+monitorable = false
 script = ExtResource("3_qf6nb")
 metadata/_custom_type_script = "uid://gcb3p7yqf0mt"
 
@@ -204,5 +207,11 @@ texture = SubResource("GradientTexture2D_oynbf")
 [node name="Timer" type="Timer" parent="." unique_id=1113429924]
 process_mode = 3
 wait_time = 0.5
+one_shot = true
+ignore_time_scale = true
+
+[node name="HurtTimer" type="Timer" parent="." unique_id=1144157602]
+process_mode = 3
+wait_time = 3.0
 one_shot = true
 ignore_time_scale = true

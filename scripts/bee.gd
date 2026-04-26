@@ -15,7 +15,9 @@ const JUMP_VELOCITY = -400.0
 @onready var light_detector: ShapeCast2D = $LightDetector
 @onready var bee: CharacterBody2D = $"."
 @onready var timer: Timer = $Timer
-@onready var hurt_area: HurtArea2D = $HurtArea
+@onready var hurt_area: HurtArea2D = $HurtArea2D
+@onready var hurt_timer: Timer = $HurtTimer
+@onready var hit_area_2d: HitArea2D = $HitArea2D
 
 
 var detection_array: PackedVector2Array = PackedVector2Array([
@@ -33,6 +35,7 @@ var start_position: Vector2
 var move_timer: float = 0.0
 var attacking: bool = false
 var target_position: Vector2
+var is_stunned: bool = false
 
 func _ready() -> void:
 	start_position = position
@@ -76,6 +79,8 @@ func detect_light(delta):
 			set_physics_process(false)
 			stinger_collision.disabled = true
 			await get_tree().create_timer(2.0).timeout
+			is_stunned = true
+			sprite.play("hurt")
 			set_physics_process(true)
 			return_to_position()
 		#if collider.is_in_group("cone_area"):
@@ -85,29 +90,42 @@ func handle_attack(delta):
 	set_physics_process(false)
 	var attacking_position: Vector2
 	attacking = true
+	hit_area_2d.monitorable = true
 	stinger_collision.disabled = false
 	sprite.play("attack")
 	attacking_position = position
 	print("from: ", attacking_position, " to ", target_position)
 	attack_ray_cast.enabled = false
-	light_detector.enabled = false
 	body_collision_1.disabled = true
 	var tween = create_tween()
 	tween.tween_property(bee, "position", target_position, 1.0)
+	print(is_stunned)
+	if is_stunned:
+		tween.kill()
+		stunned()
 	print("moving to: ", target_position)
 	timer.start()
 	bee.process_mode = Node.PROCESS_MODE_DISABLED
+	print(is_stunned)
+	if is_stunned:
+		tween.kill()
+		timer.stop()
+		stunned()
 	await timer.timeout
 	bee.process_mode = Node.PROCESS_MODE_PAUSABLE
 	tween.tween_property(bee, "position", attacking_position, 1.0)
+	print(is_stunned)
+	if is_stunned:
+		tween.kill()
+		stunned()
 	print("moving to: ", attacking_position)
 	await get_tree().create_timer(1.0).timeout
 	body_collision_1.disabled = false
 	stinger_collision.disabled = true
 	await get_tree().create_timer(1.0).timeout
 	attacking = false
-	light_detector.enabled = true
 	attack_ray_cast.enabled = true
+	hit_area_2d.monitorable = false
 	set_physics_process(true)
 	 #move toward target_position, move back to attacking_position
 
@@ -120,11 +138,21 @@ func get_target(delta):
 			handle_attack(delta)
 
 func take_damage():
-	print("taking damage")
 	hurt_area.monitoring = false
-	await get_tree().create_timer(3.0).timeout
+	hit_area_2d.monitorable = false
+	set_physics_process(false)
+	sprite.play("hurt")
+	hurt_timer.start()
+	await hurt_timer.timeout
+	set_physics_process(true)
 	hurt_area.monitoring = true
 
 func return_to_position():
 	var tween = create_tween()
 	tween.tween_property(bee, "position", start_position, 1.0)
+
+func stunned():
+	timer.start()
+	bee.process_mode = Node.PROCESS_MODE_DISABLED
+	await timer.timeout
+	bee.process_mode = Node.PROCESS_MODE_PAUSABLE
