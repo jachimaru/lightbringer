@@ -40,10 +40,12 @@ var is_stunned: bool = false
 func _ready() -> void:
 	start_position = position
 
+func _process(delta: float) -> void:
+	detect_light(delta)
+
 func _physics_process(delta: float) -> void:
 	if not is_on_floor():
 		sprite.play("idle")
-	detect_light(delta)
 	get_target(delta)
 	set_move_route(delta)
 
@@ -74,7 +76,7 @@ func set_move_route(delta: float) -> void:
 
 func detect_light(delta):
 	if light_detector.is_colliding():
-		var collider = light_detector.get_collider(delta)
+		var collider = light_detector.get_collider(0)
 		if collider.is_in_group("light_area"):
 			set_physics_process(false)
 			stinger_collision.disabled = true
@@ -131,7 +133,7 @@ func handle_attack(delta):
 
 func get_target(delta):
 	if attack_ray_cast.is_colliding():
-		var collider = attack_ray_cast.get_collider(delta)
+		var collider = attack_ray_cast.get_collider(0)
 		if collider.is_in_group("player"):
 			var hurtbox = collider.global_position
 			target_position = hurtbox
