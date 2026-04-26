@@ -44,6 +44,8 @@ func _process(delta: float) -> void:
 	detect_light(delta)
 
 func _physics_process(delta: float) -> void:
+	if is_stunned or attacking:
+		return
 	if not is_on_floor():
 		sprite.play("idle")
 	get_target(delta)
@@ -78,13 +80,21 @@ func detect_light(delta):
 	if light_detector.is_colliding():
 		var collider = light_detector.get_collider(0)
 		if collider.is_in_group("light_area"):
-			set_physics_process(false)
-			stinger_collision.disabled = true
-			await get_tree().create_timer(2.0).timeout
+			if is_stunned:
+				return
 			is_stunned = true
+			attacking = false
+			set_physics_process(false)
+			attack_ray_cast.enabled = false
+			hit_area_2d.monitorable = false
+			stinger_collision.disabled = true
 			sprite.play("hurt")
-			set_physics_process(true)
+			await get_tree().create_timer(2.0).timeout
 			return_to_position()
+			await get_tree().create_timer(1.0).timeout
+			is_stunned = false
+			set_physics_process(true)
+			return
 		#if collider.is_in_group("cone_area"):
 			#take_damage()
 
@@ -131,6 +141,8 @@ func handle_attack(delta):
 	 #move toward target_position, move back to attacking_position
 
 func get_target(delta):
+	if attacking or is_stunned:
+		return
 	if attack_ray_cast.is_colliding():
 		var collider = attack_ray_cast.get_collider(0)
 		if collider.is_in_group("player"):
