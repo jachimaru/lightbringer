@@ -161,6 +161,7 @@ func stunned():
 	body_collision_1.disabled = false
 	stinger_collision.disabled = true
 	attacking = false
+	is_stunned = false
 	attack_ray_cast.enabled = true
 	hit_area_2d.monitorable = false
 	set_physics_process(true)
