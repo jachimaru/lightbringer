@@ -117,7 +117,7 @@ size = Vector2(4, 4)
 points = PackedVector2Array(10, 100, -75, 100, 0, 0)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ogg2i"]
-radius = 30.0
+radius = 20.0
 
 [sub_resource type="Gradient" id="Gradient_qf6nb"]
 colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
@@ -145,7 +145,9 @@ position = Vector2(-3, -2)
 shape = SubResource("CircleShape2D_gnnah")
 
 [node name="HurtArea2D" type="Area2D" parent="." unique_id=380429779]
+process_mode = 3
 position = Vector2(-3, -2)
+monitorable = false
 script = ExtResource("3_oynbf")
 metadata/_custom_type_script = "uid://dnwx5ifjnutta"
 
@@ -154,6 +156,9 @@ position = Vector2(5, 5)
 shape = SubResource("CircleShape2D_gnnah")
 
 [node name="HitArea2D" type="Area2D" parent="." unique_id=69374694]
+collision_layer = 64
+collision_mask = 32
+monitoring = false
 script = ExtResource("3_qf6nb")
 metadata/_custom_type_script = "uid://gcb3p7yqf0mt"
 
@@ -198,5 +203,6 @@ texture = SubResource("GradientTexture2D_oynbf")
 
 [node name="Timer" type="Timer" parent="." unique_id=1113429924]
 process_mode = 3
+wait_time = 0.5
 one_shot = true
 ignore_time_scale = true

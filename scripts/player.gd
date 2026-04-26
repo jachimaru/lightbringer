@@ -4,12 +4,14 @@ extends CharacterBody2D
 @onready var lantern_sprite: AnimatedSprite2D = $LanternSprite
 @onready var lantern_light: PointLight2D = $LanternSprite/LanternLight
 @onready var cone_light: PointLight2D = $LanternSprite/ConeLight
-@onready var spell_collision: CollisionShape2D = $HitArea2D/SpellCollision
+@onready var spell_collision: CollisionShape2D = %SpellCollision
+@onready var hit_area_2d: HitArea2D = %HitArea2D
 @onready var player_collision: CollisionShape2D = $PlayerCollision
 @onready var starting_position = global_position
 @onready var radius_collider: CollisionShape2D = %RadiusCollider
 @onready var cone_collider: CollisionShape2D = %ConeCollider
 @onready var hurt_area_2d: HurtArea2D = $HurtArea2D
+@onready var cooldown_timer: Timer = %CooldownTimer
 
 const SPEED = 100.0
 const JUMP_VELOCITY = -200.0
@@ -49,7 +51,6 @@ func flip_sprite():
 	if direction == -1:
 		facing = -1
 		player_sprite.flip_h = true
-		spell_collision.position.x = -7.0
 		player_collision.position.x = -2.0
 		var tween = create_tween()
 		tween.tween_property(lantern_sprite, "position", Vector2(-11.0, -18.0), 0.3)
@@ -57,7 +58,6 @@ func flip_sprite():
 	elif direction == 1:
 		facing = 1
 		player_sprite.flip_h = false
-		spell_collision.position.x = 7.0
 		player_collision.position.x = 2.0
 		var tween = create_tween()
 		tween.tween_property(lantern_sprite, "position", Vector2(11.0, -18.0), 0.3)
@@ -143,7 +143,15 @@ func _toggle_lantern():
 		radius_collider.disabled = true
 		cone_light.visible = true
 		cone_collider.disabled = false
+		spell_collision.disabled = false
+		hit_area_2d.monitorable = true
 		print("change to cone")
+		print(hit_area_2d.monitorable)
+		cooldown_timer.start()
+		await cooldown_timer.timeout
+		spell_collision.disabled = true
+		hit_area_2d.monitorable = false
+
 	else:
 		light_mode = false
 		lantern_light.visible = true

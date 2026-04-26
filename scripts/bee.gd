@@ -15,6 +15,7 @@ const JUMP_VELOCITY = -400.0
 @onready var light_detector: ShapeCast2D = $LightDetector
 @onready var bee: CharacterBody2D = $"."
 @onready var timer: Timer = $Timer
+@onready var hurt_area: HurtArea2D = $HurtArea
 
 
 var detection_array: PackedVector2Array = PackedVector2Array([
@@ -77,8 +78,8 @@ func detect_light(delta):
 			await get_tree().create_timer(2.0).timeout
 			set_physics_process(true)
 			return_to_position()
-		if collider.is_in_group("cone_area"):
-			take_damage()
+		#if collider.is_in_group("cone_area"):
+			#take_damage()
 
 func handle_attack(delta):
 	set_physics_process(false)
@@ -91,7 +92,6 @@ func handle_attack(delta):
 	attack_ray_cast.enabled = false
 	light_detector.enabled = false
 	body_collision_1.disabled = true
-	body_collision_2.disabled = true
 	var tween = create_tween()
 	tween.tween_property(bee, "position", target_position, 1.0)
 	print("moving to: ", target_position)
@@ -103,7 +103,6 @@ func handle_attack(delta):
 	print("moving to: ", attacking_position)
 	await get_tree().create_timer(1.0).timeout
 	body_collision_1.disabled = false
-	body_collision_2.disabled = false
 	stinger_collision.disabled = true
 	await get_tree().create_timer(1.0).timeout
 	attacking = false
@@ -121,7 +120,10 @@ func get_target(delta):
 			handle_attack(delta)
 
 func take_damage():
-	pass #stun and disable hit and hurt box collisions for 2 seconds.
+	print("taking damage")
+	hurt_area.monitoring = false
+	await get_tree().create_timer(3.0).timeout
+	hurt_area.monitoring = true
 
 func return_to_position():
 	var tween = create_tween()

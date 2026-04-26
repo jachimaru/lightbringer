@@ -387,11 +387,11 @@ gradient = SubResource("Gradient_qhqgy")
 fill = 1
 fill_from = Vector2(0, 1)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dqkch"]
+size = Vector2(40.234673, 39.734665)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_smehm"]
 size = Vector2(39.681755, 39.68175)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_dqkch"]
-size = Vector2(16, 14)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tuyoq"]
 size = Vector2(9.5, 15)
@@ -465,26 +465,30 @@ range_item_cull_mask = 513
 texture = SubResource("GradientTexture2D_dqkch")
 offset = Vector2(32, -32)
 
+[node name="HitArea2D" type="Area2D" parent="LanternSprite/ConeLight" unique_id=450867845]
+unique_name_in_owner = true
+collision_layer = 16
+collision_mask = 128
+monitoring = false
+monitorable = false
+script = ExtResource("4_dqkch")
+metadata/_custom_type_script = "uid://gcb3p7yqf0mt"
+
+[node name="SpellCollision" type="CollisionShape2D" parent="LanternSprite/ConeLight/HitArea2D" unique_id=1192336378]
+unique_name_in_owner = true
+position = Vector2(20, -20)
+shape = SubResource("RectangleShape2D_dqkch")
+disabled = true
+debug_color = Color(0.99525505, 0, 0.21626571, 0.41960785)
+
 [node name="ConeArea" type="Area2D" parent="LanternSprite/ConeLight" unique_id=939786637 groups=["cone_area"]]
 collision_layer = 256
 collision_mask = 0
 
 [node name="ConeCollider" type="CollisionShape2D" parent="LanternSprite/ConeLight/ConeArea" unique_id=704753634 groups=["cone_area"]]
 unique_name_in_owner = true
-position = Vector2(20.534899, -20.534897)
+position = Vector2(20, -20)
 shape = SubResource("RectangleShape2D_smehm")
-disabled = true
-
-[node name="HitArea2D" type="Area2D" parent="." unique_id=450867845]
-collision_layer = 16
-collision_mask = 128
-monitoring = false
-script = ExtResource("4_dqkch")
-metadata/_custom_type_script = "uid://gcb3p7yqf0mt"
-
-[node name="SpellCollision" type="CollisionShape2D" parent="HitArea2D" unique_id=1192336378]
-position = Vector2(7, -7)
-shape = SubResource("RectangleShape2D_dqkch")
 disabled = true
 
 [node name="HurtArea2D" type="Area2D" parent="." unique_id=360137419 groups=["player"]]
@@ -497,3 +501,9 @@ metadata/_custom_type_script = "uid://dnwx5ifjnutta"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtArea2D" unique_id=1064009790]
 position = Vector2(1, -8)
 shape = SubResource("RectangleShape2D_tuyoq")
+
+[node name="CooldownTimer" type="Timer" parent="." unique_id=351204660]
+unique_name_in_owner = true
+wait_time = 5.0
+one_shot = true
+ignore_time_scale = true
