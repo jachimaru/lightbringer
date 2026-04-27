@@ -159,7 +159,7 @@ range_z_max = 10
 range_item_cull_mask = 513
 texture = SubResource("GradientTexture2D_a16hn")
 
-[node name="Lightwall" parent="Flame" unique_id=926437652 instance=ExtResource("3_p3mg1")]
+[node name="Lightwall" parent="Flame" unique_id=926437652 groups=["light_area"] instance=ExtResource("3_p3mg1")]
 position = Vector2(0, 17)
 collision_layer = 256
 collision_mask = 256

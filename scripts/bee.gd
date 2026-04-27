@@ -77,7 +77,7 @@ func set_move_route(delta: float) -> void:
 		stinger_collision.position.x = -8.0
 		attack_ray_cast.shape.points = detection_array
 
-func detect_light(delta):
+func detect_light(_delta):
 	if light_detector.is_colliding():
 		var collider = light_detector.get_collider(0)
 		if collider.is_in_group("light_area"):
@@ -89,7 +89,7 @@ func detect_light(delta):
 		#if collider.is_in_group("cone_area"):
 			#take_damage()
 
-func handle_attack(delta):
+func handle_attack(_delta):
 	set_physics_process(false)
 	var attacking_position: Vector2
 	attacking = true
@@ -107,11 +107,9 @@ func handle_attack(delta):
 	if is_stunned:
 		return
 	print("moving to: ", target_position)
-	bee.process_mode = Node.PROCESS_MODE_DISABLED
 	await wait_seconds(1.0)
 	if is_stunned:
 		return
-	bee.process_mode = Node.PROCESS_MODE_PAUSABLE
 	stop_current_tween()
 	current_tween = create_tween()
 	current_tween.tween_property(bee, "position", attacking_position, 1.0)
@@ -157,11 +155,9 @@ func stop_current_tween() -> void:
 	current_tween = null
 
 func wait_seconds(duration: float) -> void:
-	var elapsed := 0.0
-	while elapsed < duration:
-		if is_stunned:
-			return
-		elapsed += await get_tree().process_frame
+	if is_stunned:
+		return
+	await get_tree().create_timer(duration).timeout
 
 func stun_bee() -> void:
 	if is_stunned:
@@ -181,6 +177,7 @@ func recover_from_stun() -> void:
 	return_to_position()
 	await get_tree().create_timer(1.0).timeout
 	is_stunned = false
+	attack_ray_cast.enabled = true
 	set_physics_process(true)
 
 func return_to_position():

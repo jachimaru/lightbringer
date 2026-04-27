@@ -40,25 +40,25 @@ position = Vector2(496, -48)
 [node name="Droplets" type="Node" parent="." unique_id=306315907]
 
 [node name="Droplet" parent="Droplets" unique_id=2058647790 instance=ExtResource("3_4wyf3")]
-position = Vector2(0, -16)
+position = Vector2(-12, -102)
 
 [node name="Droplet2" parent="Droplets" unique_id=229405861 instance=ExtResource("3_4wyf3")]
-position = Vector2(-48, -32)
+position = Vector2(-60, -118)
 
 [node name="Droplet3" parent="Droplets" unique_id=1331581331 instance=ExtResource("3_4wyf3")]
-position = Vector2(-96, -48)
+position = Vector2(-108, -134)
 
 [node name="Droplet4" parent="Droplets" unique_id=549402461 instance=ExtResource("3_4wyf3")]
-position = Vector2(-144, -64)
+position = Vector2(-156, -150)
 
 [node name="Droplet5" parent="Droplets" unique_id=633829939 instance=ExtResource("3_4wyf3")]
-position = Vector2(-192, -80)
+position = Vector2(-204, -166)
 
 [node name="Droplet6" parent="Droplets" unique_id=1246075445 instance=ExtResource("3_4wyf3")]
 position = Vector2(291, -12)
 
 [node name="Droplet7" parent="Droplets" unique_id=2080614803 instance=ExtResource("3_4wyf3")]
-position = Vector2(32, -32)
+position = Vector2(20, -118)
 
 [node name="Droplet8" parent="Droplets" unique_id=240895488 instance=ExtResource("3_4wyf3")]
 position = Vector2(261, -18)
@@ -85,7 +85,7 @@ range_item_cull_mask = 513
 [node name="HUD" parent="." unique_id=1844353309 instance=ExtResource("7_i7141")]
 
 [node name="Firepit" parent="." unique_id=363303229 instance=ExtResource("3_qfnet")]
-position = Vector2(416, 0)
+position = Vector2(124, 0)
 
 [node name="Firepit2" parent="." unique_id=1136528835 instance=ExtResource("3_qfnet")]
 position = Vector2(-315, 0)
