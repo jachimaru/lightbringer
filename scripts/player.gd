@@ -53,14 +53,14 @@ func flip_sprite():
 		player_sprite.flip_h = true
 		player_collision.position.x = -2.0
 		var tween = create_tween()
-		tween.tween_property(lantern_sprite, "position", Vector2(-11.0, -18.0), 0.3)
+		tween.tween_property(lantern_sprite, "position", Vector2(-11.0, -8.0), 0.3)
 		cone_light.rotation_degrees = -165.0
 	elif direction == 1:
 		facing = 1
 		player_sprite.flip_h = false
 		player_collision.position.x = 2.0
 		var tween = create_tween()
-		tween.tween_property(lantern_sprite, "position", Vector2(11.0, -18.0), 0.3)
+		tween.tween_property(lantern_sprite, "position", Vector2(11.0, -8.0), 0.3)
 		cone_light.rotation_degrees = 15.0
 
 func handle_move():
@@ -86,22 +86,22 @@ func control_lantern():
 	if Input.is_action_just_pressed("lantern_down"):
 		var tween = create_tween()
 		var x = 11.0 * facing
-		tween.tween_property(lantern_sprite, "position", Vector2(x, 0.0), 0.3)
+		tween.tween_property(lantern_sprite, "position", Vector2(x, 10.0), 0.3)
 		
 	if Input.is_action_just_released("lantern_down"):
 		var tween = create_tween()
 		var x = 11.0 * facing
-		tween.tween_property(lantern_sprite, "position", Vector2(x, -18.0), 0.3)
+		tween.tween_property(lantern_sprite, "position", Vector2(x, -8.0), 0.3)
 		
 	if Input.is_action_just_pressed("lantern_up"):
 		var tween = create_tween()
 		var x = 11.0 * facing
-		tween.tween_property(lantern_sprite, "position", Vector2(x, -36.0), 0.3)
+		tween.tween_property(lantern_sprite, "position", Vector2(x, -26.0), 0.3)
 
 	if Input.is_action_just_released("lantern_up"):
 		var tween = create_tween()
 		var x = 11.0 * facing
-		tween.tween_property(lantern_sprite, "position", Vector2(x, -18.0), 0.3)
+		tween.tween_property(lantern_sprite, "position", Vector2(x, -8.0), 0.3)
 
 func _add_light():
 	var add_light_scale = lantern_light.scale * Vector2(1.2, 1.2)

@@ -353,7 +353,7 @@ animations = [{
 radius = 9.219544
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_u7n5f"]
-size = Vector2(10, 22)
+size = Vector2(8, 18)
 
 [sub_resource type="Gradient" id="Gradient_5b1ba"]
 colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
@@ -384,11 +384,13 @@ disabled = true
 debug_color = Color(0.805609, 0.32552245, 1, 0.41960785)
 
 [node name="HitArea2D" type="Area2D" parent="." unique_id=2092947874]
+collision_layer = 64
+collision_mask = 32
 script = ExtResource("2_5b1ba")
 metadata/_custom_type_script = "uid://gcb3p7yqf0mt"
 
 [node name="DamageCollision" type="CollisionShape2D" parent="HitArea2D" unique_id=454684463]
-position = Vector2(-8, 5)
+position = Vector2(-7, 7)
 shape = SubResource("RectangleShape2D_u7n5f")
 debug_color = Color(0.9938684, 0, 0.23807332, 0.41960785)
 

@@ -80,18 +80,19 @@ func set_move_route(delta: float) -> void:
 func detect_light(_delta):
 	if light_detector.is_colliding():
 		var collider = light_detector.get_collider(0)
-		if collider.is_in_group("light_area"):
+		if collider.is_in_group("player"):
+			return
+		elif collider.is_in_group("light_area"):
 			if is_stunned:
 				return
 			stun_bee()
 			await recover_from_stun()
 			return
-		#if collider.is_in_group("cone_area"):
-			#take_damage()
 
 func handle_attack(_delta):
 	set_physics_process(false)
 	var attacking_position: Vector2
+	await wait_seconds(1.0)
 	attacking = true
 	hit_area_2d.monitorable = true
 	stinger_collision.disabled = false
@@ -99,7 +100,6 @@ func handle_attack(_delta):
 	attacking_position = position
 	print("from: ", attacking_position, " to ", target_position)
 	attack_ray_cast.enabled = false
-	body_collision_1.disabled = true
 	stop_current_tween()
 	current_tween = create_tween()
 	current_tween.tween_property(bee, "position", target_position, 1.0)
@@ -107,7 +107,7 @@ func handle_attack(_delta):
 	if is_stunned:
 		return
 	print("moving to: ", target_position)
-	await wait_seconds(1.0)
+	await wait_seconds(1.5)
 	if is_stunned:
 		return
 	stop_current_tween()
@@ -120,7 +120,6 @@ func handle_attack(_delta):
 	await wait_seconds(1.0)
 	if is_stunned:
 		return
-	body_collision_1.disabled = false
 	stinger_collision.disabled = true
 	await wait_seconds(1.0)
 	attacking = false
@@ -130,7 +129,7 @@ func handle_attack(_delta):
 	 #move toward target_position, move back to attacking_position
 
 func get_target(delta):
-	if attacking or is_stunned:
+	if attacking or is_stunned or GameManager.in_light:
 		return
 	if attack_ray_cast.is_colliding():
 		var collider = attack_ray_cast.get_collider(0)

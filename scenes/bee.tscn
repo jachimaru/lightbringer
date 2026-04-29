@@ -130,7 +130,7 @@ fill_to = Vector2(0.7863248, 0.34188035)
 
 [node name="Bee" type="CharacterBody2D" unique_id=267528339 groups=["enemy"]]
 process_mode = 1
-collision_mask = 49
+collision_mask = 51
 script = ExtResource("1_ogg2i")
 move_distance = 150.0
 move_time = 2.0
@@ -182,9 +182,8 @@ collide_with_bodies = false
 [node name="LightDetector" type="ShapeCast2D" parent="." unique_id=72345323]
 shape = SubResource("CircleShape2D_ogg2i")
 target_position = Vector2(0, 0)
-collision_mask = 256
+collision_mask = 258
 collide_with_areas = true
-collide_with_bodies = false
 
 [node name="PointLight2D" type="PointLight2D" parent="." unique_id=465287040]
 light_mask = 513

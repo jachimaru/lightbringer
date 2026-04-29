@@ -15,6 +15,7 @@ var last_popup: String = "none"
 var in_collision: bool
 var in_firepit: bool
 var quit_game: bool
+var in_light: bool
 
 signal add_light
 signal remove_light

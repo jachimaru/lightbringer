@@ -423,7 +423,7 @@ position_smoothing_speed = 10.0
 [node name="LanternSprite" type="AnimatedSprite2D" parent="." unique_id=2027781701]
 light_mask = 16
 material = SubResource("CanvasItemMaterial_qhqgy")
-position = Vector2(11, -13)
+position = Vector2(11, -8)
 scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_bj30b")
 animation = &"burn"

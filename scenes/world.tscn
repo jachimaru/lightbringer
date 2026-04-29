@@ -27,8 +27,8 @@ modulate = Color(0.5132329, 0.5132329, 0.5132329, 1)
 light_mask = 513
 visibility_layer = 513
 z_index = -1
-position = Vector2(160, -152)
-scale = Vector2(1.4444444, 1)
+position = Vector2(-5.629692, -278.5)
+scale = Vector2(2.572359, 1.780864)
 texture = ExtResource("3_71j4m")
 
 [node name="Player" parent="." unique_id=1181670398 instance=ExtResource("2_rwgxs")]
@@ -40,25 +40,25 @@ position = Vector2(496, -48)
 [node name="Droplets" type="Node" parent="." unique_id=306315907]
 
 [node name="Droplet" parent="Droplets" unique_id=2058647790 instance=ExtResource("3_4wyf3")]
-position = Vector2(-12, -102)
+position = Vector2(2, -14)
 
 [node name="Droplet2" parent="Droplets" unique_id=229405861 instance=ExtResource("3_4wyf3")]
-position = Vector2(-60, -118)
+position = Vector2(-46, -30)
 
 [node name="Droplet3" parent="Droplets" unique_id=1331581331 instance=ExtResource("3_4wyf3")]
-position = Vector2(-108, -134)
+position = Vector2(-94, -46)
 
 [node name="Droplet4" parent="Droplets" unique_id=549402461 instance=ExtResource("3_4wyf3")]
-position = Vector2(-156, -150)
+position = Vector2(-142, -62)
 
 [node name="Droplet5" parent="Droplets" unique_id=633829939 instance=ExtResource("3_4wyf3")]
-position = Vector2(-204, -166)
+position = Vector2(-190, -78)
 
 [node name="Droplet6" parent="Droplets" unique_id=1246075445 instance=ExtResource("3_4wyf3")]
 position = Vector2(291, -12)
 
 [node name="Droplet7" parent="Droplets" unique_id=2080614803 instance=ExtResource("3_4wyf3")]
-position = Vector2(20, -118)
+position = Vector2(-10, -18)
 
 [node name="Droplet8" parent="Droplets" unique_id=240895488 instance=ExtResource("3_4wyf3")]
 position = Vector2(261, -18)
@@ -73,7 +73,6 @@ position = Vector2(384, -16)
 position = Vector2(464, -33)
 
 [node name="DirectionalLight2D" type="DirectionalLight2D" parent="." unique_id=695345149]
-visible = false
 light_mask = 513
 visibility_layer = 0
 z_index = -2
@@ -143,7 +142,10 @@ tile_map_data = PackedByteArray("AAAnAAQAAQACAAEAAAAnAAMAAQACAAEAAAAnAAIAAQACAAE
 position = Vector2(129, -100)
 
 [node name="Boar" parent="." unique_id=704932205 instance=ExtResource("14_o8fc1")]
-position = Vector2(557, -64)
+position = Vector2(-484, -144)
+patrol_distance = 200.0
+patrol_time = 4.0
+patrolling = true
 
 [node name="Snail" parent="." unique_id=807384392 instance=ExtResource("15_xo05s")]
 position = Vector2(-196, -28)

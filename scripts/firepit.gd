@@ -36,3 +36,14 @@ func _on_firepit_area_body_exited(body: CharacterBody2D) -> void:
 		interact.visible = false
 		GameManager.in_firepit = false
 		player_inside = false
+
+func _on_lightwall_body_entered(body: CharacterBody2D) -> void:
+	if body.has_method("control_lantern"):
+		GameManager.in_light = true
+		print(GameManager.in_light)
+
+
+func _on_lightwall_body_exited(body: CharacterBody2D) -> void:
+	if body.has_method("control_lantern"):
+		GameManager.in_light = false
+		print(GameManager.in_light)
