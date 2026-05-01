@@ -99,7 +99,7 @@ func detect_light():
 			#return
 		elif collider.is_in_group("light_area"):
 			while light_detector.is_colliding():
-				set_physics_process(false)
+				boar.process_mode = Node.PROCESS_MODE_WHEN_PAUSED
 			
 
 func detect_wall():
