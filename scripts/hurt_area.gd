@@ -8,5 +8,9 @@ func _on_area_entered(hit_area: HitArea2D) -> void:
 	if hit_area != null and owner.has_method("take_damage"):
 		owner.take_damage()
 		print(owner)
+	elif hit_area != null and owner.has_method("stun"):
+		owner.stun()
+		await owner.recover_from_stun()
+		print(owner)
 	else:
 		print("womp womp")

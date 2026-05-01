@@ -32,9 +32,10 @@ extends CharacterBody2D
 @onready var tusk: CollisionShape2D = $HitArea2D/Tusk
 @onready var eyes: PointLight2D = $Eyes
 @onready var boar: CharacterBody2D = $"."
+@onready var hurtbox_collision: CollisionShape2D = $HurtArea2D/HurtboxCollision
 
 
-
+var is_moving: bool
 var is_stunned: bool = false
 var direction = -1 #1 is facing right, -1 is facing left
 var start_position: Vector2
@@ -56,12 +57,16 @@ func _physics_process(delta: float) -> void:
 	# Add the gravity.
 	if not is_on_floor():
 		velocity += get_gravity() * delta
-	else:
-		sprite.play("idle")
+	elif is_moving:
+		sprite.play("walking")
+	else: sprite.play("idle")
+
 	if patrolling:
+		is_moving = true
 		patrol(delta)
 	else:
 		pass
+
 	detect_wall()
 	get_target(delta)
 	move_and_slide()
@@ -83,22 +88,25 @@ func detect_light():
 	if light_detector.is_colliding():
 		var collider = light_detector.get_collider()
 		print(collider)
+		print(collider.get_groups())
 		if collider.is_in_group("player"):
 			return
-		elif collider.is_in_group("cone_area"):
-			if is_stunned:
-				return
-			stun_boar()
-			await recover_from_stun()
-			return
+		#elif collider.is_in_group("cone_area"):
+			#if is_stunned:
+				#return
+			#stun()
+			#await recover_from_stun()
+			#return
 		elif collider.is_in_group("light_area"):
-			pass #stay at edge of light area.
+			while light_detector.is_colliding():
+				set_physics_process(false)
+			
 
 func detect_wall():
 	if wall_detector.is_colliding():
 		direction *= -1
 
-func stun_boar():
+func stun():
 	if is_stunned:
 		return
 	is_stunned = true
@@ -132,6 +140,7 @@ func patrol(delta):
 			vision.rotation_degrees = 180
 			tusk.position.x = 15.5
 			eyes.position.x = 12.0
+			hurtbox_collision.position.x = 15.75
 		else:
 			position.x = start_position.x + patrol_distance * (1.0 - progress)
 			sprite.flip_h = false
@@ -142,6 +151,7 @@ func patrol(delta):
 			vision.rotation_degrees = 0
 			tusk.position.x = -15.5
 			eyes.position.x = -12.0
+			hurtbox_collision.position.x = -15.75
 	else:
 		return
 
@@ -156,9 +166,10 @@ func stop_current_tween() -> void:
 	current_tween = null
 
 func recover_from_stun() -> void:
-	create_stun_timer()
+	await get_tree().create_timer(stun_time).timeout
+	#sprite.play("walking")
 	#return_to_position()
-	create_stun_timer()
+	#await get_tree().create_timer(stun_time).timeout
 	set_physics_process(true)
 	is_stunned = false
 	tusk.disabled = false

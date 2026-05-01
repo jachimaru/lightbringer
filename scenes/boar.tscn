@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://pj5ajr5geeix" path="res://scripts/boar.gd" id="1_mn0bm"]
 [ext_resource type="Texture2D" uid="uid://bvfqa2qulp7cf" path="res://art/Boar.png" id="1_tgiih"]
 [ext_resource type="Script" uid="uid://gcb3p7yqf0mt" path="res://scripts/hit_area.gd" id="2_f7758"]
+[ext_resource type="Script" uid="uid://dnwx5ifjnutta" path="res://scripts/hurt_area.gd" id="4_4ea8c"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_f7758"]
 atlas = ExtResource("1_tgiih")
@@ -185,6 +186,9 @@ fill = 1
 fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(0.7863248, 0.34188035)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_r6548"]
+size = Vector2(7.5, 16)
+
 [node name="Boar" type="CharacterBody2D" unique_id=1493142929]
 collision_mask = 3
 script = ExtResource("1_mn0bm")
@@ -241,3 +245,13 @@ collide_with_areas = true
 position = Vector2(0, 4)
 target_position = Vector2(-100, 0)
 collision_mask = 2
+
+[node name="HurtArea2D" type="Area2D" parent="." unique_id=146599638]
+collision_layer = 0
+collision_mask = 16
+script = ExtResource("4_4ea8c")
+metadata/_custom_type_script = "uid://dnwx5ifjnutta"
+
+[node name="HurtboxCollision" type="CollisionShape2D" parent="HurtArea2D" unique_id=1344870019]
+position = Vector2(-15.75, 8)
+shape = SubResource("RectangleShape2D_r6548")

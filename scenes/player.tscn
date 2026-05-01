@@ -481,13 +481,13 @@ shape = SubResource("RectangleShape2D_dqkch")
 disabled = true
 debug_color = Color(0.99525505, 0, 0.21626571, 0.41960785)
 
-[node name="ConeArea" type="Area2D" parent="LanternSprite/ConeLight" unique_id=939786637 groups=["cone_area"]]
+[node name="ConeArea" type="Area2D" parent="LanternSprite/ConeLight" unique_id=939786637]
 collision_layer = 256
 collision_mask = 0
 monitoring = false
 monitorable = false
 
-[node name="ConeCollider" type="CollisionShape2D" parent="LanternSprite/ConeLight/ConeArea" unique_id=704753634 groups=["cone_area"]]
+[node name="ConeCollider" type="CollisionShape2D" parent="LanternSprite/ConeLight/ConeArea" unique_id=704753634]
 unique_name_in_owner = true
 position = Vector2(20, -20)
 shape = SubResource("RectangleShape2D_smehm")
