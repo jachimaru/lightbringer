@@ -31,6 +31,7 @@ extends CharacterBody2D
 @onready var point_light_2d: PointLight2D = $PointLight2D
 @onready var tusk: CollisionShape2D = $HitArea2D/Tusk
 @onready var eyes: PointLight2D = $Eyes
+@onready var boar: CharacterBody2D = $"."
 
 
 
@@ -48,6 +49,9 @@ const JUMP_VELOCITY = -200.0
 func _ready() -> void:
 	start_position = position
 
+func _process(delta: float) -> void:
+	detect_light()
+
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
 	if not is_on_floor():
@@ -55,9 +59,11 @@ func _physics_process(delta: float) -> void:
 	else:
 		sprite.play("idle")
 	if patrolling:
-		patrol(patrol_distance, delta)
+		patrol(delta)
 	else:
 		pass
+	detect_wall()
+	get_target(delta)
 	move_and_slide()
 
 func get_target(delta):
@@ -74,15 +80,37 @@ func charge_player(delta):
 	pass
 
 func detect_light():
-	pass
+	if light_detector.is_colliding():
+		var collider = light_detector.get_collider()
+		print(collider)
+		if collider.is_in_group("player"):
+			return
+		elif collider.is_in_group("cone_area"):
+			if is_stunned:
+				return
+			stun_boar()
+			await recover_from_stun()
+			return
+		elif collider.is_in_group("light_area"):
+			pass #stay at edge of light area.
 
 func detect_wall():
-	pass
+	if wall_detector.is_colliding():
+		direction *= -1
 
-func stun_boar(stun_time):
-	pass
+func stun_boar():
+	if is_stunned:
+		return
+	is_stunned = true
+	attacking = false
+	stop_current_tween()
+	boar.process_mode = Node.PROCESS_MODE_PAUSABLE
+	set_physics_process(false)
+	tusk.disabled = true
+	sprite.play("hurt")
+	print("stun")
 
-func patrol(patrol_distance, delta):
+func patrol(delta):
 	if patrolling:
 		sprite.play("walking")
 		if patrol_time <= 0.0:
@@ -117,10 +145,26 @@ func patrol(patrol_distance, delta):
 	else:
 		return
 
-func create_stun_timer(stun_time):
+func create_stun_timer():
+	if is_stunned:
+		return
 	await get_tree().create_timer(stun_time).timeout
 
 func stop_current_tween() -> void:
 	if current_tween and current_tween.is_valid():
 		current_tween.kill()
 	current_tween = null
+
+func recover_from_stun() -> void:
+	create_stun_timer()
+	#return_to_position()
+	create_stun_timer()
+	set_physics_process(true)
+	is_stunned = false
+	tusk.disabled = false
+	print("recover")
+
+func return_to_position():
+	stop_current_tween()
+	current_tween = create_tween()
+	current_tween.tween_property(boar, "position", start_position, 1.0)

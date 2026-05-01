@@ -206,6 +206,7 @@ shape = SubResource("CircleShape2D_lfbdy")
 unique_name_in_owner = true
 collision_layer = 64
 collision_mask = 32
+monitoring = false
 script = ExtResource("2_f7758")
 metadata/_custom_type_script = "uid://gcb3p7yqf0mt"
 
@@ -228,10 +229,13 @@ offset = Vector2(10, -10)
 position = Vector2(0, 5)
 target_position = Vector2(-25, 0)
 collision_mask = 256
+collide_with_areas = true
+collide_with_bodies = false
 
 [node name="WallDetector" type="RayCast2D" parent="." unique_id=647207905]
 position = Vector2(0, 11)
 target_position = Vector2(-20, 0)
+collide_with_areas = true
 
 [node name="Vision" type="RayCast2D" parent="." unique_id=1557541808]
 position = Vector2(0, 4)

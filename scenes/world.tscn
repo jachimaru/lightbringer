@@ -73,6 +73,7 @@ position = Vector2(384, -16)
 position = Vector2(464, -33)
 
 [node name="DirectionalLight2D" type="DirectionalLight2D" parent="." unique_id=695345149]
+visible = false
 light_mask = 513
 visibility_layer = 0
 z_index = -2
@@ -142,10 +143,10 @@ tile_map_data = PackedByteArray("AAAnAAQAAQACAAEAAAAnAAMAAQACAAEAAAAnAAIAAQACAAE
 position = Vector2(129, -100)
 
 [node name="Boar" parent="." unique_id=704932205 instance=ExtResource("14_o8fc1")]
-position = Vector2(-484, -144)
+position = Vector2(-284, -151)
+stun_time = 500.0
 patrol_distance = 200.0
 patrol_time = 4.0
-patrolling = true
 
 [node name="Snail" parent="." unique_id=807384392 instance=ExtResource("15_xo05s")]
 position = Vector2(-196, -28)
