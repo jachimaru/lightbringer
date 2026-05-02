@@ -43,6 +43,7 @@ var attacking: bool = false
 var target_position: Vector2
 var current_tween: Tween = null
 var move_timer: float = 0.0
+var follow_distance: int = 64
 
 const SPEED = 100.0
 const JUMP_VELOCITY = -200.0
@@ -98,9 +99,18 @@ func detect_light():
 			#await recover_from_stun()
 			#return
 		elif collider.is_in_group("light_area"):
-			while light_detector.is_colliding():
-				boar.process_mode = Node.PROCESS_MODE_WHEN_PAUSED
-			
+			direction = 0
+			set_physics_process(false)
+			sprite.play("idle")
+			print("stopping")
+			print(collider.global_position)
+			await get_tree().create_timer(0.5).timeout
+			begin_following()
+
+func begin_following():
+	set_physics_process(true)
+	#follow the edge of the player's RadiusArea Area2D node until it reaches the edge of it's patrol distance.
+	#Then return to starting position.
 
 func detect_wall():
 	if wall_detector.is_colliding():

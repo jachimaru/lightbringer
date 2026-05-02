@@ -142,12 +142,13 @@ tile_map_data = PackedByteArray("AAAnAAQAAQACAAEAAAAnAAMAAQACAAEAAAAnAAIAAQACAAE
 [node name="Bee" parent="." unique_id=1870665686 instance=ExtResource("13_jhx03")]
 position = Vector2(129, -100)
 
-[node name="Boar" parent="." unique_id=704932205 instance=ExtResource("14_o8fc1")]
+[node name="Boar" parent="." unique_id=704932205 node_paths=PackedStringArray("target") instance=ExtResource("14_o8fc1")]
 position = Vector2(-483, -144)
 stun_time = 2.0
 patrol_distance = 200.0
 patrol_time = 4.0
 patrolling = true
+target = NodePath("../Player")
 
 [node name="Snail" parent="." unique_id=807384392 instance=ExtResource("15_xo05s")]
 position = Vector2(-196, -28)
