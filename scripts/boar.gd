@@ -99,18 +99,36 @@ func detect_light():
 			#await recover_from_stun()
 			#return
 		elif collider.is_in_group("light_area"):
-			direction = 0
 			set_physics_process(false)
 			sprite.play("idle")
 			print("stopping")
 			print(collider.global_position)
-			await get_tree().create_timer(0.5).timeout
+			await get_tree().create_timer(2.0).timeout
 			begin_following()
 
 func begin_following():
 	set_physics_process(true)
-	#follow the edge of the player's RadiusArea Area2D node until it reaches the edge of it's patrol distance.
-	#Then return to starting position.
+	var player = get_tree().get_nodes_in_group("player")[0]
+	
+	while true:
+		var distance_from_start = abs(boar.global_position.x - start_position.x)
+		
+		if distance_from_start >= patrol_distance:
+			# Return to start
+			stop_current_tween()
+			current_tween = create_tween()
+			current_tween.tween_property(boar, "position", start_position, 1.0)
+			await current_tween.finished
+			break
+		
+		# Move along the light edge
+		var player_pos = player.global_position
+		var boar_to_player = (player_pos - boar.global_position).normalized()
+		var perpendicular = Vector2(-boar_to_player.y, boar_to_player.x)
+		var movement_direction = perpendicular * direction
+		
+		boar.position += movement_direction * SPEED * get_physics_process_delta_time()
+		await get_tree().process_frame
 
 func detect_wall():
 	if wall_detector.is_colliding():
