@@ -13,8 +13,8 @@ extends CharacterBody2D
 @onready var hurt_area_2d: HurtArea2D = $HurtArea2D
 @onready var cooldown_timer: Timer = %CooldownTimer
 
-const SPEED = 100.0
-const JUMP_VELOCITY = -200.0
+const SPEED = 120.0
+const JUMP_VELOCITY = -250.0
 
 var direction := Input.get_axis("move_left", "move_right")
 var facing = 1
@@ -22,6 +22,7 @@ var light_mode = GameManager.lantern_cone #true = cone, false = radius
 var playing_animation: bool
 var stop_input = false
 var current_sign = null
+
 
 func _ready() -> void:
 	GameManager.add_light.connect(_add_light)

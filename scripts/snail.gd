@@ -14,7 +14,7 @@ const JUMP_VELOCITY = -200.0
 @onready var default_pos_in_shell = in_shell_collision.position.x
 @onready var default_pos_out_shell = out_shell_collision.position.x
 @onready var default_pos_damage = damage_collision.position.x
-var direction = 0
+var direction = -1
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
@@ -36,14 +36,14 @@ func _physics_process(delta: float) -> void:
 func detect_wall():
 	if ray_cast_left.is_colliding():
 		snail_sprite.flip_h = true
-		light_detector.target_position.x = 47.0
+		light_detector.target_position.x = 23.0
 		in_shell_collision.position.x = default_pos_in_shell * -1
 		out_shell_collision.position.x = default_pos_out_shell * -1
 		damage_collision.position.x = default_pos_damage * -1
 		direction = 1
 	elif ray_cast_right.is_colliding():
 		snail_sprite.flip_h = false
-		light_detector.target_position.x = -47.0
+		light_detector.target_position.x = -23.0
 		in_shell_collision.position.x = default_pos_in_shell
 		out_shell_collision.position.x = default_pos_out_shell
 		damage_collision.position.x = default_pos_damage
@@ -58,27 +58,27 @@ func detect_light(delta):
 		direction = direction * -1
 		if direction == 1:
 			snail_sprite.flip_h = true
-			light_detector.target_position.x = 47.0
+			light_detector.target_position.x = 23.0
 			in_shell_collision.position.x = default_pos_in_shell * -1
 			out_shell_collision.position.x = default_pos_out_shell * -1
 			damage_collision.position.x = default_pos_damage * -1
 		if direction == -1:
 			snail_sprite.flip_h = false
-			light_detector.target_position.x = -47.0
+			light_detector.target_position.x = -23.0
 			in_shell_collision.position.x = default_pos_in_shell
 			out_shell_collision.position.x = default_pos_out_shell
 			damage_collision.position.x = default_pos_damage
 		if collider.is_in_group("cone_area"):
 			if direction == 1:
 				snail_sprite.flip_h = true
-				light_detector.target_position.x = 47.0
+				light_detector.target_position.x = 23.0
 				in_shell_collision.position.x = default_pos_in_shell * -1
 				out_shell_collision.position.x = default_pos_out_shell * -1
 				damage_collision.position.x = default_pos_damage * -1
 				direction = direction * -1
 			if direction == -1:
 				snail_sprite.flip_h = false
-				light_detector.target_position.x = -47.0
+				light_detector.target_position.x = -23.0
 				in_shell_collision.position.x = default_pos_in_shell
 				out_shell_collision.position.x = default_pos_out_shell
 				damage_collision.position.x = default_pos_damage

@@ -231,7 +231,7 @@ offset = Vector2(10, -10)
 
 [node name="LightDetector" type="RayCast2D" parent="." unique_id=1435266093]
 position = Vector2(0, 5)
-target_position = Vector2(-25, 0)
+target_position = Vector2(-20, 0)
 collision_mask = 256
 collide_with_areas = true
 collide_with_bodies = false
@@ -244,7 +244,9 @@ collide_with_areas = true
 [node name="Vision" type="RayCast2D" parent="." unique_id=1557541808]
 position = Vector2(0, 4)
 target_position = Vector2(-100, 0)
-collision_mask = 2
+collision_mask = 34
+collide_with_areas = true
+collide_with_bodies = false
 
 [node name="HurtArea2D" type="Area2D" parent="." unique_id=146599638]
 collision_layer = 0
@@ -255,3 +257,16 @@ metadata/_custom_type_script = "uid://dnwx5ifjnutta"
 [node name="HurtboxCollision" type="CollisionShape2D" parent="HurtArea2D" unique_id=1344870019]
 position = Vector2(-15.75, 8)
 shape = SubResource("RectangleShape2D_r6548")
+
+[node name="FloorDetectorLeft" type="RayCast2D" parent="." unique_id=265779479]
+position = Vector2(-14, 15)
+target_position = Vector2(0, 13)
+
+[node name="FloorDetectorRight" type="RayCast2D" parent="." unique_id=781545764]
+position = Vector2(10, 15)
+target_position = Vector2(0, 13)
+
+[node name="AttackTimer" type="Timer" parent="." unique_id=941836016]
+process_mode = 3
+wait_time = 5.0
+one_shot = true

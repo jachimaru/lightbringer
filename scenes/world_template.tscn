@@ -1,0 +1,165 @@
+[gd_scene format=3 uid="uid://nu0qw5rmcqv7"]
+
+[ext_resource type="Script" uid="uid://c642kxx0lpivn" path="res://scripts/world.gd" id="1_cja2u"]
+[ext_resource type="Texture2D" uid="uid://yj3reg6chmq8" path="res://art/parallax/forest/far.png" id="3_nvfoq"]
+[ext_resource type="PackedScene" uid="uid://c7jv6sc2trkg4" path="res://scenes/player.tscn" id="3_xaxa4"]
+[ext_resource type="Texture2D" uid="uid://bswasjfsb7r3q" path="res://art/parallax/forest/middle.png" id="4_fa2fc"]
+[ext_resource type="PackedScene" uid="uid://nrteh73o8f6x" path="res://scenes/hud.tscn" id="6_en57c"]
+[ext_resource type="Texture2D" uid="uid://dfui1bv68tty5" path="res://art/parallax/forest/back.png" id="7_le7vp"]
+[ext_resource type="PackedScene" uid="uid://dnl1cqvr7n8oe" path="res://scenes/text_popups.tscn" id="9_6qj3s"]
+[ext_resource type="PackedScene" uid="uid://dm2122xkv8tia" path="res://scenes/pause_menu.tscn" id="11_i0pct"]
+[ext_resource type="PackedScene" uid="uid://by1e2s80yrcjd" path="res://scenes/autotile.tscn" id="12_cr54y"]
+
+[node name="World" type="Node2D" unique_id=315622911]
+script = ExtResource("1_cja2u")
+
+[node name="Parallax2D" type="Parallax2D" parent="." unique_id=311073064]
+scale = Vector2(0.8, 0.8)
+scroll_scale = Vector2(0.6, 1)
+scroll_offset = Vector2(-536, -81)
+
+[node name="Sprite2D" type="Sprite2D" parent="Parallax2D" unique_id=1752221300]
+position = Vector2(0, 1)
+texture = ExtResource("7_le7vp")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Parallax2D" unique_id=1645362893]
+position = Vector2(144, 1)
+texture = ExtResource("7_le7vp")
+
+[node name="Sprite2D3" type="Sprite2D" parent="Parallax2D" unique_id=1013947075]
+position = Vector2(288, 1)
+texture = ExtResource("7_le7vp")
+
+[node name="Sprite2D4" type="Sprite2D" parent="Parallax2D" unique_id=1283266550]
+position = Vector2(432, 1)
+texture = ExtResource("7_le7vp")
+
+[node name="Sprite2D5" type="Sprite2D" parent="Parallax2D" unique_id=833745556]
+position = Vector2(576, 1)
+texture = ExtResource("7_le7vp")
+
+[node name="Sprite2D6" type="Sprite2D" parent="Parallax2D" unique_id=2002826709]
+position = Vector2(720, 1)
+texture = ExtResource("7_le7vp")
+
+[node name="Sprite2D7" type="Sprite2D" parent="Parallax2D" unique_id=391658511]
+position = Vector2(864, 1)
+texture = ExtResource("7_le7vp")
+
+[node name="Sprite2D8" type="Sprite2D" parent="Parallax2D" unique_id=1654202715]
+position = Vector2(1008, 1)
+texture = ExtResource("7_le7vp")
+
+[node name="Sprite2D9" type="Sprite2D" parent="Parallax2D" unique_id=1123317382]
+position = Vector2(1152, 1)
+texture = ExtResource("7_le7vp")
+
+[node name="Sprite2D10" type="Sprite2D" parent="Parallax2D" unique_id=1094292208]
+position = Vector2(1296, 1)
+texture = ExtResource("7_le7vp")
+
+[node name="Sprite2D11" type="Sprite2D" parent="Parallax2D" unique_id=1031693021]
+position = Vector2(1440, 1.2500007)
+texture = ExtResource("7_le7vp")
+
+[node name="Parallax2D2" type="Parallax2D" parent="." unique_id=387440250]
+scale = Vector2(0.8, 0.8)
+scroll_scale = Vector2(0.8, 1)
+scroll_offset = Vector2(-536, -81)
+
+[node name="Sprite2D" type="Sprite2D" parent="Parallax2D2" unique_id=1926055512]
+position = Vector2(0, 1)
+texture = ExtResource("3_nvfoq")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Parallax2D2" unique_id=1510721217]
+position = Vector2(144, 1)
+texture = ExtResource("3_nvfoq")
+
+[node name="Sprite2D3" type="Sprite2D" parent="Parallax2D2" unique_id=453447891]
+position = Vector2(288, 1)
+texture = ExtResource("3_nvfoq")
+
+[node name="Sprite2D4" type="Sprite2D" parent="Parallax2D2" unique_id=1096387356]
+position = Vector2(432, 1)
+texture = ExtResource("3_nvfoq")
+
+[node name="Sprite2D5" type="Sprite2D" parent="Parallax2D2" unique_id=236121774]
+position = Vector2(576, 1)
+texture = ExtResource("3_nvfoq")
+
+[node name="Sprite2D6" type="Sprite2D" parent="Parallax2D2" unique_id=249432326]
+position = Vector2(720, 1)
+texture = ExtResource("3_nvfoq")
+
+[node name="Sprite2D7" type="Sprite2D" parent="Parallax2D2" unique_id=1531992160]
+position = Vector2(864, 1)
+texture = ExtResource("3_nvfoq")
+
+[node name="Sprite2D8" type="Sprite2D" parent="Parallax2D2" unique_id=675896823]
+position = Vector2(1008, 1)
+texture = ExtResource("3_nvfoq")
+
+[node name="Sprite2D9" type="Sprite2D" parent="Parallax2D2" unique_id=1204593724]
+position = Vector2(1152, 1)
+texture = ExtResource("3_nvfoq")
+
+[node name="Sprite2D10" type="Sprite2D" parent="Parallax2D2" unique_id=1372845186]
+position = Vector2(1296, 1)
+texture = ExtResource("3_nvfoq")
+
+[node name="Sprite2D11" type="Sprite2D" parent="Parallax2D2" unique_id=1104556508]
+position = Vector2(1473, 1.249996)
+texture = ExtResource("3_nvfoq")
+
+[node name="Parallax2D3" type="Parallax2D" parent="." unique_id=2040580100]
+scale = Vector2(0.8, 0.8)
+scroll_offset = Vector2(-536, -81)
+
+[node name="Sprite2D2" type="Sprite2D" parent="Parallax2D3" unique_id=1328603741]
+position = Vector2(144, 1)
+texture = ExtResource("4_fa2fc")
+
+[node name="Sprite2D4" type="Sprite2D" parent="Parallax2D3" unique_id=1643686138]
+position = Vector2(432, 1)
+texture = ExtResource("4_fa2fc")
+
+[node name="Sprite2D6" type="Sprite2D" parent="Parallax2D3" unique_id=886670760]
+position = Vector2(720, 1)
+texture = ExtResource("4_fa2fc")
+
+[node name="Sprite2D8" type="Sprite2D" parent="Parallax2D3" unique_id=1269522450]
+position = Vector2(1008, 1)
+texture = ExtResource("4_fa2fc")
+
+[node name="Sprite2D10" type="Sprite2D" parent="Parallax2D3" unique_id=754793011]
+position = Vector2(1296, 1)
+texture = ExtResource("4_fa2fc")
+
+[node name="Player" parent="." unique_id=1181670398 instance=ExtResource("3_xaxa4")]
+
+[node name="DirectionalLight2D" type="DirectionalLight2D" parent="." unique_id=695345149]
+visible = false
+light_mask = 513
+visibility_layer = 0
+z_index = -2
+blend_mode = 1
+range_z_min = -1
+range_z_max = 10
+range_item_cull_mask = 513
+
+[node name="HUD" parent="." unique_id=1844353309 instance=ExtResource("6_en57c")]
+
+[node name="Text Popups" parent="." unique_id=481894209 instance=ExtResource("9_6qj3s")]
+
+[node name="PauseMenu" parent="." unique_id=1725859150 instance=ExtResource("11_i0pct")]
+anchors_preset = 15
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -128.0
+offset_bottom = 128.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="TileMapLayer" parent="." unique_id=46602560 instance=ExtResource("12_cr54y")]

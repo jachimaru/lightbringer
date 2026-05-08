@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dboke3lkkpjj7"
-path="res://.godot/imported/Autotile.png-a198d8042ca4048ad0e9497023d6ef54.ctex"
+uid="uid://6dh66uix6po2"
+path="res://.godot/imported/2.png-d23cecffea1660ba7e0156388a4b0d78.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/Autotile.png"
-dest_files=["res://.godot/imported/Autotile.png-a198d8042ca4048ad0e9497023d6ef54.ctex"]
+source_file="res://art/parallax/2.png"
+dest_files=["res://.godot/imported/2.png-d23cecffea1660ba7e0156388a4b0d78.ctex"]
 
 [params]
 

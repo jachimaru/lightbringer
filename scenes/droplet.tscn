@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://dgpg5r1esivy2" path="res://art/Droplet.png" id="2_347ng"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_1d122"]
-radius = 4.1231055
+radius = 5.0
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_347ng"]
 light_mode = 1
@@ -128,11 +128,11 @@ fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(1, 0.004347826)
 
 [node name="Droplet" type="Area2D" unique_id=229405861]
-collision_layer = 0
-collision_mask = 3
+collision_layer = 256
+collision_mask = 2
 script = ExtResource("1_q86u3")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2135520106]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2135520106 groups=["light_area"]]
 shape = SubResource("CircleShape2D_1d122")
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="." unique_id=436323462]

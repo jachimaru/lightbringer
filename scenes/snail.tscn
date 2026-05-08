@@ -372,6 +372,7 @@ script = ExtResource("1_5b1ba")
 [node name="SnailSprite" type="AnimatedSprite2D" parent="." unique_id=964033473]
 sprite_frames = SubResource("SpriteFrames_2kx4o")
 animation = &"walking"
+autoplay = "walking"
 
 [node name="OutShellCollision" type="CollisionShape2D" parent="." unique_id=145265913 groups=["enemy"]]
 position = Vector2(5, 6)
@@ -406,7 +407,7 @@ target_position = Vector2(24, 0)
 
 [node name="LightDetector" type="RayCast2D" parent="." unique_id=796293786]
 unique_name_in_owner = true
-position = Vector2(0, 5)
+position = Vector2(0, 8)
 target_position = Vector2(-23, 0)
 collision_mask = 272
 collide_with_areas = true

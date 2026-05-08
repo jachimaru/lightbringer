@@ -28,3 +28,5 @@ Button/styles/normal = SubResource("StyleBoxTexture_d6mpn")
 Button/styles/pressed = SubResource("StyleBoxTexture_6y0u2")
 Label/font_sizes/font_size = 32
 Label/fonts/font = ExtResource("1_ftacb")
+RichTextLabel/font_sizes/normal_font_size = 32
+RichTextLabel/fonts/normal_font = ExtResource("1_ftacb")

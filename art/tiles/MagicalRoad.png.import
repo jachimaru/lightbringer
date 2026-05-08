@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://6dh66uix6po2"
-path="res://.godot/imported/2.png-4b2422980aaed4755f0fc097310a5a63.ctex"
+uid="uid://byk8fb22jkwfd"
+path="res://.godot/imported/MagicalRoad.png-90a3457b03d105e3c5b6a7087ba30d97.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/2.png"
-dest_files=["res://.godot/imported/2.png-4b2422980aaed4755f0fc097310a5a63.ctex"]
+source_file="res://art/tiles/MagicalRoad.png"
+dest_files=["res://.godot/imported/MagicalRoad.png-90a3457b03d105e3c5b6a7087ba30d97.ctex"]
 
 [params]
 

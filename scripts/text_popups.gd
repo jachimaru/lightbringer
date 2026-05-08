@@ -1,6 +1,6 @@
 extends CanvasLayer
 
-@onready var sign_label: Label = %SignLabel
+@onready var sign_label: RichTextLabel = %SignLabel
 @onready var popup_container: CenterContainer = %PopupContainer
 @onready var confirmation: Control = %Confirmation
 @onready var signs: Control = %Signs

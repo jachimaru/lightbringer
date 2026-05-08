@@ -1,6 +1,5 @@
 [gd_scene format=3 uid="uid://dnl1cqvr7n8oe"]
 
-[ext_resource type="FontFile" uid="uid://dt4rpek6pj730" path="res://art/BitPotion.ttf" id="1_pkvmv"]
 [ext_resource type="Script" uid="uid://3n0k4173pxb6" path="res://scripts/text_popups.gd" id="1_pmmbg"]
 [ext_resource type="Texture2D" uid="uid://dlafufb010voh" path="res://art/9sliceblue.png" id="4_asitr"]
 [ext_resource type="Theme" uid="uid://bnsqgd1udc3jy" path="res://scenes/font.tres" id="4_nyj0y"]
@@ -37,7 +36,7 @@ unique_name_in_owner = true
 visible = false
 layout_mode = 2
 
-[node name="SignLabel" type="Label" parent="PopupContainer/Signs" unique_id=1474215046]
+[node name="SignLabel" type="RichTextLabel" parent="PopupContainer/Signs" unique_id=676770840]
 unique_name_in_owner = true
 process_mode = 3
 z_index = 100
@@ -48,11 +47,10 @@ offset_left = -95.0
 offset_top = -77.0
 offset_right = 97.0
 offset_bottom = 51.0
-theme_override_fonts/font = ExtResource("1_pkvmv")
-theme_override_font_sizes/font_size = 32
+theme = ExtResource("4_nyj0y")
+bbcode_enabled = true
 horizontal_alignment = 1
 vertical_alignment = 1
-autowrap_mode = 3
 
 [node name="NinePatchRect" type="NinePatchRect" parent="PopupContainer/Signs" unique_id=642277335]
 custom_minimum_size = Vector2(256, 192)

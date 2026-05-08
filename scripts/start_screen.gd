@@ -9,7 +9,7 @@ func _ready() -> void:
 
 
 func _on_start_game_pressed() -> void:
-	get_tree().change_scene_to_file("res://scenes/world.tscn")
+	get_tree().change_scene_to_file("res://scenes/levelone.tscn")
 
 
 func _on_quit_pressed() -> void:

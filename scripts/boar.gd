@@ -33,6 +33,9 @@ extends CharacterBody2D
 @onready var eyes: PointLight2D = $Eyes
 @onready var boar: CharacterBody2D = $"."
 @onready var hurtbox_collision: CollisionShape2D = $HurtArea2D/HurtboxCollision
+@onready var floor_detector_left: RayCast2D = $FloorDetectorLeft
+@onready var floor_detector_right: RayCast2D = $FloorDetectorRight
+@onready var attack_timer: Timer = $AttackTimer
 
 
 var is_moving: bool
@@ -45,17 +48,19 @@ var current_tween: Tween = null
 var move_timer: float = 0.0
 var follow_distance: int = 64
 
-const SPEED = 100.0
+const SPEED = 2.8
 const JUMP_VELOCITY = -200.0
 
 func _ready() -> void:
 	start_position = position
 
 func _process(delta: float) -> void:
-	detect_light()
+	detect_light(delta)
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
+	if is_stunned:
+		return
 	if not is_on_floor():
 		velocity += get_gravity() * delta
 	elif is_moving:
@@ -77,15 +82,42 @@ func get_target(delta):
 		return
 	if vision.is_colliding():
 		var collider = vision.get_collider()
+		print(collider)
+		print(collider.get_groups())
 		if collider.is_in_group("player"):
 			var hurtbox = collider.global_position
 			target_position = hurtbox
 			charge_player(delta)
 
 func charge_player(delta):
-	pass
+	if attack_timer.time_left:
+		return
+	set_physics_process(false)
+	attacking = true
+	sprite.play("idle")
+	if is_stunned:
+		set_physics_process(true)
+		return
+	#play charge prep SFX
+	await get_tree().create_timer(1.0).timeout
+	sprite.play("run")
+	if is_stunned:
+		set_physics_process(true)
+		return
+	current_tween = create_tween()
+	current_tween.tween_property(boar, "global_position", Vector2(target_position.x, boar.global_position.y), 0.5)
+	if is_stunned:
+		set_physics_process(true)
+		return 
+	await get_tree().create_timer(0.6).timeout
+	sprite.play("idle")
+	await get_tree().create_timer(1.0).timeout
+	return_from_charge()
 
-func detect_light():
+
+func detect_light(delta):
+	if is_stunned:
+		return
 	if light_detector.is_colliding():
 		var collider = light_detector.get_collider()
 		print(collider)
@@ -100,34 +132,62 @@ func detect_light():
 			#return
 		elif collider.is_in_group("light_area"):
 			set_physics_process(false)
+			stop_current_tween()
 			sprite.play("idle")
-			print("stopping")
-			print(collider.global_position)
-			await get_tree().create_timer(2.0).timeout
-			begin_following()
+			if not patrolling:
+				vision.enabled = false
+				await get_tree().create_timer(1.0).timeout
+				return_to_position()
+				attack_timer.start()
+				await attack_timer.timeout
+				vision.enabled = true
+				attacking = false
+			begin_following(delta)
+			attacking = false
 
-func begin_following():
-	set_physics_process(true)
+func begin_following(delta: float):
+	if not patrolling:
+		set_physics_process(true)
+		return
+	if is_stunned:
+		return
+	#1. Calculate distance from current position to player. This should be the same as the current distance to the light's edge.
 	var player = get_tree().get_nodes_in_group("player")[0]
-	
+	var follow_distance = boar.global_position.distance_to(player.global_position)
+	var last_player_pos = player.global_position
+	var player_moving = false
+	attacking = false
+	#set_physics_process(false) # Disable physics processing to prevent conflicts
+
 	while true:
+		var current_player_pos = player.global_position
+		var player_movement = current_player_pos - last_player_pos
 		var distance_from_start = abs(boar.global_position.x - start_position.x)
+		player_moving = player_movement.length() > 1.0  # Small threshold to detect movement
+
+		#2. If player isn't moving, sprite.play("idle").
+		if not player_moving:
+			sprite.play("idle")
+		#3. If player is moving, sprite.play("walking"), then move towards the same direction and distance as the player, staying on the x-axis.
+		else:
+			sprite.play("walking")
+			var player_direction = player_movement.normalized()
+			boar.global_position.x = player.global_position.x - follow_distance
+
+		#4. If the player moves beyond patrol_distance, stop following, sprite.play("idle"), wait a moment, then return to the starting position.
 		
-		if distance_from_start >= patrol_distance:
-			# Return to start
+		if distance_from_start >= patrol_distance or not floor_detector_left.is_colliding() or not floor_detector_right.is_colliding():
+			sprite.play("idle")
+			await get_tree().create_timer(1.0).timeout
+
 			stop_current_tween()
 			current_tween = create_tween()
 			current_tween.tween_property(boar, "position", start_position, 1.0)
 			await current_tween.finished
+			set_physics_process(true)  # Re-enable physics when returning to normal
 			break
-		
-		# Move along the light edge
-		var player_pos = player.global_position
-		var boar_to_player = (player_pos - boar.global_position).normalized()
-		var perpendicular = Vector2(-boar_to_player.y, boar_to_player.x)
-		var movement_direction = perpendicular * direction
-		
-		boar.position += movement_direction * SPEED * get_physics_process_delta_time()
+
+		last_player_pos = current_player_pos
 		await get_tree().process_frame
 
 func detect_wall():
@@ -147,6 +207,8 @@ func stun():
 	print("stun")
 
 func patrol(delta):
+	if is_stunned:
+		return
 	if patrolling:
 		sprite.play("walking")
 		if patrol_time <= 0.0:
@@ -205,5 +267,20 @@ func recover_from_stun() -> void:
 
 func return_to_position():
 	stop_current_tween()
+	sprite.play("walking")
 	current_tween = create_tween()
 	current_tween.tween_property(boar, "position", start_position, 1.0)
+	await get_tree().create_timer(2.8).timeout
+	sprite.play("idle")
+	attacking = false
+	set_physics_process(true)
+
+func return_from_charge():
+	stop_current_tween()
+	sprite.play("walking")
+	current_tween = create_tween()
+	current_tween.tween_property(boar, "position", start_position, 1.0)
+	await get_tree().create_timer(1.0).timeout
+	sprite.play("idle")
+	attacking = false
+	set_physics_process(true)

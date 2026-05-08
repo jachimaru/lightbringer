@@ -396,7 +396,7 @@ size = Vector2(39.681755, 39.68175)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tuyoq"]
 size = Vector2(9.5, 15)
 
-[node name="Player" type="CharacterBody2D" unique_id=1181670398]
+[node name="Player" type="CharacterBody2D" unique_id=1181670398 groups=["player"]]
 z_index = 1
 collision_layer = 2
 script = ExtResource("1_g2els")
@@ -509,3 +509,6 @@ unique_name_in_owner = true
 wait_time = 0.1
 one_shot = true
 ignore_time_scale = true
+
+[node name="AudioListener2D" type="AudioListener2D" parent="." unique_id=970503395]
+current = true
