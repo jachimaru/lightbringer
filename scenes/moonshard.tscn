@@ -1,0 +1,53 @@
+[gd_scene format=3 uid="uid://bxshxawxvuhe0"]
+
+[ext_resource type="Texture2D" uid="uid://bjfc5pdytl7ix" path="res://art/Moon_Shard.png" id="1_ab8ph"]
+[ext_resource type="Script" uid="uid://cc08y4b7dbd4o" path="res://scripts/moonshard.gd" id="1_rvxbj"]
+[ext_resource type="Texture2D" uid="uid://bmq0gospgqfd7" path="res://art/Moon_Shard_Glow.png" id="2_il1ji"]
+[ext_resource type="Texture2D" uid="uid://d12ptmegx4a8f" path="res://art/Buttons Pack/PS4/CIRCLE.png" id="4_wlojv"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_rvxbj"]
+radius = 11.0
+height = 32.0
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_wlojv"]
+light_mode = 1
+
+[sub_resource type="Gradient" id="Gradient_4bxm0"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_5acd2"]
+gradient = SubResource("Gradient_4bxm0")
+fill = 1
+fill_from = Vector2(0.5, 0.6)
+fill_to = Vector2(0.44444445, 0.18376069)
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_rvxbj"]
+light_mode = 1
+
+[node name="Moonshard" type="Area2D" unique_id=9254901]
+collision_layer = 256
+collision_mask = 2
+script = ExtResource("1_rvxbj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=337206031]
+shape = SubResource("CapsuleShape2D_rvxbj")
+
+[node name="Body" type="Sprite2D" parent="." unique_id=797358134]
+material = SubResource("CanvasItemMaterial_wlojv")
+texture = ExtResource("1_ab8ph")
+
+[node name="Glow" type="Sprite2D" parent="." unique_id=1362779968]
+texture = ExtResource("2_il1ji")
+
+[node name="PointLight2D" type="PointLight2D" parent="Glow" unique_id=1630467895]
+texture = SubResource("GradientTexture2D_5acd2")
+
+[node name="Interact" type="Sprite2D" parent="." unique_id=1902653096]
+visible = false
+material = SubResource("CanvasItemMaterial_rvxbj")
+position = Vector2(0, -20)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("4_wlojv")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

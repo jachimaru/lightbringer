@@ -16,6 +16,7 @@ var in_collision: bool
 var in_firepit: bool
 var quit_game: bool
 var in_light: bool
+var moonshards: int
 
 signal add_light
 signal remove_light
@@ -33,9 +34,12 @@ signal pause_game
 signal unpause_game
 signal light_flame
 signal confirm
+signal moonshard
+signal shards_changed
 
 func _ready() -> void:
 	game_over.connect(func(): call_deferred("_gameover"))
+	moonshard.connect(update_moonshards)
 	health = 3
 	light = 1
 
@@ -52,3 +56,8 @@ func pause():
 
 func stop_movement():
 	get_tree().paused = true
+
+func update_moonshards():
+	moonshards += 1
+	shards_changed.emit()
+	print(moonshards)

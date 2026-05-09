@@ -4,6 +4,8 @@
 [ext_resource type="Texture2D" uid="uid://dlafufb010voh" path="res://art/9sliceblue.png" id="2_5d2l8"]
 [ext_resource type="Script" uid="uid://dajow552d6a5l" path="res://scripts/pause_menu.gd" id="2_7l7mv"]
 [ext_resource type="FontFile" uid="uid://dt4rpek6pj730" path="res://art/BitPotion.ttf" id="3_7l7mv"]
+[ext_resource type="Texture2D" uid="uid://d2ixr3rm566nh" path="res://art/Blank_Shard.png" id="5_v4r4p"]
+[ext_resource type="Texture2D" uid="uid://ikv3qjo1y6gw" path="res://art/Found_Shard.png" id="6_1s2dm"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_5d2l8"]
 light_mode = 1
@@ -33,7 +35,7 @@ unique_name_in_owner = true
 visible = false
 z_index = 100
 material = SubResource("CanvasItemMaterial_5d2l8")
-custom_minimum_size = Vector2(256, 482)
+custom_minimum_size = Vector2(256, 360)
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -42,7 +44,7 @@ anchor_bottom = 0.5
 offset_left = -128.0
 offset_top = -241.0
 offset_right = 128.0
-offset_bottom = 241.0
+offset_bottom = 119.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("2_5d2l8")
@@ -57,9 +59,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -112.0
-offset_top = -196.0
+offset_top = -143.0
 offset_right = 112.0
-offset_bottom = 212.0
+offset_bottom = 161.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -111,6 +113,104 @@ custom_minimum_size = Vector2(128, 32)
 layout_mode = 2
 theme = ExtResource("1_kukqi")
 text = "Exit Game"
+
+[node name="Label" type="Label" parent="CanvasLayer/Menu/VBoxContainer/CenterContainer/VBoxContainer" unique_id=1191160308]
+layout_mode = 2
+theme = ExtResource("1_kukqi")
+text = "Moon Shards"
+horizontal_alignment = 1
+
+[node name="Node2D" type="Node2D" parent="CanvasLayer/Menu/VBoxContainer/CenterContainer/VBoxContainer" unique_id=137587839]
+
+[node name="BlankShard" type="Sprite2D" parent="CanvasLayer/Menu/VBoxContainer/CenterContainer/VBoxContainer/Node2D" unique_id=1111597081]
+position = Vector2(16, 154)
+texture = ExtResource("5_v4r4p")
+
+[node name="FoundShard" type="Sprite2D" parent="CanvasLayer/Menu/VBoxContainer/CenterContainer/VBoxContainer/Node2D/BlankShard" unique_id=1778901939]
+unique_name_in_owner = true
+visible = false
+texture = ExtResource("6_1s2dm")
+
+[node name="BlankShard2" type="Sprite2D" parent="CanvasLayer/Menu/VBoxContainer/CenterContainer/VBoxContainer/Node2D" unique_id=1392845775]
+position = Vector2(48, 154)
+texture = ExtResource("5_v4r4p")
+
+[node name="FoundShard2" type="Sprite2D" parent="CanvasLayer/Menu/VBoxContainer/CenterContainer/VBoxContainer/Node2D/BlankShard2" unique_id=312739429]
+unique_name_in_owner = true
+visible = false
+texture = ExtResource("6_1s2dm")
+
+[node name="BlankShard3" type="Sprite2D" parent="CanvasLayer/Menu/VBoxContainer/CenterContainer/VBoxContainer/Node2D" unique_id=1478292641]
+position = Vector2(80, 154)
+texture = ExtResource("5_v4r4p")
+
+[node name="FoundShard3" type="Sprite2D" parent="CanvasLayer/Menu/VBoxContainer/CenterContainer/VBoxContainer/Node2D/BlankShard3" unique_id=61249990]
+unique_name_in_owner = true
+visible = false
+texture = ExtResource("6_1s2dm")
+
+[node name="BlankShard4" type="Sprite2D" parent="CanvasLayer/Menu/VBoxContainer/CenterContainer/VBoxContainer/Node2D" unique_id=144846895]
+position = Vector2(112, 154)
+texture = ExtResource("5_v4r4p")
+
+[node name="FoundShard4" type="Sprite2D" parent="CanvasLayer/Menu/VBoxContainer/CenterContainer/VBoxContainer/Node2D/BlankShard4" unique_id=2134700979]
+unique_name_in_owner = true
+visible = false
+texture = ExtResource("6_1s2dm")
+
+[node name="BlankShard5" type="Sprite2D" parent="CanvasLayer/Menu/VBoxContainer/CenterContainer/VBoxContainer/Node2D" unique_id=1587419527]
+position = Vector2(32, 178)
+texture = ExtResource("5_v4r4p")
+
+[node name="FoundShard5" type="Sprite2D" parent="CanvasLayer/Menu/VBoxContainer/CenterContainer/VBoxContainer/Node2D/BlankShard5" unique_id=1713760654]
+unique_name_in_owner = true
+visible = false
+texture = ExtResource("6_1s2dm")
+
+[node name="BlankShard6" type="Sprite2D" parent="CanvasLayer/Menu/VBoxContainer/CenterContainer/VBoxContainer/Node2D" unique_id=434079305]
+position = Vector2(64, 178)
+texture = ExtResource("5_v4r4p")
+
+[node name="FoundShard6" type="Sprite2D" parent="CanvasLayer/Menu/VBoxContainer/CenterContainer/VBoxContainer/Node2D/BlankShard6" unique_id=674169629]
+unique_name_in_owner = true
+visible = false
+texture = ExtResource("6_1s2dm")
+
+[node name="BlankShard7" type="Sprite2D" parent="CanvasLayer/Menu/VBoxContainer/CenterContainer/VBoxContainer/Node2D" unique_id=952226285]
+position = Vector2(96, 178)
+texture = ExtResource("5_v4r4p")
+
+[node name="FoundShard7" type="Sprite2D" parent="CanvasLayer/Menu/VBoxContainer/CenterContainer/VBoxContainer/Node2D/BlankShard7" unique_id=316654255]
+unique_name_in_owner = true
+visible = false
+texture = ExtResource("6_1s2dm")
+
+[node name="BlankShard8" type="Sprite2D" parent="CanvasLayer/Menu/VBoxContainer/CenterContainer/VBoxContainer/Node2D" unique_id=1713657292]
+position = Vector2(48, 202)
+texture = ExtResource("5_v4r4p")
+
+[node name="FoundShard8" type="Sprite2D" parent="CanvasLayer/Menu/VBoxContainer/CenterContainer/VBoxContainer/Node2D/BlankShard8" unique_id=432058496]
+unique_name_in_owner = true
+visible = false
+texture = ExtResource("6_1s2dm")
+
+[node name="BlankShard9" type="Sprite2D" parent="CanvasLayer/Menu/VBoxContainer/CenterContainer/VBoxContainer/Node2D" unique_id=46313731]
+position = Vector2(80, 202)
+texture = ExtResource("5_v4r4p")
+
+[node name="FoundShard9" type="Sprite2D" parent="CanvasLayer/Menu/VBoxContainer/CenterContainer/VBoxContainer/Node2D/BlankShard9" unique_id=915231791]
+unique_name_in_owner = true
+visible = false
+texture = ExtResource("6_1s2dm")
+
+[node name="BlankShard10" type="Sprite2D" parent="CanvasLayer/Menu/VBoxContainer/CenterContainer/VBoxContainer/Node2D" unique_id=1227890607]
+position = Vector2(64, 226)
+texture = ExtResource("5_v4r4p")
+
+[node name="FoundShard10" type="Sprite2D" parent="CanvasLayer/Menu/VBoxContainer/CenterContainer/VBoxContainer/Node2D/BlankShard10" unique_id=282260260]
+unique_name_in_owner = true
+visible = false
+texture = ExtResource("6_1s2dm")
 
 [connection signal="pressed" from="CanvasLayer/Menu/VBoxContainer/CenterContainer/VBoxContainer/SettingsButton" to="." method="_on_settings_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/Menu/VBoxContainer/CenterContainer/VBoxContainer/CloseButton" to="." method="_on_close_button_pressed"]
