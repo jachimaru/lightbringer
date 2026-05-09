@@ -36,6 +36,7 @@ signal light_flame
 signal confirm
 signal moonshard
 signal shards_changed
+signal level_change
 
 func _ready() -> void:
 	game_over.connect(func(): call_deferred("_gameover"))

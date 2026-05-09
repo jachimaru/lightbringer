@@ -12,6 +12,7 @@ light_mode = 1
 
 [node name="PauseMenu" type="CenterContainer" unique_id=1725859150]
 process_mode = 3
+top_level = true
 z_index = 100
 material = SubResource("CanvasItemMaterial_5d2l8")
 anchors_preset = 8
@@ -33,6 +34,7 @@ script = ExtResource("2_7l7mv")
 [node name="Menu" type="NinePatchRect" parent="CanvasLayer" unique_id=1821390699]
 unique_name_in_owner = true
 visible = false
+top_level = true
 z_index = 100
 material = SubResource("CanvasItemMaterial_5d2l8")
 custom_minimum_size = Vector2(256, 360)

@@ -4,6 +4,9 @@
 [ext_resource type="Texture2D" uid="uid://ba7kpsrmcfo7r" path="res://art/Snail.png" id="1_oqbjf"]
 [ext_resource type="Script" uid="uid://gcb3p7yqf0mt" path="res://scripts/hit_area.gd" id="2_5b1ba"]
 
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_5b1ba"]
+blend_mode = 2
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_er827"]
 atlas = ExtResource("1_oqbjf")
 region = Rect2(0, 96, 48, 32)
@@ -370,6 +373,7 @@ collision_mask = 3
 script = ExtResource("1_5b1ba")
 
 [node name="SnailSprite" type="AnimatedSprite2D" parent="." unique_id=964033473]
+material = SubResource("CanvasItemMaterial_5b1ba")
 sprite_frames = SubResource("SpriteFrames_2kx4o")
 animation = &"walking"
 autoplay = "walking"

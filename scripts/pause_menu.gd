@@ -23,10 +23,12 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("interact"):
+		Transition.pause_vignette_off()
 		menu.visible = false
 
 func show_menu():
 	menu.visible = true
+	Transition.pause_vignette_on()
 	TextPopups.confirmation.visible = false
 	get_tree().paused = true
 	settings_button.grab_focus()

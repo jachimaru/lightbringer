@@ -7,11 +7,23 @@
 [ext_resource type="PackedScene" uid="uid://nrteh73o8f6x" path="res://scenes/hud.tscn" id="6_en57c"]
 [ext_resource type="Texture2D" uid="uid://dfui1bv68tty5" path="res://art/parallax/forest/back.png" id="7_le7vp"]
 [ext_resource type="PackedScene" uid="uid://dnl1cqvr7n8oe" path="res://scenes/text_popups.tscn" id="9_6qj3s"]
+[ext_resource type="PackedScene" uid="uid://sfp7hy0r5nau" path="res://scenes/transition.tscn" id="10_fa2fc"]
 [ext_resource type="PackedScene" uid="uid://dm2122xkv8tia" path="res://scenes/pause_menu.tscn" id="11_i0pct"]
 [ext_resource type="PackedScene" uid="uid://by1e2s80yrcjd" path="res://scenes/autotile.tscn" id="12_cr54y"]
 
 [node name="World" type="Node2D" unique_id=315622911]
 script = ExtResource("1_cja2u")
+
+[node name="PauseMenu" parent="." unique_id=1725859150 instance=ExtResource("11_i0pct")]
+anchors_preset = 15
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -128.0
+offset_bottom = 128.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
 
 [node name="Parallax2D" type="Parallax2D" parent="." unique_id=311073064]
 scale = Vector2(0.8, 0.8)
@@ -148,18 +160,12 @@ range_z_max = 10
 range_item_cull_mask = 513
 
 [node name="HUD" parent="." unique_id=1844353309 instance=ExtResource("6_en57c")]
+layer = 2
 
 [node name="Text Popups" parent="." unique_id=481894209 instance=ExtResource("9_6qj3s")]
-
-[node name="PauseMenu" parent="." unique_id=1725859150 instance=ExtResource("11_i0pct")]
-anchors_preset = 15
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = -128.0
-offset_bottom = 128.0
-size_flags_horizontal = 4
-size_flags_vertical = 4
+layer = 0
 
 [node name="TileMapLayer" parent="." unique_id=46602560 instance=ExtResource("12_cr54y")]
+
+[node name="Transition" parent="." unique_id=24996475 instance=ExtResource("10_fa2fc")]
+layer = 0

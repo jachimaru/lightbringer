@@ -5,6 +5,9 @@
 [ext_resource type="Script" uid="uid://dnwx5ifjnutta" path="res://scripts/hurt_area.gd" id="3_oynbf"]
 [ext_resource type="Script" uid="uid://gcb3p7yqf0mt" path="res://scripts/hit_area.gd" id="3_qf6nb"]
 
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_qf6nb"]
+blend_mode = 2
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_vie5o"]
 atlas = ExtResource("1_1q2x0")
 region = Rect2(0, 64, 64, 64)
@@ -136,6 +139,7 @@ move_distance = 150.0
 move_time = 2.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=20338560]
+material = SubResource("CanvasItemMaterial_qf6nb")
 sprite_frames = SubResource("SpriteFrames_vq5cx")
 animation = &"idle"
 autoplay = "idle"
