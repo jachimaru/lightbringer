@@ -17,6 +17,7 @@ var in_firepit: bool
 var quit_game: bool
 var in_light: bool
 var moonshards: int
+var damaged: bool
 
 signal add_light
 signal remove_light
@@ -38,6 +39,7 @@ signal moonshard
 signal shards_changed
 signal level_change
 
+
 func _ready() -> void:
 	game_over.connect(func(): call_deferred("_gameover"))
 	moonshard.connect(update_moonshards)
@@ -46,10 +48,10 @@ func _ready() -> void:
 
 func _gameover():
 	print("you died")
-	get_tree().change_scene_to_file("res://scenes/world.tscn")
+	health = 3
+	get_tree().change_scene_to_file("res://scenes/start_menu.tscn")
 
 func reset():
-	health = 3
 	light = 1
 
 func pause():

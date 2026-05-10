@@ -11,6 +11,15 @@
 [ext_resource type="PackedScene" uid="uid://dm2122xkv8tia" path="res://scenes/pause_menu.tscn" id="11_i0pct"]
 [ext_resource type="PackedScene" uid="uid://by1e2s80yrcjd" path="res://scenes/autotile.tscn" id="12_cr54y"]
 
+[sub_resource type="Gradient" id="Gradient_b8uj7"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_fa2fc"]
+gradient = SubResource("Gradient_b8uj7")
+fill = 1
+fill_from = Vector2(0.5, 0)
+fill_to = Vector2(0.51282054, 0.5555556)
+
 [node name="World" type="Node2D" unique_id=315622911]
 script = ExtResource("1_cja2u")
 
@@ -168,4 +177,10 @@ layer = 0
 [node name="TileMapLayer" parent="." unique_id=46602560 instance=ExtResource("12_cr54y")]
 
 [node name="Transition" parent="." unique_id=24996475 instance=ExtResource("10_fa2fc")]
-layer = 0
+
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=678634515]
+position = Vector2(-1.9999998, -24)
+scale = Vector2(1.1875, 5.125)
+color = Color(0.1105, 0.43095008, 0.85, 1)
+energy = 8.0
+texture = SubResource("GradientTexture2D_fa2fc")

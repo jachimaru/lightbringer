@@ -5,7 +5,9 @@ func _ready() -> void:
 
 
 func _on_area_entered(hit_area: HitArea2D) -> void:
-	if hit_area != null and owner.has_method("take_damage"):
+	if GameManager.damaged:
+		return
+	elif hit_area != null and owner.has_method("take_damage"):
 		owner.take_damage()
 		print(owner)
 	elif hit_area != null and owner.has_method("stun"):

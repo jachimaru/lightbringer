@@ -30,6 +30,7 @@ theme = ExtResource("1_kukqi")
 script = ExtResource("2_7l7mv")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=2095750817]
+layer = 10
 
 [node name="Menu" type="NinePatchRect" parent="CanvasLayer" unique_id=1821390699]
 unique_name_in_owner = true

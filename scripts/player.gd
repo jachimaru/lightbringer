@@ -12,6 +12,9 @@ extends CharacterBody2D
 @onready var cone_collider: CollisionShape2D = %ConeCollider
 @onready var hurt_area_2d: HurtArea2D = $HurtArea2D
 @onready var cooldown_timer: Timer = %CooldownTimer
+@onready var player: CharacterBody2D = $"."
+@onready var hurt_area_collision: CollisionShape2D = $HurtArea2D/HurtAreaCollision
+@onready var cone_area: Area2D = $LanternSprite/ConeLight/ConeArea
 
 const SPEED = 120.0
 const JUMP_VELOCITY = -250.0
@@ -143,13 +146,21 @@ func _toggle_lantern():
 		lantern_light.visible = false
 		radius_collider.disabled = true
 		cone_light.visible = true
-		cone_collider.disabled = false
+		hit_area_2d.visible = true
+		spell_collision.visible = true
+		cone_collider.visible = false
+		cone_area.visible = false
 		spell_collision.disabled = false
 		hit_area_2d.monitorable = true
 		cooldown_timer.start()
 		await cooldown_timer.timeout
+		hit_area_2d.visible = false
+		spell_collision.visible = false
+		cone_collider.visible = true
+		cone_area.visible = true
 		spell_collision.disabled = true
 		hit_area_2d.monitorable = false
+		cone_collider.disabled = false
 
 	else:
 		light_mode = false
@@ -198,5 +209,22 @@ func handle_animations():
 func take_damage():
 	GameManager.health -= 1
 	GameManager.health_changed.emit()
+	GameManager.damaged = true
+	player_collision.disabled = true
+	player.set_collision_mask_value(1, false)
+	player_sprite.flip_v = true
+	hurt_area_2d.monitoring = false
+	hurt_area_collision.disabled = true
+	velocity.y = JUMP_VELOCITY * 0.5
+	Engine.time_scale = 0.25
+	await Transition.fade_to_black()
+	Engine.time_scale = 1
+	GameManager.damaged = false
+	hurt_area_2d.monitoring = true
+	hurt_area_collision.disabled = false
+	player.set_collision_mask_value(1, true)
+	player_collision.disabled = false
+	player_sprite.flip_v = false
 	global_position = starting_position
 	if GameManager.health <= 0: GameManager.game_over.emit()
+	await Transition.fade_from_black()

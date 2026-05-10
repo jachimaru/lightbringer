@@ -55,30 +55,35 @@ func set_move_route(delta):
 func detect_light(delta):
 	var collider = light_detector.get_collider()
 	if light_detector.is_colliding():
-		direction = direction * -1
-		if direction == 1:
-			snail_sprite.flip_h = true
-			light_detector.target_position.x = 23.0
-			in_shell_collision.position.x = default_pos_in_shell * -1
-			out_shell_collision.position.x = default_pos_out_shell * -1
-			damage_collision.position.x = default_pos_damage * -1
-		if direction == -1:
-			snail_sprite.flip_h = false
-			light_detector.target_position.x = -23.0
-			in_shell_collision.position.x = default_pos_in_shell
-			out_shell_collision.position.x = default_pos_out_shell
-			damage_collision.position.x = default_pos_damage
-		if collider.is_in_group("cone_area"):
+		if collider.is_in_group("light_area"):
+			direction = direction * -1
 			if direction == 1:
 				snail_sprite.flip_h = true
-				light_detector.target_position.x = 23.0
+				light_detector.target_position.x = 28.0
+				light_detector.position.x = -5.0
+				in_shell_collision.position.x = default_pos_in_shell * -1
+				out_shell_collision.position.x = default_pos_out_shell * -1
+				damage_collision.position.x = default_pos_damage * -1
+			if direction == -1:
+				snail_sprite.flip_h = false
+				light_detector.target_position.x = -28.0
+				light_detector.position.x = 5.0
+				in_shell_collision.position.x = default_pos_in_shell
+				out_shell_collision.position.x = default_pos_out_shell
+				damage_collision.position.x = default_pos_damage
+		elif collider.is_in_group("cone_area"):
+			if direction == 1:
+				snail_sprite.flip_h = true
+				light_detector.target_position.x = 28.0
+				light_detector.position.x = -5.0
 				in_shell_collision.position.x = default_pos_in_shell * -1
 				out_shell_collision.position.x = default_pos_out_shell * -1
 				damage_collision.position.x = default_pos_damage * -1
 				direction = direction * -1
 			if direction == -1:
 				snail_sprite.flip_h = false
-				light_detector.target_position.x = -23.0
+				light_detector.target_position.x = -28.0
+				light_detector.position.x = 5.0
 				in_shell_collision.position.x = default_pos_in_shell
 				out_shell_collision.position.x = default_pos_out_shell
 				damage_collision.position.x = default_pos_damage
@@ -96,3 +101,5 @@ func detect_light(delta):
 			direction = direction * -1
 			set_physics_process(true)
 			damage_collision.disabled = false
+		else:
+			return

@@ -16,4 +16,5 @@ func _input(event: InputEvent) -> void:
 	if player_in && Input.is_action_just_pressed("interact"):
 		GameManager.moonshard.emit()
 		print("Moonshard collected!")
-		queue_free()
+		GameManager.level_change.emit()
+		get_tree().paused = true

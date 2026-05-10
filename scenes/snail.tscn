@@ -411,8 +411,8 @@ target_position = Vector2(24, 0)
 
 [node name="LightDetector" type="RayCast2D" parent="." unique_id=796293786]
 unique_name_in_owner = true
-position = Vector2(0, 8)
-target_position = Vector2(-23, 0)
+position = Vector2(5, 8)
+target_position = Vector2(-28, 0)
 collision_mask = 272
 collide_with_areas = true
 collide_with_bodies = false

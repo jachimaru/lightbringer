@@ -22,7 +22,7 @@ func _ready() -> void:
 	GameManager.shards_changed.connect(update_shards)
 
 func _process(delta: float) -> void:
-	if Input.is_action_just_pressed("interact"):
+	if Input.is_action_just_pressed("interact") && menu.visible:
 		Transition.pause_vignette_off()
 		menu.visible = false
 
