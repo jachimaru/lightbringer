@@ -1,6 +1,6 @@
 extends Node
 
-var health: int
+var health: int = 3
 var light: int
 var lantern_cone: bool = false
 var has_glide: bool = false
@@ -43,8 +43,6 @@ signal level_change
 func _ready() -> void:
 	game_over.connect(func(): call_deferred("_gameover"))
 	moonshard.connect(update_moonshards)
-	health = 3
-	light = 1
 
 func _gameover():
 	print("you died")
