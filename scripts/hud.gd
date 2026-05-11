@@ -4,6 +4,7 @@ extends CanvasLayer
 @onready var health_0: TextureRect = %Health0
 @onready var health_1: TextureRect = %Health1
 @onready var health_2: TextureRect = %Health2
+@onready var hud: CanvasLayer = $"."
 
 
 var flame_count = 0
@@ -15,7 +16,8 @@ func _ready() -> void:
 	GameManager.add_light.connect(_add_light)
 	GameManager.remove_light.connect(_remove_light)
 	GameManager.health_changed.connect(_update_health)
-	update_count()
+	GameManager.reset_flames.connect(reset)
+	#update_count()
 
 func _add_light():
 	flame_count += 1
@@ -33,3 +35,8 @@ func _update_health():
 	if GameManager.health == 2: health_2.visible = false
 	elif GameManager.health == 1: health_1.visible = false
 	elif GameManager.health == 0: health_0.visible = false
+
+func reset():
+	flame_count == 0
+	flame_count_label.text = str(flame_count)
+	print("resetting")

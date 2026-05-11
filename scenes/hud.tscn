@@ -10,6 +10,7 @@ font = ExtResource("2_6fi6k")
 font_size = 32
 
 [node name="HUD" type="CanvasLayer" unique_id=1844353309]
+visible = false
 script = ExtResource("1_6fi6k")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=215274685]

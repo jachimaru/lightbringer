@@ -20,6 +20,7 @@ config/icon="res://icon.svg"
 GameManager="*uid://drrrqv5empojy"
 TextPopups="*uid://dnl1cqvr7n8oe"
 Transition="*uid://sfp7hy0r5nau"
+Hud="*uid://nrteh73o8f6x"
 
 [global_group]
 

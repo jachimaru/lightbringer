@@ -19,25 +19,42 @@ var in_light: bool
 var moonshards: int
 var damaged: bool
 
+@warning_ignore("unused_signal")
 signal add_light
+@warning_ignore("unused_signal")
 signal remove_light
+@warning_ignore("unused_signal")
 signal player_interact
+@warning_ignore("unused_signal")
 signal player_casting
+@warning_ignore("unused_signal")
 signal health_changed
 signal game_over
+@warning_ignore("unused_signal")
 signal deal_damage
+@warning_ignore("unused_signal")
 signal show_popup
+@warning_ignore("unused_signal")
 signal hide_popup
+@warning_ignore("unused_signal")
 signal waiting_input
+@warning_ignore("unused_signal")
 signal tooltip_collision_entered
+@warning_ignore("unused_signal")
 signal tooltip_collision_exited
+@warning_ignore("unused_signal")
 signal pause_game
+@warning_ignore("unused_signal")
 signal unpause_game
+@warning_ignore("unused_signal")
 signal light_flame
+@warning_ignore("unused_signal")
 signal confirm
 signal moonshard
 signal shards_changed
+@warning_ignore("unused_signal")
 signal level_change
+signal reset_flames
 
 
 func _ready() -> void:

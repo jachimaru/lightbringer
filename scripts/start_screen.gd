@@ -13,6 +13,7 @@ func _on_start_game_pressed() -> void:
 	await Transition.fade_to_black()
 	get_tree().change_scene_to_file("res://scenes/levelone.tscn")
 	Transition.fade_from_black()
+	Hud.hud.visible = true
 
 
 func _on_quit_pressed() -> void:

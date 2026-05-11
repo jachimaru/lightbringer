@@ -8,6 +8,7 @@ func _ready():
 	GameManager.reset()
 	GameManager.unpause_game.connect(unpause_game)
 	GameManager.level_change.connect(change_level)
+	GameManager.reset_flames.emit()
 	await Transition.fade_from_black()
 
 func _process(delta: float) -> void:
@@ -21,5 +22,6 @@ func unpause_game():
 func change_level():
 	if not next_level is PackedScene: return
 	await Transition.fade_to_black()
+	GameManager.reset()
 	get_tree().paused = false
 	get_tree().change_scene_to_packed(next_level)
