@@ -8,7 +8,6 @@ func _ready():
 	GameManager.reset()
 	GameManager.unpause_game.connect(unpause_game)
 	GameManager.level_change.connect(change_level)
-	GameManager.reset_flames.emit()
 	await Transition.fade_from_black()
 
 func _process(delta: float) -> void:

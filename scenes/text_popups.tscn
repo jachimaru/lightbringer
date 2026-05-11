@@ -17,6 +17,7 @@
 
 [node name="Text Popups" type="CanvasLayer" unique_id=481894209]
 process_mode = 3
+layer = 11
 script = ExtResource("1_pmmbg")
 
 [node name="PopupContainer" type="CenterContainer" parent="." unique_id=680856043]
@@ -95,6 +96,7 @@ icon = ExtResource("5_asitr")
 [node name="Confirmation" type="Control" parent="PopupContainer" unique_id=1073480668]
 unique_name_in_owner = true
 visible = false
+z_index = 110
 layout_mode = 2
 
 [node name="NinePatchRect" type="NinePatchRect" parent="PopupContainer/Confirmation" unique_id=1124042313]

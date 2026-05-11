@@ -1,10 +1,13 @@
 [gd_scene format=4 uid="uid://disvat2cnyrsf"]
 
 [ext_resource type="PackedScene" uid="uid://nu0qw5rmcqv7" path="res://scenes/world_template.tscn" id="1_n4j8l"]
+[ext_resource type="PackedScene" uid="uid://bjt65ccvywn3f" path="res://scenes/levelthree.tscn" id="2_plw45"]
 [ext_resource type="PackedScene" uid="uid://dhih5bkgcs30i" path="res://scenes/firepit.tscn" id="2_ssian"]
-[ext_resource type="PackedScene" uid="uid://d304xkdanmqga" path="res://scenes/start_menu.tscn" id="2_x7lkv"]
+[ext_resource type="Texture2D" uid="uid://dfui1bv68tty5" path="res://art/parallax/forest/back.png" id="3_plw45"]
 [ext_resource type="PackedScene" uid="uid://drvya6d7eejhv" path="res://scenes/snail.tscn" id="3_x7lkv"]
+[ext_resource type="Texture2D" uid="uid://yj3reg6chmq8" path="res://art/parallax/forest/far.png" id="4_8e2ig"]
 [ext_resource type="PackedScene" uid="uid://dwfujlouad5os" path="res://scenes/droplet.tscn" id="4_lm30b"]
+[ext_resource type="Texture2D" uid="uid://bswasjfsb7r3q" path="res://art/parallax/forest/middle.png" id="5_1bpo3"]
 [ext_resource type="PackedScene" uid="uid://co40ka6e3y0r2" path="res://scenes/hazard_area.tscn" id="6_lm30b"]
 [ext_resource type="PackedScene" uid="uid://bxshxawxvuhe0" path="res://scenes/moonshard.tscn" id="7_7gfeg"]
 [ext_resource type="PackedScene" uid="uid://d2ru6ixuvl4es" path="res://scenes/sign.tscn" id="8_nu3ux"]
@@ -16,16 +19,49 @@ size = Vector2(112, 13)
 size = Vector2(48, 13)
 
 [node name="World" unique_id=315622911 instance=ExtResource("1_n4j8l")]
-next_level = ExtResource("2_x7lkv")
+next_level = ExtResource("2_plw45")
 
 [node name="Parallax2D" parent="." index="1" unique_id=311073064]
 scroll_offset = Vector2(-80.00003, -81)
 
+[node name="Sprite2D12" type="Sprite2D" parent="Parallax2D" index="11" unique_id=1696412394]
+position = Vector2(1584, 1.25)
+texture = ExtResource("3_plw45")
+
+[node name="Sprite2D13" type="Sprite2D" parent="Parallax2D" index="12" unique_id=790048820]
+position = Vector2(1728, 1.25)
+texture = ExtResource("3_plw45")
+
 [node name="Parallax2D2" parent="." index="2" unique_id=387440250]
 scroll_offset = Vector2(-80.00003, -81)
 
+[node name="Sprite2D11" parent="Parallax2D2" index="10" unique_id=1104556508]
+position = Vector2(1472, 1.25)
+
+[node name="Sprite2D12" type="Sprite2D" parent="Parallax2D2" index="11" unique_id=432615346]
+position = Vector2(1648, 1.25)
+texture = ExtResource("4_8e2ig")
+
+[node name="Sprite2D13" type="Sprite2D" parent="Parallax2D2" index="12" unique_id=2131573056]
+position = Vector2(1824, 1.25)
+texture = ExtResource("4_8e2ig")
+
+[node name="Sprite2D14" type="Sprite2D" parent="Parallax2D2" index="13" unique_id=1390358966]
+position = Vector2(1481.25, -718.75)
+scale = Vector2(5, 5)
+texture = ExtResource("4_8e2ig")
+
+[node name="Sprite2D15" type="Sprite2D" parent="Parallax2D2" index="14" unique_id=231496972]
+position = Vector2(513, -839)
+scale = Vector2(6, 6)
+texture = ExtResource("4_8e2ig")
+
 [node name="Parallax2D3" parent="." index="3" unique_id=2040580100]
 scroll_offset = Vector2(-80.00003, -81)
+
+[node name="Sprite2D11" type="Sprite2D" parent="Parallax2D3" index="5" unique_id=1503097301]
+position = Vector2(1690, 1.2499962)
+texture = ExtResource("5_1bpo3")
 
 [node name="Player" parent="." index="4" unique_id=1181670398]
 position = Vector2(-47, -132)

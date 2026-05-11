@@ -37,6 +37,6 @@ func _update_health():
 	elif GameManager.health == 0: health_0.visible = false
 
 func reset():
-	flame_count == 0
+	flame_count = 0
 	flame_count_label.text = str(flame_count)
 	print("resetting")

@@ -20,6 +20,7 @@ extends CharacterBody2D
 @export var patrol_distance: float
 @export var patrol_time: float
 @export var patrolling: bool #True, this Boar patrols equal to patrol_distance. False, it stays idle.
+@export var flipped: bool
 
 @onready var hit_area_2d: HitArea2D = %HitArea2D
 @onready var light_detector: RayCast2D = $LightDetector
@@ -58,7 +59,9 @@ func _process(delta: float) -> void:
 	detect_light(delta)
 
 func _physics_process(delta: float) -> void:
-	# Add the gravity.
+	if flipped == true:
+		flip_sprite()
+		flipped = false
 	if is_stunned:
 		return
 	if not is_on_floor():
@@ -113,7 +116,6 @@ func charge_player(delta):
 	sprite.play("idle")
 	await get_tree().create_timer(1.0).timeout
 	return_from_charge()
-
 
 func detect_light(delta):
 	if is_stunned:
@@ -284,3 +286,26 @@ func return_from_charge():
 	sprite.play("idle")
 	attacking = false
 	set_physics_process(true)
+
+func flip_sprite():
+	direction *= -1
+	if direction == 1:
+		sprite.flip_h = true
+		body_lower.position.x = 1.0
+		body_upper.position.x = 1.0
+		light_detector.rotation_degrees = 180
+		wall_detector.rotation_degrees = 180
+		vision.rotation_degrees = 180
+		tusk.position.x = 15.5
+		eyes.position.x = 12.0
+		hurtbox_collision.position.x = 15.75
+	else:
+		sprite.flip_h = false
+		body_lower.position.x = -1.0
+		body_upper.position.x = -1.0
+		light_detector.rotation_degrees = 0
+		wall_detector.rotation_degrees = 0
+		vision.rotation_degrees = 0
+		tusk.position.x = -15.5
+		eyes.position.x = -12.0
+		hurtbox_collision.position.x = -15.75

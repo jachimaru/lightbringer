@@ -17,4 +17,5 @@ func _input(event: InputEvent) -> void:
 		GameManager.moonshard.emit()
 		print("Moonshard collected!")
 		GameManager.level_change.emit()
+		GameManager.reset_flames.emit()
 		get_tree().paused = true
