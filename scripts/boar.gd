@@ -59,9 +59,6 @@ func _process(delta: float) -> void:
 	detect_light(delta)
 
 func _physics_process(delta: float) -> void:
-	if flipped == true:
-		flip_sprite()
-		flipped = false
 	if is_stunned:
 		return
 	if not is_on_floor():
@@ -69,7 +66,11 @@ func _physics_process(delta: float) -> void:
 	elif is_moving:
 		sprite.play("walking")
 	else: sprite.play("idle")
-
+	
+	if flipped == true:
+		flip_sprite()
+		flipped = false
+		
 	if patrolling:
 		is_moving = true
 		patrol(delta)

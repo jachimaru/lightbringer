@@ -1,36 +1,41 @@
-[gd_scene format=3 uid="uid://bypy8lnkhbyvh"]
+[gd_scene format=3 uid="uid://htspf8jtggwg"]
 
-[ext_resource type="Texture2D" uid="uid://bwdc07b0bjb1t" path="res://art/tiles/DarkForest.png" id="1_78l7j"]
-[ext_resource type="Script" uid="uid://21k3nvcjry7f" path="res://scripts/light_platform.gd" id="1_wkdm4"]
+[ext_resource type="Script" uid="uid://dpnmlpjijyg8i" path="res://scripts/shadow_platform.gd" id="1_puu7s"]
+[ext_resource type="Texture2D" uid="uid://bwdc07b0bjb1t" path="res://art/tiles/DarkForest.png" id="2_dxcko"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wkdm4"]
-size = Vector2(32, 16)
+size = Vector2(48, 16)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rc80w"]
-size = Vector2(30, 14)
+size = Vector2(46, 14)
 
-[node name="LightPlatform" type="AnimatableBody2D" unique_id=939896139]
+[node name="ShadowPlatform" type="AnimatableBody2D" unique_id=939896139]
 collision_mask = 2
-script = ExtResource("1_wkdm4")
+script = ExtResource("1_puu7s")
 
 [node name="Sprites" type="Node2D" parent="." unique_id=192298846]
-visible = false
+position = Vector2(-8, 0)
 
 [node name="Sprite" type="Sprite2D" parent="Sprites" unique_id=1592721133]
 position = Vector2(-8, 0)
-texture = ExtResource("1_78l7j")
+texture = ExtResource("2_dxcko")
 region_enabled = true
 region_rect = Rect2(0, 0, 16, 16)
 
-[node name="Sprite2" type="Sprite2D" parent="Sprites" unique_id=589153017]
+[node name="Sprite3" type="Sprite2D" parent="Sprites" unique_id=1763619509]
 position = Vector2(8, 0)
-texture = ExtResource("1_78l7j")
+texture = ExtResource("2_dxcko")
+region_enabled = true
+region_rect = Rect2(16, 0, 16, 16)
+
+[node name="Sprite2" type="Sprite2D" parent="Sprites" unique_id=589153017]
+position = Vector2(24, 0)
+texture = ExtResource("2_dxcko")
 region_enabled = true
 region_rect = Rect2(80, 0, 16, 16)
 
 [node name="Collision" type="CollisionShape2D" parent="." unique_id=900291742]
 shape = SubResource("RectangleShape2D_wkdm4")
-disabled = true
 
 [node name="LightDetector" type="Area2D" parent="." unique_id=1810493600]
 collision_layer = 0

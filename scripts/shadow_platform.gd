@@ -15,11 +15,11 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if lit:
-		sprites.visible = true
-		body_collision.disabled = false
-	else:
 		sprites.visible = false
 		body_collision.disabled = true
+	else:
+		sprites.visible = true
+		body_collision.disabled = false
 
 
 func _on_light_detector_area_entered(area: Area2D) -> void:
