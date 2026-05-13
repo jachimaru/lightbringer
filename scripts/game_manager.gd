@@ -64,10 +64,13 @@ func _ready() -> void:
 func _gameover():
 	print("you died")
 	health = 3
+	light = 1
+	lantern_full = false
 	get_tree().change_scene_to_file("res://scenes/start_menu.tscn")
 
 func reset():
 	light = 1
+	lantern_full = false
 
 func pause():
 	get_tree().paused = true
