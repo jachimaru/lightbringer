@@ -1,6 +1,7 @@
 [gd_scene format=4 uid="uid://bjt65ccvywn3f"]
 
 [ext_resource type="PackedScene" uid="uid://nu0qw5rmcqv7" path="res://scenes/world_template.tscn" id="1_ithdu"]
+[ext_resource type="PackedScene" uid="uid://bah3a0qmoq1jf" path="res://scenes/levelfour.tscn" id="2_lcsq8"]
 [ext_resource type="Texture2D" uid="uid://3i0ajnw21svn" path="res://art/parallax/darkforest/backgroungbe1.png" id="2_y70qe"]
 [ext_resource type="Texture2D" uid="uid://x6o687pkbfwq" path="res://art/parallax/darkforest/backgroungbe2.png" id="3_6mff2"]
 [ext_resource type="Texture2D" uid="uid://7dek5qw48g8" path="res://art/parallax/cave/7.png" id="3_l5tnr"]
@@ -23,6 +24,7 @@
 [ext_resource type="PackedScene" uid="uid://htspf8jtggwg" path="res://scenes/shadow_platform_big.tscn" id="12_t5nt5"]
 
 [node name="World" unique_id=315622911 instance=ExtResource("1_ithdu")]
+next_level = ExtResource("2_lcsq8")
 
 [node name="Parallax2D" parent="." index="1" unique_id=311073064]
 scroll_scale = Vector2(0.4, 1)
@@ -315,7 +317,7 @@ stun_time = 5.0
 patrol_distance = 100.0
 
 [node name="Boar4" parent="Enemies" index="4" unique_id=641258036 instance=ExtResource("8_u4jam")]
-position = Vector2(391, 128)
+position = Vector2(384, 127)
 stun_time = 5.0
 flipped = true
 
