@@ -10,7 +10,7 @@ size = Vector2(32, 16)
 size = Vector2(30, 14)
 
 [node name="LightPlatform" type="AnimatableBody2D" unique_id=939896139]
-collision_mask = 2
+collision_mask = 7
 script = ExtResource("1_wkdm4")
 
 [node name="Sprites" type="Node2D" parent="." unique_id=192298846]

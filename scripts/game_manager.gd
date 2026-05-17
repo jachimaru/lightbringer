@@ -18,6 +18,7 @@ var quit_game: bool
 var in_light: bool
 var moonshards: int
 var damaged: bool
+var gameover: bool
 
 @warning_ignore("unused_signal")
 signal add_light
@@ -66,6 +67,8 @@ func _gameover():
 	health = 3
 	light = 1
 	lantern_full = false
+	gameover = false
+	Hud.reset()
 	get_tree().change_scene_to_file("res://scenes/start_menu.tscn")
 
 func reset():

@@ -92,7 +92,7 @@ func detect_light(_delta):
 func handle_attack(_delta):
 	set_physics_process(false)
 	var attacking_position: Vector2
-	await wait_seconds(1.0)
+	await wait_seconds(0.2)
 	attacking = true
 	hit_area_2d.monitorable = true
 	stinger_collision.disabled = false

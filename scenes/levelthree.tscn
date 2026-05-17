@@ -25,6 +25,7 @@
 
 [node name="World" unique_id=315622911 instance=ExtResource("1_ithdu")]
 next_level = ExtResource("2_lcsq8")
+this_level = null
 
 [node name="Parallax2D" parent="." index="1" unique_id=311073064]
 scroll_scale = Vector2(0.4, 1)

@@ -225,6 +225,10 @@ func take_damage():
 	player.set_collision_mask_value(1, true)
 	player_collision.disabled = false
 	player_sprite.flip_v = false
-	global_position = starting_position
-	if GameManager.health <= 0: GameManager.game_over.emit()
+	if not GameManager.gameover: 
+		Hud.reset()
+		get_tree().reload_current_scene() #global_position = starting_position
+	if GameManager.health <= 0: 
+		GameManager.gameover = true
+		GameManager.game_over.emit()
 	await Transition.fade_from_black()

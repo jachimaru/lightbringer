@@ -10,7 +10,7 @@ size = Vector2(48, 16)
 size = Vector2(46, 14)
 
 [node name="LightPlatform" type="AnimatableBody2D" unique_id=939896139]
-collision_mask = 2
+collision_mask = 7
 script = ExtResource("1_t2w8j")
 
 [node name="Sprites" type="Node2D" parent="." unique_id=192298846]

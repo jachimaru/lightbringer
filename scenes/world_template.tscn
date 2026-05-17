@@ -163,7 +163,6 @@ visible = false
 light_mask = 513
 visibility_layer = 0
 z_index = -2
-energy = 0.96
 blend_mode = 1
 range_z_min = -1
 range_z_max = 10

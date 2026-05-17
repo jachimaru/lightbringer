@@ -4,9 +4,6 @@
 [ext_resource type="Texture2D" uid="uid://ba7kpsrmcfo7r" path="res://art/Snail.png" id="1_oqbjf"]
 [ext_resource type="Script" uid="uid://gcb3p7yqf0mt" path="res://scripts/hit_area.gd" id="2_5b1ba"]
 
-[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_5b1ba"]
-blend_mode = 2
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_er827"]
 atlas = ExtResource("1_oqbjf")
 region = Rect2(0, 96, 48, 32)
@@ -356,7 +353,7 @@ animations = [{
 radius = 9.219544
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_u7n5f"]
-size = Vector2(8, 18)
+size = Vector2(9, 13)
 
 [sub_resource type="Gradient" id="Gradient_5b1ba"]
 colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
@@ -373,7 +370,6 @@ collision_mask = 3
 script = ExtResource("1_5b1ba")
 
 [node name="SnailSprite" type="AnimatedSprite2D" parent="." unique_id=964033473]
-material = SubResource("CanvasItemMaterial_5b1ba")
 sprite_frames = SubResource("SpriteFrames_2kx4o")
 animation = &"walking"
 autoplay = "walking"
@@ -395,7 +391,7 @@ script = ExtResource("2_5b1ba")
 metadata/_custom_type_script = "uid://gcb3p7yqf0mt"
 
 [node name="DamageCollision" type="CollisionShape2D" parent="HitArea2D" unique_id=454684463]
-position = Vector2(-7, 7)
+position = Vector2(-7.5, 9.5)
 shape = SubResource("RectangleShape2D_u7n5f")
 debug_color = Color(0.9938684, 0, 0.23807332, 0.41960785)
 
@@ -419,9 +415,9 @@ collide_with_bodies = false
 
 [node name="PointLight2D" type="PointLight2D" parent="." unique_id=1902562962]
 light_mask = 513
-z_index = 2
-position = Vector2(7.999999, 8)
-scale = Vector2(0.0546875, 0.0546875)
+z_index = 10
+position = Vector2(-8, 10)
+scale = Vector2(0.08984376, 0.08984375)
 color = Color(0.99694544, 6.2329323e-06, 1.540184e-06, 1)
 energy = 16.0
 texture = SubResource("GradientTexture2D_er827")
