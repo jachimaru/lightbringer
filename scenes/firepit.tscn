@@ -5,6 +5,8 @@
 [ext_resource type="Texture2D" uid="uid://bvrd2kru7optw" path="res://art/romanfirepit.png" id="2_vq5cy"]
 [ext_resource type="PackedScene" uid="uid://ck7sfn0cy8uxd" path="res://scenes/lightwall.tscn" id="3_p3mg1"]
 [ext_resource type="Texture2D" uid="uid://1ly8rh133os7" path="res://art/Buttons Pack/PS4/SQUARE.png" id="5_p3mg1"]
+[ext_resource type="AudioStream" uid="uid://bnaafxmatks3l" path="res://music/sfx/LightFire.wav" id="6_d3o6k"]
+[ext_resource type="AudioStream" uid="uid://dhn5wl3je3j0q" path="res://music/sfx/FirepitFlame.wav" id="7_ssyo3"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_5htji"]
 light_mode = 1
@@ -197,6 +199,15 @@ offset_left = -47.0
 offset_right = 47.0
 offset_bottom = 48.0
 color = Color(0, 0, 0, 1)
+
+[node name="LightFire" type="AudioStreamPlayer" parent="." unique_id=576644501]
+stream = ExtResource("6_d3o6k")
+
+[node name="FirepitFlame" type="AudioStreamPlayer2D" parent="." unique_id=467255588]
+position = Vector2(0, -4)
+stream = ExtResource("7_ssyo3")
+max_distance = 16.0
+bus = &"SFX"
 
 [connection signal="body_entered" from="Flame/Lightwall" to="." method="_on_lightwall_body_entered"]
 [connection signal="body_exited" from="Flame/Lightwall" to="." method="_on_lightwall_body_exited"]

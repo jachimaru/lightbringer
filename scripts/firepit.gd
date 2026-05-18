@@ -3,6 +3,8 @@ extends Node2D
 @onready var flame: AnimatedSprite2D = $Flame
 @onready var interact: Sprite2D = %Interact
 @onready var light_collision: CollisionShape2D = %LightCollision
+@onready var light_fire: AudioStreamPlayer = $LightFire
+@onready var firepit_flame: AudioStreamPlayer2D = $FirepitFlame
 
 
 var lit = false
@@ -14,11 +16,12 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pass
+	if lit: firepit_flame.playing = true
 
 func light_up():
 	if not lit and player_inside:
 		print("lighting")
+		light_fire.play()
 		flame.visible = true
 		lit = true
 		interact.visible = false

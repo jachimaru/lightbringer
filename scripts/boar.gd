@@ -1,21 +1,5 @@
 extends CharacterBody2D
 
-#region
-#Steps:
-#Boar patrols or stays idle. use export var to decide which one?
-#	export var for patrol distance.
-#Boar sees player. Check if Gamemanager.in_light. if not, proceed to charge player.
-#	play run animation, move Boar toward player using same formula as Bee's get_target, Boar moves at SPEED * 2.
-#		Note: Boar should continue running past player into a wall if player moves out of the way.
-#			If Boar runs into wall, it gets stunned for a number of seconds (export var, stun_time?) 
-#			and hitbox collision is turned off.
-#	If Gamemanager.in_light == true, Boar charges up until its light_detector detects light.
-#		If light_detector detects a collider from cone_area, get_stunned(stun_time).
-#			Otherwise, Boar stops at edge of light_area collision for a number of seconds. var wait_time?
-#			then proceeds back to it's starting position and resumes patrol.
-#Use move_toward() to move Boar or tween?
-#endregion
-
 @export var stun_time: float
 @export var patrol_distance: float
 @export var patrol_time: float
@@ -37,6 +21,8 @@ extends CharacterBody2D
 @onready var floor_detector_left: RayCast2D = $FloorDetectorLeft
 @onready var floor_detector_right: RayCast2D = $FloorDetectorRight
 @onready var attack_timer: Timer = $AttackTimer
+@onready var boar_proximity: AudioStreamPlayer2D = $BoarProximity
+@onready var boar_growl: AudioStreamPlayer = $BoarGrowl
 
 
 var is_moving: bool
@@ -98,6 +84,8 @@ func charge_player(delta):
 		return
 	set_physics_process(false)
 	attacking = true
+	boar_proximity.playing = false
+	boar_growl.play()
 	sprite.play("idle")
 	if is_stunned:
 		set_physics_process(true)
@@ -201,6 +189,8 @@ func stun():
 	if is_stunned:
 		return
 	is_stunned = true
+	boar_proximity.playing = false
+	boar_growl.stop()
 	attacking = false
 	stop_current_tween()
 	boar.process_mode = Node.PROCESS_MODE_PAUSABLE
@@ -265,6 +255,7 @@ func recover_from_stun() -> void:
 	#await get_tree().create_timer(stun_time).timeout
 	set_physics_process(true)
 	is_stunned = false
+	boar_proximity.playing = true
 	tusk.disabled = false
 	print("recover")
 
@@ -276,6 +267,7 @@ func return_to_position():
 	await get_tree().create_timer(2.8).timeout
 	sprite.play("idle")
 	attacking = false
+	boar_proximity.playing = true
 	set_physics_process(true)
 
 func return_from_charge():

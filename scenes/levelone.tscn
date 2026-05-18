@@ -10,13 +10,13 @@
 [ext_resource type="PackedScene" uid="uid://co40ka6e3y0r2" path="res://scenes/hazard_area.tscn" id="4_asbcj"]
 [ext_resource type="PackedScene" uid="uid://d2ru6ixuvl4es" path="res://scenes/sign.tscn" id="5_k3crt"]
 [ext_resource type="PackedScene" uid="uid://bxshxawxvuhe0" path="res://scenes/moonshard.tscn" id="9_iwg2v"]
+[ext_resource type="AudioStream" uid="uid://mr1iw47k224a" path="res://music/bgm/LevelOneBGM.ogg" id="11_vmj8b"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_k3crt"]
 size = Vector2(32, 12)
 
 [node name="World" unique_id=315622911 instance=ExtResource("1_1deg0")]
 next_level = ExtResource("2_8ff1c")
-this_level = null
 
 [node name="Parallax2D" parent="." index="1" unique_id=311073064]
 scroll_offset = Vector2(-115.00003, -94)
@@ -215,3 +215,9 @@ sign_text = "Use [img]res://art/Buttons Pack/PS4/CONTROLPADUP.png[/img] or [img]
 
 [node name="Moonshard" parent="." index="13" unique_id=9254901 instance=ExtResource("9_iwg2v")]
 position = Vector2(1289, -88)
+
+[node name="BGM" type="AudioStreamPlayer" parent="." index="16" unique_id=1524443981]
+stream = ExtResource("11_vmj8b")
+volume_db = -12.0
+autoplay = true
+bus = &"BGM"

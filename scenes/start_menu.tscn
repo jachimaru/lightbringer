@@ -4,6 +4,8 @@
 [ext_resource type="FontFile" uid="uid://dt4rpek6pj730" path="res://art/BitPotion.ttf" id="1_thu50"]
 [ext_resource type="Theme" uid="uid://bnsqgd1udc3jy" path="res://scenes/font.tres" id="2_m7x51"]
 [ext_resource type="Texture2D" uid="uid://dgb15ngrv02v" path="res://art/Lantern.png" id="3_m7x51"]
+[ext_resource type="AudioStream" uid="uid://bst4w04a1j01p" path="res://music/bgm/MainMenu.ogg" id="5_fcv5n"]
+[ext_resource type="AudioStream" uid="uid://bxhcvst1kh6lq" path="res://music/sfx/StartGame.wav" id="6_4v6gu"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_h61rw"]
 light_mode = 1
@@ -210,6 +212,15 @@ texture = SubResource("GradientTexture2D_mroui")
 
 [node name="DirectionalLight2D" type="DirectionalLight2D" parent="." unique_id=322762358]
 blend_mode = 1
+
+[node name="MainMenu" type="AudioStreamPlayer2D" parent="." unique_id=1552556999]
+stream = ExtResource("5_fcv5n")
+autoplay = true
+bus = &"BGM"
+
+[node name="StartGame" type="AudioStreamPlayer2D" parent="." unique_id=696471105]
+stream = ExtResource("6_4v6gu")
+bus = &"SFX"
 
 [connection signal="pressed" from="VBoxContainer2/VBoxContainer/StartGame" to="." method="_on_start_game_pressed"]
 [connection signal="pressed" from="VBoxContainer2/VBoxContainer/Quit" to="." method="_on_quit_pressed"]

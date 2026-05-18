@@ -18,6 +18,8 @@ const JUMP_VELOCITY = -400.0
 @onready var hurt_area: HurtArea2D = $HurtArea2D
 @onready var hurt_timer: Timer = $HurtTimer
 @onready var hit_area_2d: HitArea2D = $HitArea2D
+@onready var bee_proximity: AudioStreamPlayer2D = $BeeProximity
+@onready var bee_growl: AudioStreamPlayer = $BeeGrowl
 
 
 var detection_array: PackedVector2Array = PackedVector2Array([
@@ -94,6 +96,8 @@ func handle_attack(_delta):
 	var attacking_position: Vector2
 	await wait_seconds(0.2)
 	attacking = true
+	bee_proximity.playing = false
+	bee_growl.play()
 	hit_area_2d.monitorable = true
 	stinger_collision.disabled = false
 	sprite.play("attack")
@@ -123,6 +127,7 @@ func handle_attack(_delta):
 	stinger_collision.disabled = true
 	await wait_seconds(1.0)
 	attacking = false
+	bee_proximity.playing = true
 	attack_ray_cast.enabled = true
 	hit_area_2d.monitorable = false
 	set_physics_process(true)
@@ -163,6 +168,8 @@ func stun_bee() -> void:
 		return
 	is_stunned = true
 	attacking = false
+	bee_proximity.playing = false
+	bee_growl.stop()
 	stop_current_tween()
 	bee.process_mode = Node.PROCESS_MODE_PAUSABLE
 	set_physics_process(false)
@@ -176,6 +183,7 @@ func recover_from_stun() -> void:
 	return_to_position()
 	await get_tree().create_timer(1.0).timeout
 	is_stunned = false
+	bee_proximity.playing = true
 	attack_ray_cast.enabled = true
 	set_physics_process(true)
 

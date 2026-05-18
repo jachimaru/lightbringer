@@ -1,6 +1,8 @@
 extends Node2D
 
 @export var next_level: PackedScene
+@onready var bgm: AudioStreamPlayer = $BGM
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -13,7 +15,15 @@ func _ready():
 func _process(delta: float) -> void:
 	if Input.is_action_pressed("pause"):
 		GameManager.pause_game.emit()
-	else: pass
+	
+	if GameManager.underground:
+		bgm.volume_db = -24.0
+		GameManager.cave_bgm.playing = true
+	else: 
+		bgm.volume_db = -12.0
+		if GameManager.cave_bgm.playing:
+			GameManager.cave_bgm.playing = false
+		else: return
 
 func unpause_game():
 	get_tree().paused = false

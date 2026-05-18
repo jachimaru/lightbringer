@@ -15,6 +15,9 @@ extends CenterContainer
 @onready var shard_9: Sprite2D = %FoundShard9
 @onready var shard_10: Sprite2D = %FoundShard10
 @onready var shards = [shard, shard_2, shard_3, shard_4, shard_5, shard_6, shard_7, shard_8, shard_9, shard_10]
+@onready var open_menu: AudioStreamPlayer = $OpenMenu
+@onready var accept: AudioStreamPlayer = $Accept
+@onready var decline: AudioStreamPlayer = $Decline
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -23,11 +26,13 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("interact") && menu.visible:
+		decline.play()
 		Transition.pause_vignette_off()
 		menu.visible = false
 
 func show_menu():
 	menu.visible = true
+	open_menu.play()
 	Transition.pause_vignette_on()
 	TextPopups.confirmation.visible = false
 	get_tree().paused = true
@@ -38,6 +43,7 @@ func _on_settings_button_pressed() -> void:
 
 func _on_close_button_pressed() -> void:
 	GameManager.unpause_game.emit()
+	decline.play()
 	menu.visible = false
 
 func _on_exit_button_pressed() -> void:

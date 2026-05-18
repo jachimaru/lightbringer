@@ -4,6 +4,8 @@
 [ext_resource type="Texture2D" uid="uid://dlafufb010voh" path="res://art/9sliceblue.png" id="4_asitr"]
 [ext_resource type="Theme" uid="uid://bnsqgd1udc3jy" path="res://scenes/font.tres" id="4_nyj0y"]
 [ext_resource type="Texture2D" uid="uid://d12ptmegx4a8f" path="res://art/Buttons Pack/PS4/CIRCLE.png" id="5_asitr"]
+[ext_resource type="AudioStream" uid="uid://dxuqbkdgph81v" path="res://music/sfx/Accept.wav" id="5_cdle5"]
+[ext_resource type="AudioStream" uid="uid://bnrtf7c0es58e" path="res://music/sfx/Decline.wav" id="6_hbot6"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_cdle5"]
 
@@ -156,6 +158,12 @@ custom_minimum_size = Vector2(64, 32)
 layout_mode = 2
 theme = ExtResource("4_nyj0y")
 text = "No"
+
+[node name="Accept" type="AudioStreamPlayer" parent="." unique_id=759527694]
+stream = ExtResource("5_cdle5")
+
+[node name="Decline" type="AudioStreamPlayer" parent="." unique_id=146240560]
+stream = ExtResource("6_hbot6")
 
 [connection signal="pressed" from="PopupContainer/Confirmation/VBoxContainer/HBoxContainer/Yes" to="." method="_on_yes_pressed"]
 [connection signal="pressed" from="PopupContainer/Confirmation/VBoxContainer/HBoxContainer/No" to="." method="_on_no_pressed"]

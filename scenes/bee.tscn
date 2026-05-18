@@ -4,6 +4,8 @@
 [ext_resource type="Script" uid="uid://cgjpxdhxcbhlv" path="res://scripts/bee.gd" id="1_ogg2i"]
 [ext_resource type="Script" uid="uid://dnwx5ifjnutta" path="res://scripts/hurt_area.gd" id="3_oynbf"]
 [ext_resource type="Script" uid="uid://gcb3p7yqf0mt" path="res://scripts/hit_area.gd" id="3_qf6nb"]
+[ext_resource type="AudioStream" uid="uid://12qw7nn4pun7" path="res://music/sfx/BeeProximity.mp3" id="5_nkr4b"]
+[ext_resource type="AudioStream" uid="uid://d2vo0t5gh5c80" path="res://music/sfx/BeeGrowl.mp3" id="6_kro73"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vie5o"]
 atlas = ExtResource("1_1q2x0")
@@ -214,3 +216,15 @@ process_mode = 3
 wait_time = 3.0
 one_shot = true
 ignore_time_scale = true
+
+[node name="BeeProximity" type="AudioStreamPlayer2D" parent="." unique_id=238498945]
+stream = ExtResource("5_nkr4b")
+volume_db = -24.0
+autoplay = true
+max_distance = 132.0
+bus = &"SFX"
+
+[node name="BeeGrowl" type="AudioStreamPlayer" parent="." unique_id=897977574]
+stream = ExtResource("6_kro73")
+volume_db = -12.0
+bus = &"SFX"

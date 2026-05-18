@@ -13,10 +13,12 @@ func _process(delta: float) -> void:
 	pass
 
 
-func _on_area_2d_body_entered(body: Node2D) -> void:
-	animation_player.play("fade_out")
-	print("in area")
+func _on_area_2d_body_entered(body: CharacterBody2D) -> void:
+	if body.name == "Player":
+		animation_player.play("fade_out")
+		print("in area")
 
-func _on_area_2d_body_exited(body: Node2D) -> void:
-	animation_player.play("fade_in")
-	print("out area")
+func _on_area_2d_body_exited(body: CharacterBody2D) -> void:
+	if body.name == "Player":
+		animation_player.play("fade_in")
+		print("out area")

@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://bd42slg8ix137" path="res://scripts/snail.gd" id="1_5b1ba"]
 [ext_resource type="Texture2D" uid="uid://ba7kpsrmcfo7r" path="res://art/Snail.png" id="1_oqbjf"]
 [ext_resource type="Script" uid="uid://gcb3p7yqf0mt" path="res://scripts/hit_area.gd" id="2_5b1ba"]
+[ext_resource type="AudioStream" uid="uid://wg4s1ir1nvf2" path="res://music/sfx/SnailProximity.mp3" id="4_er827"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_er827"]
 atlas = ExtResource("1_oqbjf")
@@ -421,3 +422,11 @@ scale = Vector2(0.08984376, 0.08984375)
 color = Color(0.99694544, 6.2329323e-06, 1.540184e-06, 1)
 energy = 16.0
 texture = SubResource("GradientTexture2D_er827")
+
+[node name="SnailProximity" type="AudioStreamPlayer2D" parent="." unique_id=501511269]
+stream = ExtResource("4_er827")
+volume_db = -24.0
+pitch_scale = 0.5
+autoplay = true
+max_distance = 32.0
+bus = &"SFX"

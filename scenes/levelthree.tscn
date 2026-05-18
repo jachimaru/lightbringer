@@ -22,10 +22,10 @@
 [ext_resource type="PackedScene" uid="uid://d2ru6ixuvl4es" path="res://scenes/sign.tscn" id="11_ydknj"]
 [ext_resource type="PackedScene" uid="uid://bypy8lnkhbyvh" path="res://scenes/light_platform.tscn" id="12_cajdo"]
 [ext_resource type="PackedScene" uid="uid://htspf8jtggwg" path="res://scenes/shadow_platform_big.tscn" id="12_t5nt5"]
+[ext_resource type="AudioStream" uid="uid://duomnc2x5sv6k" path="res://music/bgm/LevelThreeBGM.ogg" id="23_cka7c"]
 
 [node name="World" unique_id=315622911 instance=ExtResource("1_ithdu")]
 next_level = ExtResource("2_lcsq8")
-this_level = null
 
 [node name="Parallax2D" parent="." index="1" unique_id=311073064]
 scroll_scale = Vector2(0.4, 1)
@@ -389,3 +389,9 @@ sign_text = "Careful of the Boar Shadow's charge."
 
 [node name="Moonshard" parent="." index="23" unique_id=9254901 instance=ExtResource("10_u4jam")]
 position = Vector2(-112, 110)
+
+[node name="BGM" type="AudioStreamPlayer" parent="." index="24" unique_id=308067489]
+stream = ExtResource("23_cka7c")
+volume_db = -12.0
+autoplay = true
+bus = &"BGM"

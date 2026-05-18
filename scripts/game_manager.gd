@@ -1,5 +1,8 @@
 extends Node
 
+@onready var cave_bgm: AudioStreamPlayer = $CaveBgm
+@onready var underground: bool = false
+
 var health: int = 3
 var light: int
 var lantern_cone: bool = false
@@ -16,9 +19,11 @@ var in_collision: bool
 var in_firepit: bool
 var quit_game: bool
 var in_light: bool
+var lightwall: bool
 var moonshards: int
 var damaged: bool
 var gameover: bool
+
 
 @warning_ignore("unused_signal")
 signal add_light
@@ -61,6 +66,8 @@ signal reset_flames
 func _ready() -> void:
 	game_over.connect(func(): call_deferred("_gameover"))
 	moonshard.connect(update_moonshards)
+	call_deferred("cave_bgm.set_playing(false)")
+	
 
 func _gameover():
 	print("you died")

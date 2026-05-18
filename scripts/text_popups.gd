@@ -6,6 +6,8 @@ extends CanvasLayer
 @onready var signs: Control = %Signs
 @onready var yes: Button = %Yes
 @onready var no: Button = %No
+@onready var accept: AudioStreamPlayer = $Accept
+@onready var decline: AudioStreamPlayer = $Decline
 
 var showing_popup = false
 
@@ -38,9 +40,12 @@ func _input(event):
 
 func _on_yes_pressed() -> void:
 	if GameManager.quit_game:
+		accept.play()
+		await accept.finished
 		get_tree().quit()
 
 func _on_no_pressed() -> void:
 	if GameManager.quit_game:
+		decline.play()
 		GameManager.quit_game = false
 		GameManager.pause_game.emit()

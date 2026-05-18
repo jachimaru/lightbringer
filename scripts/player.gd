@@ -131,7 +131,7 @@ func _remove_light():
 		tween.tween_property(cone_light, "scale", sub_cone_scale, 0.5)
 		print(GameManager.light)
 		GameManager.lantern_full = false
-	elif GameManager.light > 1:
+	elif GameManager.light >= 1:
 		var tween = create_tween()
 		tween.tween_property(lantern_light, "scale", sub_light_scale, 0.5)
 		tween.tween_property(cone_light, "scale", sub_cone_scale, 0.5)
@@ -152,12 +152,17 @@ func _toggle_lantern():
 		cone_area.visible = false
 		spell_collision.disabled = false
 		hit_area_2d.monitorable = true
+		hit_area_2d.monitoring = true
 		cooldown_timer.start()
 		await cooldown_timer.timeout
 		hit_area_2d.visible = false
 		spell_collision.visible = false
+		hit_area_2d.monitorable = false
+		hit_area_2d.monitoring = false
 		cone_collider.visible = true
 		cone_area.visible = true
+		cone_area.monitorable = true
+		cone_area.monitoring = true
 		spell_collision.disabled = true
 		hit_area_2d.monitorable = false
 		cone_collider.disabled = false
@@ -168,6 +173,8 @@ func _toggle_lantern():
 		radius_collider.disabled = false
 		cone_light.visible = false
 		cone_collider.disabled = true
+		cone_area.monitorable = false
+		cone_area.monitoring = false
 		print("change to radius")
 
 func handle_interact():

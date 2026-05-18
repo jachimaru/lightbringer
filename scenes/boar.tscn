@@ -4,6 +4,8 @@
 [ext_resource type="Texture2D" uid="uid://bvfqa2qulp7cf" path="res://art/Boar.png" id="1_tgiih"]
 [ext_resource type="Script" uid="uid://gcb3p7yqf0mt" path="res://scripts/hit_area.gd" id="2_f7758"]
 [ext_resource type="Script" uid="uid://dnwx5ifjnutta" path="res://scripts/hurt_area.gd" id="4_4ea8c"]
+[ext_resource type="AudioStream" uid="uid://n7u1pwun8g1j" path="res://music/sfx/BoarProximity.mp3" id="5_156ks"]
+[ext_resource type="AudioStream" uid="uid://c1bi6y8nic463" path="res://music/sfx/BoarGrowl.mp3" id="6_f7ac1"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_f7758"]
 atlas = ExtResource("1_tgiih")
@@ -270,3 +272,13 @@ target_position = Vector2(0, 13)
 process_mode = 3
 wait_time = 5.0
 one_shot = true
+
+[node name="BoarProximity" type="AudioStreamPlayer2D" parent="." unique_id=366292433]
+stream = ExtResource("5_156ks")
+volume_db = -24.0
+autoplay = true
+max_distance = 32.0
+
+[node name="BoarGrowl" type="AudioStreamPlayer" parent="." unique_id=1129866868]
+stream = ExtResource("6_f7ac1")
+volume_db = -12.0

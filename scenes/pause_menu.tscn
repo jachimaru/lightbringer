@@ -6,6 +6,9 @@
 [ext_resource type="FontFile" uid="uid://dt4rpek6pj730" path="res://art/BitPotion.ttf" id="3_7l7mv"]
 [ext_resource type="Texture2D" uid="uid://d2ixr3rm566nh" path="res://art/Blank_Shard.png" id="5_v4r4p"]
 [ext_resource type="Texture2D" uid="uid://ikv3qjo1y6gw" path="res://art/Found_Shard.png" id="6_1s2dm"]
+[ext_resource type="AudioStream" uid="uid://qkq4rvspbada" path="res://music/sfx/PauseMenu.wav" id="7_knqa7"]
+[ext_resource type="AudioStream" uid="uid://dxuqbkdgph81v" path="res://music/sfx/Accept.wav" id="8_71k7c"]
+[ext_resource type="AudioStream" uid="uid://bnrtf7c0es58e" path="res://music/sfx/Decline.wav" id="9_cmnsq"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_5d2l8"]
 light_mode = 1
@@ -214,6 +217,15 @@ texture = ExtResource("5_v4r4p")
 unique_name_in_owner = true
 visible = false
 texture = ExtResource("6_1s2dm")
+
+[node name="OpenMenu" type="AudioStreamPlayer" parent="." unique_id=662676282]
+stream = ExtResource("7_knqa7")
+
+[node name="Accept" type="AudioStreamPlayer" parent="." unique_id=1651561874]
+stream = ExtResource("8_71k7c")
+
+[node name="Decline" type="AudioStreamPlayer" parent="." unique_id=988124534]
+stream = ExtResource("9_cmnsq")
 
 [connection signal="pressed" from="CanvasLayer/Menu/VBoxContainer/CenterContainer/VBoxContainer/SettingsButton" to="." method="_on_settings_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/Menu/VBoxContainer/CenterContainer/VBoxContainer/CloseButton" to="." method="_on_close_button_pressed"]

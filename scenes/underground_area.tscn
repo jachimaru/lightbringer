@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://cc2lcxa7nf3ro"]
+
+[ext_resource type="Script" uid="uid://8g8dxnfatr7k" path="res://scripts/underground_area.gd" id="1_4cmf1"]
+
+[node name="UndergroundArea" type="Area2D" unique_id=593722633]
+script = ExtResource("1_4cmf1")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
