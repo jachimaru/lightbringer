@@ -16,7 +16,7 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	if lit: firepit_flame.playing = true
+	pass
 
 func light_up():
 	if not lit and player_inside:
@@ -24,6 +24,8 @@ func light_up():
 		light_fire.play()
 		flame.visible = true
 		lit = true
+		await light_fire.finished
+		firepit_flame.playing = true
 		interact.visible = false
 		light_collision.disabled = false
 	else: return

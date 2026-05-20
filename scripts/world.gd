@@ -18,11 +18,11 @@ func _process(delta: float) -> void:
 	
 	if GameManager.underground:
 		bgm.volume_db = -24.0
-		GameManager.cave_bgm.playing = true
+		Hud.cave_bgm.playing = true
 	else: 
 		bgm.volume_db = -12.0
-		if GameManager.cave_bgm.playing:
-			GameManager.cave_bgm.playing = false
+		if Hud.cave_bgm.playing:
+			Hud.cave_bgm.playing = false
 		else: return
 
 func unpause_game():

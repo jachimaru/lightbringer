@@ -5,6 +5,9 @@ extends CanvasLayer
 @onready var health_1: TextureRect = %Health1
 @onready var health_2: TextureRect = %Health2
 @onready var hud: CanvasLayer = $"."
+@onready var cave_bgm: AudioStreamPlayer = $CaveBgm
+@onready var droplet_full: AudioStreamPlayer = $DropletFull
+@onready var droplet_get: AudioStreamPlayer = $DropletGet
 
 
 var flame_count = 0

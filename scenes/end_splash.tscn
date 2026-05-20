@@ -1,0 +1,57 @@
+[gd_scene format=3 uid="uid://cknptgwl7l1h8"]
+
+[ext_resource type="Script" uid="uid://pc3tnjq2sjrv" path="res://scripts/end_splash.gd" id="1_aorlc"]
+[ext_resource type="Theme" uid="uid://bnsqgd1udc3jy" path="res://scenes/font.tres" id="2_wu17i"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_ih6pn"]
+light_mode = 1
+
+[node name="EndSplash" type="Control" unique_id=309436158]
+custom_minimum_size = Vector2(360, 180)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 320.0
+offset_bottom = 180.0
+script = ExtResource("1_aorlc")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=115146327]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Thanks" type="Label" parent="." unique_id=348002277]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_wu17i")
+theme_override_colors/font_color = Color(0.45999998, 0.87400013, 1, 1)
+text = "Thanks for playing!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SoliDeoGloria" type="Label" parent="." unique_id=1442418858]
+visible = false
+material = SubResource("CanvasItemMaterial_ih6pn")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_wu17i")
+theme_override_colors/font_color = Color(0.45999998, 0.87400013, 1, 1)
+text = "SOLI DEO GLORIA"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1373506173]
+position = Vector2(180, 90)
+zoom = Vector2(3.6, 3.6)

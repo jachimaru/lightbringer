@@ -428,5 +428,5 @@ stream = ExtResource("4_er827")
 volume_db = -24.0
 pitch_scale = 0.5
 autoplay = true
-max_distance = 32.0
+max_distance = 64.0
 bus = &"SFX"

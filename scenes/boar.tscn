@@ -277,7 +277,7 @@ one_shot = true
 stream = ExtResource("5_156ks")
 volume_db = -24.0
 autoplay = true
-max_distance = 32.0
+max_distance = 100.0
 
 [node name="BoarGrowl" type="AudioStreamPlayer" parent="." unique_id=1129866868]
 stream = ExtResource("6_f7ac1")

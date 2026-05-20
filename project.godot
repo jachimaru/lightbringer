@@ -11,9 +11,15 @@ config_version=5
 [application]
 
 config/name="Moth Game"
-run/main_scene="uid://d304xkdanmqga"
+run/main_scene="uid://3shg6ttku7sl"
 config/features=PackedStringArray("4.6", "GL Compatibility")
+boot_splash/bg_color=Color(0, 0, 0, 1)
+boot_splash/show_image=false
 config/icon="res://icon.svg"
+
+[audio]
+
+buses/default_bus_layout="uid://d4amxqqh5puya"
 
 [autoload]
 

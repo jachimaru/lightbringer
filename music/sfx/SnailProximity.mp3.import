@@ -12,8 +12,8 @@ dest_files=["res://.godot/imported/SnailProximity.mp3-17135063e70d1a2f321e92e43b
 
 [params]
 
-loop=false
-loop_offset=0
-bpm=0
+loop=true
+loop_offset=0.0
+bpm=0.0
 beat_count=0
 bar_beats=4

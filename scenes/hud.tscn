@@ -4,6 +4,9 @@
 [ext_resource type="Script" uid="uid://decxcjn7ql2jm" path="res://scripts/hud.gd" id="1_6fi6k"]
 [ext_resource type="FontFile" uid="uid://dt4rpek6pj730" path="res://art/BitPotion.ttf" id="2_6fi6k"]
 [ext_resource type="Texture2D" uid="uid://kbm0podkh673" path="res://art/Health.png" id="3_uo2fv"]
+[ext_resource type="AudioStream" uid="uid://bdid2b7qsaelg" path="res://music/bgm/CaveBGM.wav" id="5_uo2fv"]
+[ext_resource type="AudioStream" uid="uid://dmv1fb8sg8d67" path="res://music/sfx/DropletFull.wav" id="6_5pdws"]
+[ext_resource type="AudioStream" uid="uid://46fks6w6o46i" path="res://music/sfx/DropletGet.wav" id="7_hd3ao"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_6fi6k"]
 font = ExtResource("2_6fi6k")
@@ -65,3 +68,14 @@ unique_name_in_owner = true
 layout_mode = 2
 texture = ExtResource("3_uo2fv")
 expand_mode = 3
+
+[node name="CaveBgm" type="AudioStreamPlayer" parent="." unique_id=679297082]
+stream = ExtResource("5_uo2fv")
+
+[node name="DropletFull" type="AudioStreamPlayer" parent="." unique_id=624505108]
+stream = ExtResource("6_5pdws")
+bus = &"SFX"
+
+[node name="DropletGet" type="AudioStreamPlayer" parent="." unique_id=91940155]
+stream = ExtResource("7_hd3ao")
+bus = &"SFX"

@@ -2,9 +2,27 @@
 
 [ext_resource type="Script" uid="uid://bjsx2uomb101i" path="res://scripts/player.gd" id="1_g2els"]
 [ext_resource type="Texture2D" uid="uid://b6dvpou1px024" path="res://art/SPRITE_SHEET.png" id="2_g2els"]
+[ext_resource type="AudioStream" uid="uid://lqj8bwil4vae" path="res://music/sfx/Jump2.wav" id="3_d2wvv"]
 [ext_resource type="Texture2D" uid="uid://dgb15ngrv02v" path="res://art/Lantern.png" id="3_qhqgy"]
 [ext_resource type="Script" uid="uid://gcb3p7yqf0mt" path="res://scripts/hit_area.gd" id="4_dqkch"]
 [ext_resource type="Script" uid="uid://dnwx5ifjnutta" path="res://scripts/hurt_area.gd" id="5_qlg0r"]
+[ext_resource type="AudioStream" uid="uid://1ysnc251b8uj" path="res://music/sfx/Footsteps.wav" id="6_smehm"]
+[ext_resource type="AudioStream" uid="uid://deeqamat3valv" path="res://music/sfx/Footsteps_Walk_Grass_Mono_04.wav" id="7_ur7pv"]
+[ext_resource type="AudioStream" uid="uid://k1e7fw15petr" path="res://music/sfx/Footsteps_Walk_Grass_Mono_27.wav" id="8_y4r1p"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_3v2ag"]
+random_pitch = 1.7817973
+random_volume_offset_db = 3.0
+streams_count = 1
+stream_0/stream = ExtResource("3_d2wvv")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_jej6c"]
+random_pitch = 1.7817973
+random_volume_offset_db = 3.0
+streams_count = 3
+stream_0/stream = ExtResource("6_smehm")
+stream_1/stream = ExtResource("7_ur7pv")
+stream_2/stream = ExtResource("8_y4r1p")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fjrip"]
 size = Vector2(8, 15)
@@ -400,6 +418,8 @@ size = Vector2(9.5, 15)
 z_index = 1
 collision_layer = 2
 script = ExtResource("1_g2els")
+sfx_jump = SubResource("AudioStreamRandomizer_3v2ag")
+sfx_footsteps = SubResource("AudioStreamRandomizer_jej6c")
 
 [node name="PlayerCollision" type="CollisionShape2D" parent="." unique_id=460079136]
 position = Vector2(2, -7.5)
@@ -409,9 +429,8 @@ shape = SubResource("RectangleShape2D_fjrip")
 z_index = 1
 position = Vector2(0, -11)
 sprite_frames = SubResource("SpriteFrames_tuyoq")
-animation = &"idle"
+animation = &"run"
 autoplay = "idle"
-frame_progress = 0.3192136
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=839166216]
 position = Vector2(32, -32)
@@ -516,3 +535,9 @@ ignore_time_scale = true
 
 [node name="AudioListener2D" type="AudioListener2D" parent="." unique_id=970503395]
 current = true
+
+[node name="SFX" type="AudioStreamPlayer2D" parent="." unique_id=1313470602]
+unique_name_in_owner = true
+bus = &"SFX"
+
+[connection signal="frame_changed" from="PlayerSprite" to="." method="_on_player_sprite_frame_changed"]

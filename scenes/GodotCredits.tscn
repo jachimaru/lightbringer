@@ -1,0 +1,118 @@
+[gd_scene format=3 uid="uid://bpb8hbrkdb28p"]
+
+[ext_resource type="Script" uid="uid://dwxyqh66624aw" path="res://scripts/GodotCredits.gd" id="1_kaahf"]
+[ext_resource type="FontFile" uid="uid://dt4rpek6pj730" path="res://art/BitPotion.ttf" id="2_pbwyx"]
+[ext_resource type="PackedScene" uid="uid://cknptgwl7l1h8" path="res://scenes/end_splash.tscn" id="2_v5dix"]
+[ext_resource type="AudioStream" uid="uid://bh3oo7kpx4phs" path="res://music/bgm/EndCredits.ogg" id="3_ir7q0"]
+[ext_resource type="Texture2D" uid="uid://dfmigcfnktnr7" path="res://art/credits/BackGround_007.png" id="4_dr1et"]
+[ext_resource type="Texture2D" uid="uid://30641kwhoung" path="res://art/credits/BackGround_006.png" id="5_v5dix"]
+[ext_resource type="Texture2D" uid="uid://n3bnolxi3whd" path="res://art/credits/BackGround_005.png" id="6_0yk05"]
+[ext_resource type="Texture2D" uid="uid://cle3byray01tb" path="res://art/credits/BackGround_004.png" id="7_ucfra"]
+[ext_resource type="Texture2D" uid="uid://tyvfbg3ohcjl" path="res://art/credits/BackGround_003.png" id="8_pogre"]
+[ext_resource type="Texture2D" uid="uid://djyilm3uft1y" path="res://art/credits/BackGround_002.png" id="9_mn3p6"]
+[ext_resource type="Texture2D" uid="uid://cqexkkfi1dqi7" path="res://art/credits/BackGround_001.png" id="10_7wxm5"]
+
+[sub_resource type="Gradient" id="Gradient_kyhnv"]
+offsets = PackedFloat32Array(0, 0.5202312, 1)
+colors = PackedColorArray(0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_kcljn"]
+gradient = SubResource("Gradient_kyhnv")
+width = 320
+height = 180
+fill_from = Vector2(1, 0.3225504)
+fill_to = Vector2(0.5527426, 0.15002345)
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_dr1et"]
+light_mode = 1
+
+[node name="Credits" type="Control" unique_id=864047740]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -792.0
+offset_bottom = -468.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_kaahf")
+to_scene = ExtResource("2_v5dix")
+title_color = Color(0.36864287, 0.6716139, 0.93864346, 1)
+title_font = ExtResource("2_pbwyx")
+text_font = ExtResource("2_pbwyx")
+Music = ExtResource("3_ir7q0")
+
+[node name="BackGround007" type="Sprite2D" parent="." unique_id=1167948535]
+position = Vector2(180, 90)
+texture = ExtResource("4_dr1et")
+
+[node name="BackGround006" type="Sprite2D" parent="." unique_id=246802896]
+position = Vector2(161, 86)
+texture = ExtResource("5_v5dix")
+
+[node name="BackGround005" type="Sprite2D" parent="." unique_id=1746329545]
+position = Vector2(180, 90)
+texture = ExtResource("6_0yk05")
+
+[node name="BackGround004" type="Sprite2D" parent="." unique_id=1046023225]
+position = Vector2(180, 90)
+texture = ExtResource("7_ucfra")
+
+[node name="BackGround003" type="Sprite2D" parent="." unique_id=836016694]
+position = Vector2(180, 90)
+texture = ExtResource("8_pogre")
+
+[node name="BackGround002" type="Sprite2D" parent="." unique_id=1878775995]
+position = Vector2(180, 90)
+texture = ExtResource("9_mn3p6")
+
+[node name="BackGround001" type="Sprite2D" parent="." unique_id=132232121]
+position = Vector2(180, 90)
+texture = ExtResource("10_7wxm5")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=748639874]
+position = Vector2(180, 90)
+zoom = Vector2(3.6, 3.6)
+limit_left = 0
+limit_top = 0
+limit_right = 360
+limit_bottom = 180
+
+[node name="DirectionalLight2D" type="DirectionalLight2D" parent="." unique_id=1162959836]
+energy = 0.9
+blend_mode = 1
+
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=759803912]
+position = Vector2(180, 90)
+color = Color(0.3462065, 0.68038034, 0.8590738, 1)
+energy = 3.0
+texture = SubResource("GradientTexture2D_kcljn")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1911589268]
+visible = false
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(0, 0, 0, 1)
+
+[node name="VideoPlayer" type="VideoStreamPlayer" parent="." unique_id=1200207015]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+expand = true
+
+[node name="CreditsContainer" type="Control" parent="." unique_id=1838133084]
+anchors_preset = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Line" type="Label" parent="CreditsContainer" unique_id=1650925795]
+material = SubResource("CanvasItemMaterial_dr1et")
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 157.0
+offset_bottom = 180.0
+grow_horizontal = 2
+size_flags_horizontal = 3
+horizontal_alignment = 1

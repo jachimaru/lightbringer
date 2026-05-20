@@ -1,0 +1,42 @@
+[gd_scene format=3 uid="uid://3shg6ttku7sl"]
+
+[ext_resource type="Script" uid="uid://bep81v53kwuu6" path="res://scripts/splash_screen_manager.gd" id="1_kkrr7"]
+[ext_resource type="Texture2D" uid="uid://c4csc7nv82aqf" path="res://base_blue_white.png" id="1_pspwt"]
+[ext_resource type="PackedScene" uid="uid://d304xkdanmqga" path="res://scenes/start_menu.tscn" id="2_4krii"]
+
+[node name="Control" type="Control" unique_id=2049657274 node_paths=PackedStringArray("splash_screen")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_kkrr7")
+load_scene = ExtResource("2_4krii")
+splash_screen = NodePath("CenterContainer/TextureRect")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=289824418]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=1329122887]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 265.0
+offset_top = 139.0
+offset_right = 265.0
+offset_bottom = 139.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.5, 0.5)
+
+[node name="TextureRect" type="TextureRect" parent="CenterContainer" unique_id=282713283]
+layout_mode = 2
+texture = ExtResource("1_pspwt")

@@ -1,6 +1,5 @@
 extends Node
 
-@onready var cave_bgm: AudioStreamPlayer = $CaveBgm
 @onready var underground: bool = false
 
 var health: int = 3
@@ -61,6 +60,8 @@ signal shards_changed
 @warning_ignore("unused_signal")
 signal level_change
 signal reset_flames
+signal cave_bgm_on
+signal cave_bgm_off
 
 
 func _ready() -> void:

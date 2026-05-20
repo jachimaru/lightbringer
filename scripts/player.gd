@@ -1,5 +1,8 @@
 extends CharacterBody2D
 
+@export var sfx_jump: AudioStream
+@export var sfx_footsteps: AudioStream
+
 @onready var player_sprite: AnimatedSprite2D = $PlayerSprite
 @onready var lantern_sprite: AnimatedSprite2D = $LanternSprite
 @onready var lantern_light: PointLight2D = $LanternSprite/LanternLight
@@ -15,6 +18,8 @@ extends CharacterBody2D
 @onready var player: CharacterBody2D = $"."
 @onready var hurt_area_collision: CollisionShape2D = $HurtArea2D/HurtAreaCollision
 @onready var cone_area: Area2D = $LanternSprite/ConeLight/ConeArea
+@onready var sfx: AudioStreamPlayer2D = %SFX
+
 
 const SPEED = 120.0
 const JUMP_VELOCITY = -250.0
@@ -25,13 +30,20 @@ var light_mode = GameManager.lantern_cone #true = cone, false = radius
 var playing_animation: bool
 var stop_input = false
 var current_sign = null
-
+var footstep_frames: Array = [0,4,7]
 
 func _ready() -> void:
 	GameManager.add_light.connect(_add_light)
 	GameManager.remove_light.connect(_remove_light)
 	GameManager.deal_damage.connect(take_damage)
 	GameManager.light_flame.connect(handle_lighting)
+
+#func _process(delta: float) -> void:
+	#if direction != 0 && is_on_floor_only():
+		#sfx.play()
+		#await sfx.finished
+		#sfx.stop()
+	#else: sfx.stop()
 
 func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("interact") and current_sign and GameManager.in_collision:
@@ -80,6 +92,8 @@ func handle_move():
 
 func handle_jump():
 	if Input.is_action_just_pressed("jump") and is_on_floor():
+		load_sfx(sfx_jump)
+		sfx.play()
 		velocity.y = JUMP_VELOCITY
 
 func add_gravity(delta):
@@ -239,3 +253,17 @@ func take_damage():
 		GameManager.gameover = true
 		GameManager.game_over.emit()
 	await Transition.fade_from_black()
+
+func load_sfx(sfx_to_load):
+	if sfx.stream != sfx_to_load:
+		sfx.stop()
+		sfx.stream = sfx_to_load
+
+
+func _on_player_sprite_frame_changed() -> void:
+	if player_sprite.animation == "idle": return
+	if player_sprite.animation == "jump": return
+	if player_sprite.animation == "stop": return
+	if player_sprite.animation == "use_flame": return
+	load_sfx(sfx_footsteps)
+	if player_sprite.frame in footstep_frames: sfx.play()

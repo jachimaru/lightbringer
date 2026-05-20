@@ -2,6 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://nu0qw5rmcqv7" path="res://scenes/world_template.tscn" id="1_qcgfb"]
 [ext_resource type="Texture2D" uid="uid://b4lgfsevixwbh" path="res://art/parallax/rockypass/back.png" id="2_16xr4"]
+[ext_resource type="PackedScene" uid="uid://bpb8hbrkdb28p" path="res://scenes/GodotCredits.tscn" id="2_p514p"]
 [ext_resource type="Texture2D" uid="uid://dong32edr2pv6" path="res://art/parallax/rockypass/middle.png" id="3_ggtex"]
 [ext_resource type="Texture2D" uid="uid://dxs03xl128lao" path="res://art/parallax/rockypass/near.png" id="4_cetp3"]
 [ext_resource type="PackedScene" uid="uid://uwbxmni6g8bb" path="res://scenes/platform.tscn" id="5_ggtex"]
@@ -36,6 +37,7 @@ size = Vector2(144, 12)
 size = Vector2(144, 12)
 
 [node name="World" unique_id=315622911 instance=ExtResource("1_qcgfb")]
+next_level = ExtResource("2_p514p")
 
 [node name="AboveGroundParallax" type="Node" parent="." index="1" unique_id=943739690]
 
@@ -184,7 +186,7 @@ visible = false
 visible = false
 
 [node name="Player" parent="." index="5" unique_id=1181670398]
-position = Vector2(-499, -92)
+position = Vector2(1759, -84)
 
 [node name="DirectionalLight2D" parent="." index="6" unique_id=695345149]
 visible = false

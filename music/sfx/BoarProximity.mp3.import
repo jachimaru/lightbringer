@@ -12,7 +12,7 @@ dest_files=["res://.godot/imported/BoarProximity.mp3-a4422344a7ca83cf82ffb0b2ef3
 
 [params]
 
-loop=false
+loop=true
 loop_offset=0.0
 bpm=0.0
 beat_count=0

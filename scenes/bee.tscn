@@ -221,7 +221,7 @@ ignore_time_scale = true
 stream = ExtResource("5_nkr4b")
 volume_db = -24.0
 autoplay = true
-max_distance = 132.0
+max_distance = 164.0
 bus = &"SFX"
 
 [node name="BeeGrowl" type="AudioStreamPlayer" parent="." unique_id=897977574]

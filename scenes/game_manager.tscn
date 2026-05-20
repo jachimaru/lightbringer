@@ -1,11 +1,6 @@
 [gd_scene format=3 uid="uid://yf1nhcbla2ch"]
 
 [ext_resource type="Script" uid="uid://drrrqv5empojy" path="res://scripts/game_manager.gd" id="1_hwd4i"]
-[ext_resource type="AudioStream" uid="uid://bdid2b7qsaelg" path="res://music/bgm/CaveBGM.wav" id="2_glms7"]
 
 [node name="GameManager" type="Node" unique_id=1353773752]
 script = ExtResource("1_hwd4i")
-
-[node name="CaveBgm" type="AudioStreamPlayer" parent="." unique_id=315619992]
-stream = ExtResource("2_glms7")
-bus = &"BGS"

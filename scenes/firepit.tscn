@@ -206,7 +206,7 @@ stream = ExtResource("6_d3o6k")
 [node name="FirepitFlame" type="AudioStreamPlayer2D" parent="." unique_id=467255588]
 position = Vector2(0, -4)
 stream = ExtResource("7_ssyo3")
-max_distance = 16.0
+max_distance = 50.0
 bus = &"SFX"
 
 [connection signal="body_entered" from="Flame/Lightwall" to="." method="_on_lightwall_body_entered"]

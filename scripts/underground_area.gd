@@ -15,5 +15,7 @@ func _process(delta: float) -> void:
 func _on_body_entered(body: Node2D) -> void:
 	if GameManager.underground:
 		GameManager.underground = false
+		GameManager.cave_bgm_off.emit()
 	else:
 		GameManager.underground = true
+		GameManager.cave_bgm_on.emit()
