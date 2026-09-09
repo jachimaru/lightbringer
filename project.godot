@@ -28,6 +28,11 @@ TextPopups="*uid://dnl1cqvr7n8oe"
 Transition="*uid://sfp7hy0r5nau"
 Hud="*uid://nrteh73o8f6x"
 
+[editor]
+
+movie_writer/video_quality=0.9
+movie_writer/movie_file="D:/Godot 4/moth-game/movie/preview-1.avi"
+
 [global_group]
 
 enemy=""
